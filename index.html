@@ -396,7 +396,12 @@
   (0,0) is at the top left corner, with the coordinate space having
   <var title="">x</var> values increasing when going right, and <var title="">y</var> values increasing when going down.</p>
 
-  <pre class="idl">interface <dfn id="canvasrenderingcontext2d">CanvasRenderingContext2D</dfn> {
+  <pre class="idl">
+typedef (<span>HTMLImageElement</span> or
+         <span>HTMLVideoElement</span> or
+         <span>HTMLCanvasElement</span>) <dfn id="canvasimagesource">CanvasImageSource</dfn>;
+
+interface <dfn id="canvasrenderingcontext2d">CanvasRenderingContext2D</dfn> {
 
   // back-reference to the canvas
   readonly attribute <a href='http://www.w3.org/TR/html5/scripting-1.html#htmlcanvaselement'><span>HTMLCanvasElement</span></a> <a href="#dom-context-2d-canvas" title="dom-context-2d-canvas">canvas</a>;
@@ -441,7 +446,7 @@
            attribute (DOMString or CanvasGradient or CanvasPattern) <a href="#dom-context-2d-fillstyle" title="dom-context-2d-fillStyle">fillStyle</a>; // (default: "black")
   <a href="#canvasgradient">CanvasGradient</a> <a href="#dom-context-2d-createlineargradient" title="dom-context-2d-createLinearGradient">createLinearGradient</a>(double x0, double y0, double x1, double y1);
   <a href="#canvasgradient">CanvasGradient</a> <a href="#dom-context-2d-createradialgradient" title="dom-context-2d-createRadialGradient">createRadialGradient</a>(double x0, double y0, double r0, double x1, double y1, double r1);
-  <a href="#canvaspattern">CanvasPattern</a> <a href="#dom-context-2d-createpattern" title="dom-context-2d-createPattern">createPattern</a>((<span>HTMLImageElement</span> or <span>HTMLCanvasElement</span> or <span>HTMLVideoElement</span>) image, [TreatNullAs=EmptyString]DOMString repetition);
+  <a href="#canvaspattern">CanvasPattern</a> <a href="#dom-context-2d-createpattern" title="dom-context-2d-createPattern">createPattern</a>(<a href="#canvasimagesource">CanvasImageSource</a> image, [TreatNullAs=EmptyString] DOMString repetition);
 
   // shadows
            attribute unrestricted double <a href="#dom-context-2d-shadowoffsetx" title="dom-context-2d-shadowOffsetX">shadowOffsetX</a>; // (default: 0)
@@ -470,9 +475,9 @@
   <a href="#textmetrics">TextMetrics</a> <a href="#dom-context-2d-measuretext" title="dom-context-2d-measureText">measureText</a>(DOMString text);
 
   // drawing images
-  void <a href="#dom-context-2d-drawimage" title="dom-context-2d-drawImage">drawImage</a>((<span>HTMLImageElement</span> or <span>HTMLCanvasElement</span> or <span>HTMLVideoElement</span>) image, unrestricted double dx, unrestricted double dy);
-  void <a href="#dom-context-2d-drawimage" title="dom-context-2d-drawImage">drawImage</a>((<span>HTMLImageElement</span> or <span>HTMLCanvasElement</span> or <span>HTMLVideoElement</span>) image, unrestricted double dx, unrestricted double dy, unrestricted double dw, unrestricted double dh);
-  void <a href="#dom-context-2d-drawimage" title="dom-context-2d-drawImage">drawImage</a>((<span>HTMLImageElement</span> or <span>HTMLCanvasElement</span> or <span>HTMLVideoElement</span>) image, unrestricted double sx, unrestricted double sy, unrestricted double sw, unrestricted double sh, unrestricted double dx, unrestricted double dy, unrestricted double dw, unrestricted double dh);
+  void <a href="#dom-context-2d-drawimage" title="dom-context-2d-drawImage">drawImage</a>(<a href="#canvasimagesource">CanvasImageSource</a> image, unrestricted double dx, unrestricted double dy);
+  void <a href="#dom-context-2d-drawimage" title="dom-context-2d-drawImage">drawImage</a>(<a href="#canvasimagesource">CanvasImageSource</a> image, unrestricted double dx, unrestricted double dy, unrestricted double dw, unrestricted double dh);
+  void <a href="#dom-context-2d-drawimage" title="dom-context-2d-drawImage">drawImage</a>(<a href="#canvasimagesource">CanvasImageSource</a> image, unrestricted double sx, unrestricted double sy, unrestricted double sw, unrestricted double sh, unrestricted double dx, unrestricted double dy, unrestricted double dw, unrestricted double dh);
 
   // hit regions
   void <a href="#dom-context-2d-addhitregion" title="dom-context-2d-addHitRegion">addHitRegion</a>(<a href="#hitregionoptions">HitRegionOptions</a> options);

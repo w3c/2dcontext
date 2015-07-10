@@ -1072,10 +1072,10 @@ idea from Mihai:
     defined below.</p>
 
     <p><strong>Caps</strong>: Each point has a flat edge perpendicular to the direction of the line
-    coming out of it. This is them augmented according to the value of the <var data-anolis-xref="">styles</var> <code title="dom-context-2d-lineCap"><a href="#dom-context-2d-linecap">lineCap</a></code>. The <code>butt</code>
-    value means that no additional line cap is added. The <code>round</code> value means that a
+    coming out of it. This is them augmented according to the value of the <var data-anolis-xref="">styles</var> <code title="dom-context-2d-lineCap"><a href="#dom-context-2d-linecap">lineCap</a></code>. The "<code>butt</code>"
+    value means that no additional line cap is added. The "<code>round</code>" value means that a
     semi-circle with the diameter equal to the <var data-anolis-xref="">styles</var> <code title="dom-context-2d-lineWidth"><a href="#dom-context-2d-linewidth">lineWidth</a></code> width must additionally be placed on to the
-    line coming out of each point. The <code>square</code> value means that a rectangle with the
+    line coming out of each point. The "<code>square</code>" value means that a rectangle with the
     length of the <var data-anolis-xref="">styles</var> <code title="dom-context-2d-lineWidth"><a href="#dom-context-2d-linewidth">lineWidth</a></code>
     width and the width of half the <var data-anolis-xref="">styles</var> <code title="dom-context-2d-lineWidth"><a href="#dom-context-2d-linewidth">lineWidth</a></code> width, placed flat against the edge
     perpendicular to the direction of the line coming out of the point, must be added at each
@@ -1094,14 +1094,14 @@ idea from Mihai:
     point of the triangle being the join point, must be added at all joins. The <code title="dom-context-2d-lineJoin"><a href="#dom-context-2d-linejoin">lineJoin</a></code> attribute controls whether anything else is
     rendered. The three aforementioned values have the following meanings:</p>
 
-    <p>The <code>bevel</code> value means that this is all that is rendered at joins.</p>
+    <p>The "<code>bevel</code>" value means that this is all that is rendered at joins.</p>
 
-    <p>The <code>round</code> value means that a filled arc connecting the two aforementioned
+    <p>The "<code>round</code>" value means that a filled arc connecting the two aforementioned
     corners of the join, abutting (and not overlapping) the aforementioned triangle, with the
     diameter equal to the line width and the origin at the point of the join, must be added at
     joins.</p>
 
-    <p>The <code>miter</code> value means that a second filled triangle must (if it can given the
+    <p>The "<code>miter</code>" value means that a second filled triangle must (if it can given the
     miter length) be added at the join, with one line being the line between the two aforementioned
     corners, abutting the first triangle, and the other two being continuations of the outside edges
     of the two joining lines, as long as required to intersect without going over the miter
@@ -1206,7 +1206,7 @@ transform. ack Shaun Morris. -->
 
     <p>Can be set, to change the alignment. The possible values are
     <code title="">start</code>, <code title="">end</code>, <code title="">left</code>, <code title="">right</code>, and <code title="">center</code>. Other values are ignored. The default is
-    <code title="">start</code>.</p>
+    "<code>start</code>".</p>
 
    </dd>
 
@@ -1264,7 +1264,7 @@ transform. ack Shaun Morris. -->
    <pre>context.font = 'italic 400 12px/2 Unknown Font, sans-serif';</pre>
 
    <p>...the expression <code title="">context.font</code> would
-   evaluate to the string "<code title="">italic 12px "Unknown Font", sans-serif</code>". The
+   evaluate to the string "<code title="">italic 12px "Unknown Font", sans-serif</code>". The
    "400" font-weight doesn't appear because that is the default
    value. The line-height doesn't appear because it is forced to
    "normal", the default value.</p>
@@ -2343,7 +2343,7 @@ try {
     <p>Returns a <code><a href="#canvaspattern">CanvasPattern</a></code> object that uses the given image
     and repeats in the direction(s) given by the <var title="">repetition</var> argument.</p>
 
-    <p>The allowed values for <var title="">repetition</var> are <code title="">repeat</code> (both directions), <code title="">repeat-x</code> (horizontal only), <code title="">repeat-y</code> (vertical only), and <code title="">no-repeat</code> (neither). If the <var title="">repetition</var> argument is empty, the value <code title="">repeat</code> is used.</p>
+    <p>The allowed values for <var title="">repetition</var> are "<code title="">repeat</code>" (both directions), "<code title="">repeat-x</code>" (horizontal only), "<code title="">repeat-y</code>" (vertical only), and "<code title="">no-repeat</code>" (neither). If the <var title="">repetition</var> argument is empty, the value <code title="">repeat</code> is used.</p>
 
     <p>If the image has no image data, throws an
     <code>InvalidStateError</code> exception. If the second argument
@@ -2358,7 +2358,7 @@ try {
   <div class="impl">
 
   <p>To create objects of this type, the <dfn id="dom-context-2d-createpattern" title="dom-context-2d-createPattern"><code>createPattern(<var title="">image</var>, <var title="">repetition</var>)</code></dfn>
-  method is used. </p>
+  method is used. When the method is invoked, the user agent must run the following steps:</p>
 
   <ol>
   <li>Let <var title="">image</var> (either an <code>HTMLImageElement</code>,

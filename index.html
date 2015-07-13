@@ -353,18 +353,19 @@
  <li><a href="#text-styles"><span class="secno">4 </span>Text styles</a></li>
  <li><a href="#building-paths"><span class="secno">5 </span>Building paths</a></li>
  <li><a href="#transformations"><span class="secno">6 </span>Transformations</a></li>
- <li><a href="#fill-and-stroke-styles"><span class="secno">7 </span>Fill and stroke styles</a></li>
- <li><a href="#drawing-rectangles-to-the-canvas"><span class="secno">8 </span>Drawing rectangles to the canvas</a></li>
- <li><a href="#drawing-text-to-the-canvas"><span class="secno">9 </span>Drawing text to the canvas</a></li>
- <li><a href="#drawing-paths-to-the-canvas"><span class="secno">10 </span>Drawing paths to the canvas</a></li>
- <li><a href="#drawing-images-to-the-canvas"><span class="secno">11 </span>Drawing images to the canvas</a></li>
- <li><a href="#hit-regions"><span class="secno">12 </span>Hit regions</a></li>
- <li><a href="#pixel-manipulation"><span class="secno">13 </span>Pixel manipulation</a></li>
- <li><a href="#compositing"><span class="secno">14 </span>Compositing</a></li>
- <li><a href="#shadows"><span class="secno">15 </span>Shadows</a></li>
- <li><a href="#drawing-model"><span class="secno">16 </span>Drawing model</a></li>
- <li><a href="#best-practices"><span class="secno">17 </span>Best practices</a></li>
- <li><a href="#examples"><span class="secno">18 </span>Examples</a></li>
+ <li><a href="#image-sources-for-2d-rendering-contexts"><span class="secno">7 </span>Image sources for 2D rendering contexts</a></li>
+ <li><a href="#fill-and-stroke-styles"><span class="secno">8 </span>Fill and stroke styles</a></li>
+ <li><a href="#drawing-rectangles-to-the-canvas"><span class="secno">9 </span>Drawing rectangles to the canvas</a></li>
+ <li><a href="#drawing-text-to-the-canvas"><span class="secno">10 </span>Drawing text to the canvas</a></li>
+ <li><a href="#drawing-paths-to-the-canvas"><span class="secno">11 </span>Drawing paths to the canvas</a></li>
+ <li><a href="#drawing-images-to-the-canvas"><span class="secno">12 </span>Drawing images to the canvas</a></li>
+ <li><a href="#hit-regions"><span class="secno">13 </span>Hit regions</a></li>
+ <li><a href="#pixel-manipulation"><span class="secno">14 </span>Pixel manipulation</a></li>
+ <li><a href="#compositing"><span class="secno">15 </span>Compositing</a></li>
+ <li><a href="#shadows"><span class="secno">16 </span>Shadows</a></li>
+ <li><a href="#drawing-model"><span class="secno">17 </span>Drawing model</a></li>
+ <li><a href="#best-practices"><span class="secno">18 </span>Best practices</a></li>
+ <li><a href="#examples"><span class="secno">19 </span>Examples</a></li>
  <li><a class="no-num" href="#references">References</a></li></ol>
 <!--end-toc-->
   <hr>
@@ -597,9 +598,9 @@ interface <dfn id="imagedata">ImageData</dfn> {
    > exceptions when passing in non-finite arguments.
   -->
 
-  <p>Whenever the CSS value <code title="">currentColor</code> is used
+  <p>Whenever the CSS value <code>currentColor</code> is used
   as a color in this API, the "computed value of the 'color' property"
-  for the purposes of determining the computed value of the <code title="">currentColor</code> keyword is the computed value of the
+  for the purposes of determining the computed value of the <code>currentColor</code> keyword is the computed value of the
   'color' property on the element in question at the time that the
   color is specified (e.g. when the appropriate attribute is set, or
   when the method is called; not when the color is rendered or
@@ -607,13 +608,13 @@ interface <dfn id="imagedata">ImageData</dfn> {
   undefined for a particular case (e.g. because the element is not
   <span>in a <code>Document</code></span>), then the "computed value
   of the 'color' property" for the purposes of determining the
-  computed value of the <code title="">currentColor</code> keyword is
+  computed value of the <code>currentColor</code> keyword is
   fully opaque black. <a href="#refsCSSCOLOR">[CSSCOLOR]</a></p>
 
   <p>In the case of <code title="dom-canvasgradient-addColorStop"><a href="#dom-canvasgradient-addcolorstop">addColorStop()</a></code> on
   <code><a href="#canvasgradient">CanvasGradient</a></code>, the "computed value of the 'color'
   property" for the purposes of determining the computed value of the
-  <code title="">currentColor</code> keyword is always fully opaque
+  <code>currentColor</code> keyword is always fully opaque
   black (there is no associated element). <a href="#refsCSSCOLOR">[CSSCOLOR]</a></p>
 
   <p class="note">This is because <code><a href="#canvasgradient">CanvasGradient</a></code> objects
@@ -1212,7 +1213,7 @@ transform. ack Shaun Morris. -->
     <p>Returns the current text alignment settings.</p>
 
     <p>Can be set, to change the alignment. The possible values are
-    "<code title="">start</code>", "<code title="">end</code>", "<code title="">left</code>", "<code title="">right</code>", and "<code title="">center</code>". Other values are ignored. The default is
+    "<code>start</code>", "<code>end</code>", "<code>left</code>", "<code>right</code>", and "<code>center</code>". Other values are ignored. The default is
     "<code>start</code>".</p>
 
    </dd>
@@ -1225,7 +1226,7 @@ transform. ack Shaun Morris. -->
 
     <p>Can be set, to change the baseline alignment. The possible
     values and their meanings are given below. Other values are
-    ignored. The default is "<code title="">alphabetic</code>".</p>
+    ignored. The default is "<code>alphabetic</code>".</p>
 
    </dd>
 
@@ -1247,7 +1248,7 @@ transform. ack Shaun Morris. -->
 
   <p>Font names must be interpreted in the context of the <span>font
   style source node</span>'s stylesheets when the font is to be used;
-  any fonts embedded using <code title="">@font-face</code> that are
+  any fonts embedded using <code>@font-face</code> that are
   visible to that element must therefore be available once they are
   loaded. (If a reference font is used before it is fully loaded, or
   if the <span>font style source node</span> does not have that font
@@ -1270,8 +1271,8 @@ transform. ack Shaun Morris. -->
 
    <pre>context.font = 'italic 400 12px/2 Unknown Font, sans-serif';</pre>
 
-   <p>...the expression <code title="">context.font</code> would
-   evaluate to the string "<code title="">italic 12px "Unknown Font", sans-serif</code>". The
+   <p>...the expression <code>context.font</code> would
+   evaluate to the string "<code>italic 12px "Unknown Font", sans-serif</code>". The
    "400" font-weight doesn't appear because that is the default
    value. The line-height doesn't appear because it is forced to
    "normal", the default value.</p>
@@ -1297,10 +1298,10 @@ transform. ack Shaun Morris. -->
 
   <p>The <dfn id="dom-context-2d-textalign" title="dom-context-2d-textAlign"><code>textAlign</code></dfn> IDL
   attribute, on getting, must return the current value. On setting, if
-  the value is one of "<code title="">start</code>", "<code title="">end</code>", "<code title="">left</code>", "<code title="">right</code>", or "<code title="">center</code>", then the
+  the value is one of "<code>start</code>", "<code>end</code>", "<code>left</code>", "<code>right</code>", or "<code>center</code>", then the
   value must be changed to the new value. Otherwise, the new value
   must be ignored. When the context is created, the <code title="dom-context-2d-textAlign"><a href="#dom-context-2d-textalign">textAlign</a></code> attribute must
-  initially have the value "<code title="">start</code>".</p>
+  initially have the value "<code>start</code>".</p>
 
   <p>The <dfn id="dom-context-2d-textbaseline" title="dom-context-2d-textBaseline"><code>textBaseline</code></dfn>
   IDL attribute, on getting, must return the current value. On
@@ -1310,7 +1311,7 @@ transform. ack Shaun Morris. -->
   then the value must be changed to the new value. Otherwise, the new
   value must be ignored. When the object implementing the
   <code><a href="#canvasdrawingstyles">CanvasDrawingStyles</a></code> interface is created, the <code title="dom-context-2d-textBaseline"><a href="#dom-context-2d-textbaseline">textBaseline</a></code> attribute
-  must initially have the value "<code title="">alphabetic</code>".</p>
+  must initially have the value "<code>alphabetic</code>".</p>
 
   </div>
 
@@ -1320,7 +1321,7 @@ transform. ack Shaun Morris. -->
 
   <!-- this is filler to make sure the TCP packet boundary doesn't fall in the middle of one of the NCRs below -->
   <!-- (because otherwise the parser in anolis screws it up) -->
-  <p><img alt="The top of the em square is roughly at the top of the glyphs in a font, the hanging baseline is where some glyphs like आ are anchored, the middle is half-way between the top of the em square and the bottom of the em square, the alphabetic baseline is where characters like Á, ÿ, f, and Ω are anchored, the ideographic baseline is where glyphs like 私 and 達 are anchored, and the bottom of the em square is roughly at the bottom of the glyphs in a font. The top and bottom of the bounding box can be far from these baselines, due to glyphs extending far outside the em square." height="300" src="/TR/2dcontext/images/baselines.png" width="738"></p>
+  <p><img alt="The top of the em square is roughly at the top of the glyphs in a font, the hanging baseline is where some glyphs like आ are anchored, the middle is half-way between the top of the em square and the bottom of the em square, the alphabetic baseline is where characters like Á, ÿ, f, and Ω are anchored, the ideographic baseline is where glyphs like 私 and 達 are anchored, and the bottom of the em square is roughly at the bottom of the glyphs in a font. The top and bottom of the bounding box can be far from these baselines, due to glyphs extending far outside the em square." height="300" src="images/baselines.png" width="738"></p>
 
   <p>The keywords map to these alignment points as follows:</p>
 
@@ -1429,14 +1430,14 @@ transform. ack Shaun Morris. -->
     <dl>
 
      <dt>If <code title="dom-context-2d-textAlign"><a href="#dom-context-2d-textalign">textAlign</a></code> is
-     <code title="">left</code></dt>
+     <code>left</code></dt>
 
      <dt>If <code title="dom-context-2d-textAlign"><a href="#dom-context-2d-textalign">textAlign</a></code> is
-     <code title="">start</code> and <var title="">direction</var> is
+     <code>start</code> and <var title="">direction</var> is
      'ltr'</dt>
 
      <dt>If <code title="dom-context-2d-textAlign"><a href="#dom-context-2d-textalign">textAlign</a></code> is
-     <code title="">end</code> and <var title="">direction</var> is
+     <code>end</code> and <var title="">direction</var> is
      'rtl'</dt>
 
      <dd>Let the <var title="">anchor point</var>'s horizontal
@@ -1444,14 +1445,14 @@ transform. ack Shaun Morris. -->
 
 
      <dt>If <code title="dom-context-2d-textAlign"><a href="#dom-context-2d-textalign">textAlign</a></code> is
-     <code title="">right</code></dt>
+     <code>right</code></dt>
 
      <dt>If <code title="dom-context-2d-textAlign"><a href="#dom-context-2d-textalign">textAlign</a></code> is
-     <code title="">end</code> and <var title="">direction</var> is
+     <code>end</code> and <var title="">direction</var> is
      'ltr'</dt>
 
      <dt>If <code title="dom-context-2d-textAlign"><a href="#dom-context-2d-textalign">textAlign</a></code> is
-     <code title="">start</code> and <var title="">direction</var> is
+     <code>start</code> and <var title="">direction</var> is
      'rtl'</dt>
 
      <dd>Let the <var title="">anchor point</var>'s horizontal
@@ -1459,7 +1460,7 @@ transform. ack Shaun Morris. -->
 
 
      <dt>If <code title="dom-context-2d-textAlign"><a href="#dom-context-2d-textalign">textAlign</a></code> is
-     <code title="">center</code></dt>
+     <code>center</code></dt>
 
      <dd>Let the <var title="">anchor point</var>'s horizontal
      position be half way between the left and right edges of the
@@ -1605,7 +1606,7 @@ transform. ack Shaun Morris. -->
 
     <figure class="diagrams">
      <!-- if anyone wants to try writing alternative text for this, be my guest. I can't work out how to describe it. -->
-     <img alt="" src="/TR/2dcontext/images/arc1.png">
+     <img alt="" src="images/arc1.png">
     </figure>
 
    </dd>
@@ -2058,10 +2059,60 @@ try {
 
   </div>
 
+  <h2 id="image-sources-for-2d-rendering-contexts"><span class="secno">7 </span>Image sources for 2D rendering contexts</h2>
 
+<p>This union type allows objects implementing any of the following interfaces to be used as image
+  sources:</p>
 
+  <ul><li><code id="image-sources-for-2d-rendering-contexts:htmlimageelement"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlimageelement">HTMLImageElement</a></code> (<code id="image-sources-for-2d-rendering-contexts:the-img-element"><a href="http://www.w3.org/TR/html/embedded-content-0.html#the-img-element">img</a></code> elements)</li><li><code id="image-sources-for-2d-rendering-contexts:htmlvideoelement"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlvideoelement">HTMLVideoElement</a></code> (<code id="image-sources-for-2d-rendering-contexts:the-video-element"><a href="http://www.w3.org/TR/html/embedded-content-0.html#the-video-element">video</a></code> elements)</li><li><code id="image-sources-for-2d-rendering-contexts:htmlcanvaselement"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlcanvaselement">HTMLCanvasElement</a></code> (<code id="image-sources-for-2d-rendering-contexts:the-canvas-element"><a href="http://www.w3.org/TR/html/embedded-content-0.html#the-canvas-element">canvas</a></code> elements)</li></ul>
 
-  <h2 id="fill-and-stroke-styles"><span class="secno">7 </span>Fill and stroke styles</h2>
+  <p>When a user agent is required to <dfn id="check-the-usability-of-the-image-argument">check the usability of the <var>image</var>
+  argument</dfn>, where <var>image</var> is a <code id="image-sources-for-2d-rendering-contexts:canvasimagesource-2"><a href="#canvasimagesource">CanvasImageSource</a></code> object, the
+  user agent must run these steps, which return either <i>good</i>, <i>bad</i>, or
+  <i>aborted</i>:</p>
+
+  <ol><li><p>If the <var>image</var> argument is an <code id="image-sources-for-2d-rendering-contexts:htmlimageelement-2"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlimageelement">HTMLImageElement</a></code> object that
+   is in the <a href="http://www.w3.org/TR/html/embedded-content-0.html#img-error" id="image-sources-for-2d-rendering-contexts:img-error">broken</a> state, then throw an
+   <code id="image-sources-for-2d-rendering-contexts:invalidstateerror"><a href="infrastructure.html#invalidstateerror">InvalidStateError</a></code> exception, return <i>aborted</i>, and abort these steps.</p>
+
+   </li><li><p>If the <var>image</var> argument is an <code id="image-sources-for-2d-rendering-contexts:htmlimageelement-3"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlimageelement">HTMLImageElement</a></code> object that
+   is not <a href="http://www.w3.org/TR/html/embedded-content-0.html#img-good" id="image-sources-for-2d-rendering-contexts:img-good">fully decodable</a>, or if the <var>image</var>
+   argument is an <code id="image-sources-for-2d-rendering-contexts:htmlvideoelement-2"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlvideoelement">HTMLVideoElement</a></code> object whose <code id="image-sources-for-2d-rendering-contexts:dom-media-readystate"><a href="http://www.w3.org/TR/html/embedded-content-0.html#dom-media-readystate">readyState</a></code> attribute is either <code id="image-sources-for-2d-rendering-contexts:dom-media-have_nothing"><a href="http://www.w3.org/TR/html/embedded-content-0.html#dom-media-have_nothing">HAVE_NOTHING</a></code> or <code id="image-sources-for-2d-rendering-contexts:dom-media-have_metadata"><a href="http://www.w3.org/TR/html/embedded-content-0.html#dom-media-have_metadata">HAVE_METADATA</a></code>, then return <i>bad</i> and abort these
+   steps.</p></li><li><p>If the <var>image</var> argument is an <code id="image-sources-for-2d-rendering-contexts:htmlimageelement-4"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlimageelement">HTMLImageElement</a></code> object with
+   an intrinsic width or intrinsic height (or both) equal to zero, then return <i>bad</i> and abort
+   these steps.</p>
+
+   </li><li><p>If the <var>image</var> argument is an <code id="image-sources-for-2d-rendering-contexts:htmlcanvaselement-2"><a href="#htmlcanvaselement">HTMLCanvasElement</a></code> object with
+   either a horizontal dimension or a vertical dimension equal to zero, then return <i>bad</i> and
+   abort these steps.</p>
+
+   </li><li><p>Return <i>good</i>.</p></li></ol>
+
+  <p>When a <code id="image-sources-for-2d-rendering-contexts:canvasimagesource-3"><a href="#canvasimagesource">CanvasImageSource</a></code> object represents an <code id="image-sources-for-2d-rendering-contexts:htmlimageelement-5"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlimageelement">HTMLImageElement</a></code>, the
+  element's image must be used as the source image.</p>
+
+  <p>Specifically, when a <code id="image-sources-for-2d-rendering-contexts:canvasimagesource-4"><a href="#canvasimagesource">CanvasImageSource</a></code> object represents an animated image in an
+  <code id="image-sources-for-2d-rendering-contexts:htmlimageelement-6"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlimageelement">HTMLImageElement</a></code>, the user agent must use the default image of the animation (the
+  one that the format defines is to be used when animation is not supported or is disabled), or, if
+  there is no such image, the first frame of the animation, when rendering the image for
+  <code id="image-sources-for-2d-rendering-contexts:canvasrenderingcontext2d-3"><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> APIs.</p>
+
+  <p>When a <code id="image-sources-for-2d-rendering-contexts:canvasimagesource-5"><a href="#canvasimagesource">CanvasImageSource</a></code> object represents an <code id="image-sources-for-2d-rendering-contexts:htmlvideoelement-3"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlvideoelement">HTMLVideoElement</a></code>, then
+  the frame at the <a id="image-sources-for-2d-rendering-contexts:current-playback-position" href="http://www.w3.org/TR/html/embedded-content-0.html#current-playback-position">current playback position</a> when the method with the argument is
+  invoked must be used as the source image when rendering the image for
+  <code id="image-sources-for-2d-rendering-contexts:canvasrenderingcontext2d-4"><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> APIs, and the source image's dimensions must be the <a href="http://www.w3.org/TR/html/embedded-content-0.html#concept-video-intrinsic-width" id="image-sources-for-2d-rendering-contexts:concept-video-intrinsic-width">intrinsic width</a> and <a href="http://www.w3.org/TR/html/embedded-content-0.html#concept-video-intrinsic-height" id="image-sources-for-2d-rendering-contexts:concept-video-intrinsic-height">intrinsic height</a> of the <a id="image-sources-for-2d-rendering-contexts:media-resource" href="http://www.w3.org/TR/html/embedded-content-0.html#media-resource">media resource</a>
+  (i.e. after any aspect-ratio correction has been applied).</p>
+
+  <p>When a <code id="image-sources-for-2d-rendering-contexts:canvasimagesource-6"><a href="#canvasimagesource">CanvasImageSource</a></code> object represents an <code id="image-sources-for-2d-rendering-contexts:htmlcanvaselement-3"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlcanvaselement">HTMLCanvasElement</a></code>, the
+  element's bitmap must be used as the source image.</p>
+
+  <p><dfn id="the-image-argument-is-not-origin-clean">The <var>image argument</var> is not origin-clean</dfn> if it is an
+  <code id="image-sources-for-2d-rendering-contexts:htmlimageelement-7"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlimageelement">HTMLImageElement</a></code> or <code id="image-sources-for-2d-rendering-contexts:htmlvideoelement-4"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlvideoelement">HTMLVideoElement</a></code> whose <a id="image-sources-for-2d-rendering-contexts:origin-2" href="http://www.w3.org/TR/html/browsers.html#origin-0">origin</a> is not
+  the <a href="http://www.w3.org/TR/html/browsers.html#same-origin" id="image-sources-for-2d-rendering-contexts:same-origin">same</a> as the <a id="image-sources-for-2d-rendering-contexts:origin-2-2" href="http://www.w3.org/TR/html/browsers.html#origin-0">origin</a> specified by the <a id="image-sources-for-2d-rendering-contexts:entry-settings-object" href="http://www.w3.org/TR/html/webappapis.html#entry-settings-object">entry
+  settings object</a>, or if it is an <code id="image-sources-for-2d-rendering-contexts:htmlcanvaselement-4"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlcanvaselement">HTMLCanvasElement</a></code> whose bitmap's <a href="http://www.w3.org/TR/html/scripting-1.html#concept-canvas-origin-clean" id="image-sources-for-2d-rendering-contexts:concept-canvas-origin-clean">origin-clean</a> flag is false, or if it is a
+  <code id="image-sources-for-2d-rendering-contexts:canvasrenderingcontext2d-7"><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> object whose bitmap</a>'s <a href="http://www.w3.org/TR/html/scripting-1.html#concept-canvas-origin-clean" id="image-sources-for-2d-rendering-contexts:concept-canvas-origin-clean-2">origin-clean</a> flag is false.</p>
+
+  <h2 id="fill-and-stroke-styles"><span class="secno">8 </span>Fill and stroke styles</h2>
 
   <dl class="domintro">
 
@@ -2139,7 +2190,8 @@ try {
   cannot be <span>parsed as a CSS &lt;color&gt; value</span>, or is
   neither a string, a <code><a href="#canvasgradient">CanvasGradient</a></code>, nor a
   <code><a href="#canvaspattern">CanvasPattern</a></code>, then it must be ignored, and the
-  attribute must retain its previous value.</p>
+  attribute must retain its previous value.   If the new value is a <code id="fill-and-stroke-styles:canvaspattern-5"><a href="#canvaspattern">CanvasPattern</a></code> object that is marked as <a style="" href="#concept-canvas-pattern-not-origin-clean" id="fill-and-stroke-styles:concept-canvas-pattern-not-origin-clean">not origin-clean</a>, then the bitmap's <a href="#concept-canvas-origin-clean" id="fill-and-stroke-styles:concept-canvas-origin-clean">origin-clean</a> flag must be set to
+  false.</p>
 
   <p>When set to a <code><a href="#canvaspattern">CanvasPattern</a></code> or
   <code><a href="#canvasgradient">CanvasGradient</a></code> object, the assignment is
@@ -2161,8 +2213,8 @@ try {
   green component, and the last two digits representing the blue
   component, the digits being in the range 0-9 a-f (U+0030 to U+0039
   and U+0061 to U+0066). Otherwise, the color value has alpha less
-  than 1.0, and the string is the color value in the CSS <code title="">rgba()</code> functional-notation format: the literal
-  string <code title="">rgba</code> (U+0072 U+0067 U+0062 U+0061)
+  than 1.0, and the string is the color value in the CSS <code>rgba()</code> functional-notation format: the literal
+  string <code>rgba</code> (U+0072 U+0067 U+0062 U+0061)
   followed by a U+0028 LEFT PARENTHESIS, a base-ten integer in the
   range 0-255 representing the red component (using digits 0-9, U+0030
   to U+0039, in the shortest form possible), a literal U+002C COMMA
@@ -2180,7 +2232,7 @@ try {
   this is unreadable, expand it into a <dl> with two nested <ol>s -->
 
   <p>When the context is created, the <code title="dom-context-2d-fillStyle"><a href="#dom-context-2d-fillstyle">fillStyle</a></code> and <code title="dom-context-2d-strokeStyle"><a href="#dom-context-2d-strokestyle">strokeStyle</a></code> attributes
-  must initially have the string value <code title="">#000000</code>.</p>
+  must initially have the string value <code>#000000</code>.</p>
 
   <p>When the value is a color, it must not be affected by the
   transformation matrix when used to draw on the canvas.</p> <!-- so
@@ -2350,7 +2402,7 @@ try {
     <p>Returns a <code><a href="#canvaspattern">CanvasPattern</a></code> object that uses the given image
     and repeats in the direction(s) given by the <var title="">repetition</var> argument.</p>
 
-    <p>The allowed values for <var title="">repetition</var> are "<code title="">repeat</code>" (both directions), "<code title="">repeat-x</code>" (horizontal only), "<code title="">repeat-y</code>" (vertical only), and "<code title="">no-repeat</code>" (neither). If the <var title="">repetition</var> argument is empty, the value <code title="">repeat</code> is used.</p>
+    <p>The allowed values for <var title="">repetition</var> are "<code>repeat</code>" (both directions), "<code>repeat-x</code>" (horizontal only), "<code>repeat-y</code>" (vertical only), and "<code>no-repeat</code>" (neither). If the <var title="">repetition</var> argument is empty, the value <code>repeat</code> is used.</p>
 
     <p>If the image has no image data, throws an
     <code>InvalidStateError</code> exception. If the second argument
@@ -2368,14 +2420,12 @@ try {
   method is used. When the method is invoked, the user agent must run the following steps:</p>
 
   <ol>
-  <li>Let <var title="">image</var> (either an <code>HTMLImageElement</code>,
-  <code>HTMLCanvasElement</code>, or <code>HTMLVideoElement</code>
-  object) be the first argument and <var title="">repetition</var> be the second argument.</li>
-  <li><a href="http://www.w3.org/TR/2dcontext2/#check-the-usability-of-the-image-argument">Check the usability of the image argument</a>. If this returns <var title="">aborted</var>, then an exception has been thrown and the method doesn't return anything; abort these steps. If it returns <var title="">bad</var>, then return null and abort these steps. Otherwise it returns <var title="">good</var>; continue with these steps.</li>
-  <li>If <var title="">repetition</var> is the empty string, let it be <code title="">repeat</code>.</li>
-  <li>If <var title="">repetition</var> is not a case-sensitive match for one of <code title="">repeat</code>, <code title="">repeat-x</code>, <code title="">repeat-y</code>, or <code title="">no-repeat</code>, throw a <var title="">SyntaxError</var> exception and abort these steps.</li>
+  <li>Let <var title="">image</var> be the first argument and <var title="">repetition</var> be the second argument.</li>
+  <li><a href="#check-the-usability-of-the-image-argument">Check the usability of the image argument</a>. If this returns <var title="">aborted</var>, then an exception has been thrown and the method doesn't return anything; abort these steps. If it returns <var title="">bad</var>, then return null and abort these steps. Otherwise it returns <var title="">good</var>; continue with these steps.</li>
+  <li>If <var title="">repetition</var> is the empty string, let it be "<code>repeat</code>".</li>
+  <li>If <var title="">repetition</var> is not a case-sensitive match for one of "<code>repeat</code>", "<code>repeat-x</code>", "<code>repeat-y</code>", or "<code>no-repeat</code>", throw a <var title="">SyntaxError</var> exception and abort these steps.</li>
   <li>Create a new <code><a href="#canvaspattern">CanvasPattern</a></code> object with the image <var title="">image</var> and the repetition behavior given by <var title="">repetition</var>.</li>
-  <li>If <a href="http://www.w3.org/TR/2dcontext2/#the-image-argument-is-not-origin-clean">the image argument is not origin-clean</a>, then mark the <code><a href="#canvaspattern">CanvasPattern</a></code> object as not <i>origin-clean</i>.</li>
+  <li>If <a href="#the-image-argument-is-not-origin-clean">the image argument is not origin-clean</a>, then mark the <code><a href="#canvaspattern">CanvasPattern</a></code> object as <dfn id="concept-canvas-pattern-not-origin-clean"><i>not origin-clean</i></dfn>.</li>
   <li>Return the <code><a href="#canvaspattern">CanvasPattern</a></code> object.</li>
   </ol>
   <p>
@@ -2410,21 +2460,7 @@ try {
   <var title="">repetition</var>.)
   <!-- drawImage() has a similar paragraph with different rules -->
 
-  </p><p>When the <code title="dom-context-2d-createPattern"><a href="#dom-context-2d-createpattern">createPattern()</a></code> method
-  is passed an animated image as its <var title="">image</var>
-  argument, the user agent must use the poster frame of the animation,
-  or, if there is no poster frame, the first frame of the
-  animation.</p>
-  <!-- drawImage() has an equivalent paragraph -->
-
-  <p>When the <var title="">image</var> argument is an
-  <code>HTMLVideoElement</code>, then the frame at the <span>current
-  playback position</span> must be used as the source image, and the
-  source image's dimensions must be the <span title="concept-video-intrinsic-width">intrinsic width</span> and
-  <span title="concept-video-intrinsic-height">intrinsic height</span>
-  of the <span>media resource</span> (i.e. after any aspect-ratio
-  correction has been applied).</p>
-  <!-- drawImage() has an equivalent paragraph -->
+  </p>
 
   <!--
    Requests for v5 features:
@@ -2451,7 +2487,7 @@ try {
 
 
 
-  <h2 id="drawing-rectangles-to-the-canvas"><span class="secno">8 </span>Drawing rectangles to the canvas</h2>
+  <h2 id="drawing-rectangles-to-the-canvas"><span class="secno">9 </span>Drawing rectangles to the canvas</h2>
 
   <p>There are three methods that immediately draw rectangles to the
   bitmap. They each take four arguments; the first two give the <var title="">x</var> and <var title="">y</var> coordinates of the top
@@ -2548,7 +2584,7 @@ try {
 
 
 
-  <h2 id="drawing-text-to-the-canvas"><span class="secno">9 </span>Drawing text to the canvas</h2>
+  <h2 id="drawing-text-to-the-canvas"><span class="secno">10 </span>Drawing text to the canvas</h2>
 
   <dl class="domintro">
 
@@ -2632,6 +2668,11 @@ try {
 
    </li>
 
+   <li><p>If the <a href="#text-preparation-algorithm" id="drawing-text-to-the-bitmap:text-preparation-algorithm-2">text preparation algorithm</a> used a font that has an <a id="drawing-text-to-the-bitmap:origin-2" href="http://www.w3.org/TR/html/browsers.html#origin-0">origin</a>
+   that is not the <a href="http://www.w3.org/TR/html/browsers.html#same-origin" id="drawing-text-to-the-bitmap:same-origin">same</a> as the <a id="drawing-text-to-the-bitmap:origin-2-2" href="http://www.w3.org/TR/html/browsers.html#origin-0">origin</a> specified by
+   the <a id="drawing-text-to-the-bitmap:entry-settings-object" href="http://www.w3.org/TR/html/webappapis.html#entry-settings-object">entry settings object</a> (even if "using a font" means just checking if that font
+   has a particular glyph in it before falling back to another font), then set the bitmap's <a href="http://www.w3.org/TR/html/scripting-1.html#concept-canvas-origin-clean" id="drawing-text-to-the-bitmap:concept-canvas-origin-clean">origin-clean</a> flag to
+   false.</p></li>
   </ol>
 
 <!--v6DVT - this is commented out until CSS can get its act together
@@ -2858,7 +2899,7 @@ v6DVT (also check for '- -' bits in the part above) -->
 
 
 
-  <h2 id="drawing-paths-to-the-canvas"><span class="secno">10 </span>Drawing paths to the canvas</h2>
+  <h2 id="drawing-paths-to-the-canvas"><span class="secno">11 </span>Drawing paths to the canvas</h2>
 
   <p>The context always has a <dfn id="current-default-path">current default path</dfn>. There
   is only one current path, it is not part of the
@@ -3076,7 +3117,7 @@ v6DVT (also check for '- -' bits in the part above) -->
 
   </div>
 
-  <h2 id="drawing-images-to-the-canvas"><span class="secno">11 </span>Drawing images to the canvas</h2>
+  <h2 id="drawing-images-to-the-canvas"><span class="secno">12 </span>Drawing images to the canvas</h2>
 
   <p>To draw images onto the canvas, the <dfn id="dom-context-2d-drawimage" title="dom-context-2d-drawImage"><code>drawImage</code></dfn> method
   can be used.</p>
@@ -3084,9 +3125,9 @@ v6DVT (also check for '- -' bits in the part above) -->
   <p>This method can be invoked with three different sets of arguments:</p>
 
   <ul class="brief">
-   <li><code title="">drawImage(<var title="">image</var>, <var title="">dx</var>, <var title="">dy</var>)</code>
-   </li><li><code title="">drawImage(<var title="">image</var>, <var title="">dx</var>, <var title="">dy</var>, <var title="">dw</var>, <var title="">dh</var>)</code>
-   </li><li><code title="">drawImage(<var title="">image</var>, <var title="">sx</var>, <var title="">sy</var>, <var title="">sw</var>, <var title="">sh</var>, <var title="">dx</var>, <var title="">dy</var>, <var title="">dw</var>, <var title="">dh</var>)</code>
+   <li><code>drawImage(<var title="">image</var>, <var title="">dx</var>, <var title="">dy</var>)</code>
+   </li><li><code>drawImage(<var title="">image</var>, <var title="">dx</var>, <var title="">dy</var>, <var title="">dw</var>, <var title="">dh</var>)</code>
+   </li><li><code>drawImage(<var title="">image</var>, <var title="">sx</var>, <var title="">sy</var>, <var title="">sw</var>, <var title="">sh</var>, <var title="">dx</var>, <var title="">dy</var>, <var title="">dw</var>, <var title="">dh</var>)</code>
   </li></ul>
 
   <!-- v3: drawImage() of an ImageData object might make sense (when resizing as well as filtering) - ack Charles Pritchard -->
@@ -3107,7 +3148,7 @@ v6DVT (also check for '- -' bits in the part above) -->
     <p>Draws the given image onto the canvas. The arguments are
     interpreted as follows:</p>
 
-    <p><img alt="The sx and sy parameters give the x and y coordinates of the source rectangle; the sw and sh arguments give the width and height of the source rectangle; the dx and dy give the x and y coordinates of the destination rectangle; and the dw and dh arguments give the width and height of the destination rectangle." height="356" src="/TR/2dcontext/images/drawImage.png" width="356"></p>
+    <p><img alt="The sx and sy parameters give the x and y coordinates of the source rectangle; the sw and sh arguments give the width and height of the source rectangle; the dx and dy give the x and y coordinates of the destination rectangle; and the dw and dh arguments give the width and height of the destination rectangle." height="356" src="images/drawImage.png" width="356"></p>
 
     <p>If the first argument isn't an <code>img</code>,
     <code>canvas</code>, or <code>video</code> element, throws a
@@ -3123,66 +3164,51 @@ v6DVT (also check for '- -' bits in the part above) -->
 
   <div class="impl">
 
-  <p>If not specified, the <var title="">dw</var> and <var title="">dh</var> arguments must default to the values of <var title="">sw</var> and <var title="">sh</var>, interpreted such that
-  one CSS pixel in the image is treated as one unit in the canvas
-  coordinate space. If the <var title="">sx</var>, <var title="">sy</var>, <var title="">sw</var>, and <var title="">sh</var> arguments are omitted, they must default to 0, 0,
-  the image's intrinsic width in image pixels, and the image's
-  intrinsic height in image pixels, respectively. If the image has no
-  intrinsic dimensions, the <i>concrete object size</i> must be used
-  instead, as determined using the CSS "<a href="http://dev.w3.org/csswg/css3-images/#default-sizing">Concrete
-  Object Size Resolution</a>" algorithm, with the <i>specified
-  size</i> having neither a definite width nor height, nor any
-  additional contraints, the object's intrinsic properties being those
-  of the <var title="">image</var> argument, and the <i>default object
-  size</i> being the size of the <code>canvas</code> element. <a href="#refsCSSIMAGES">[CSSIMAGES]</a></p>
+<p>When the <code id="drawing-images:dom-context-2d-drawimage-4"><a href="#dom-context-2d-drawimage">drawImage()</a></code> method is invoked, the user
+  agent must run the following steps:</p>
 
-  <p>The <var title="">image</var> argument is an instance of either
-  <code>HTMLImageElement</code>, <code>HTMLCanvasElement</code>, or
-  <code>HTMLVideoElement</code>.</p> <!-- createPattern() has an
-  equivalent paragraph -->
+  <ol><li><p><a href="#check-the-usability-of-the-image-argument" id="drawing-images:check-the-usability-of-the-image-argument">Check the usability of the <var>image</var> argument</a>. If this
+   returns <i>aborted</i>, then an exception has been thrown and the method doesn't return anything;
+   abort these steps. If it returns <i>bad</i>, then abort these steps without drawing anything.
+   Otherwise it returns <i>good</i>; continue with these steps.</p></li><li>
 
-  <p>If the <var title="">image</var> argument is an
-  <code>HTMLImageElement</code> object that is not <span title="img-good">fully decodable</span>, or if the <var title="">image</var> argument is an <code>HTMLVideoElement</code>
-  object whose <code title="dom-media-readyState">readyState</code>
-  attribute is either <code title="dom-media-HAVE_NOTHING">HAVE_NOTHING</code> or <code title="dom-media-HAVE_METADATA">HAVE_METADATA</code>, then the
-  implementation must return without drawing anything.</p> <!--
-  createPattern() has an equivalent paragraph -->
+    <p>Establish the source and destination rectangles as follows:</p>
 
-  <p>If the <var title="">image</var> argument is an
-  <code>HTMLCanvasElement</code> object with either a horizontal
-  dimension or a vertical dimension equal to zero, then the
-  implementation must throw an <code>InvalidStateError</code>
-  exception.</p>
-  <!-- createPattern() has an equivalent paragraph -->
+    <p>If not specified, the <var>dw</var> and <var>dh</var> arguments must default to the values of
+    <var>sw</var> and <var>sh</var>, interpreted such that one CSS pixel in the image is treated as
+    one unit in the bitmap's coordinate space. If the <var>sx</var>,
+    <var>sy</var>, <var>sw</var>, and <var>sh</var> arguments are omitted, they must default to 0,
+    0, the image's intrinsic width in image pixels, and the image's intrinsic height in image
+    pixels, respectively. If the image has no intrinsic dimensions, the <i>concrete object size</i>
+    must be used instead, as determined using the CSS "<a href="http://dev.w3.org/csswg/css-images/#default-sizing">Concrete Object Size Resolution</a>"
+    algorithm, with the <i>specified size</i> having neither a definite width nor height, nor any
+    additional contraints, the object's intrinsic properties being those of the <var>image</var>
+    argument, and the <a id="drawing-images:default-object-size" href="infrastructure.html#default-object-size">default object size</a> being the size of the bitmap. <a href="references.html#refsCSSIMAGES">[CSSIMAGES]</a></p>
 
-  <p>The source rectangle is the rectangle whose corners are the four
-  points (<var title="">sx</var>, <var title="">sy</var>), (<span title=""><var title="">sx</var>+<var title="">sw</var></span>, <var title="">sy</var>), (<span title=""><var title="">sx</var>+<var title="">sw</var></span>, <span title=""><var title="">sy</var>+<var title="">sh</var></span>), (<var title="">sx</var>, <span title=""><var title="">sy</var>+<var title="">sh</var></span>).</p>
+    <p>The source rectangle is the rectangle whose corners are the four points (<var>sx</var>, <var>sy</var>), (<span><var>sx</var>+<var>sw</var></span>, <var>sy</var>), (<span><var>sx</var>+<var>sw</var></span>, <span><var>sy</var>+<var>sh</var></span>),
+    (<var>sx</var>, <span><var>sy</var>+<var>sh</var></span>).</p>
 
-  <p>If one of the <var title="">sw</var> or <var title="">sh</var>
-  arguments is zero, the implementation must throw an
-  <code>IndexSizeError</code> exception.</p>
+    <p>The destination rectangle is the rectangle whose corners are the four points (<var>dx</var>, <var>dy</var>), (<span><var>dx</var>+<var>dw</var></span>, <var>dy</var>), (<span><var>dx</var>+<var>dw</var></span>, <span><var>dy</var>+<var>dh</var></span>),
+    (<var>dx</var>, <span><var>dy</var>+<var>dh</var></span>).</p>
 
-  <p>The destination rectangle is the rectangle whose corners are the
-  four points (<var title="">dx</var>, <var title="">dy</var>),
-  (<span title=""><var title="">dx</var>+<var title="">dw</var></span>, <var title="">dy</var>), (<span title=""><var title="">dx</var>+<var title="">dw</var></span>, <span title=""><var title="">dy</var>+<var title="">dh</var></span>), (<var title="">dx</var>, <span title=""><var title="">dy</var>+<var title="">dh</var></span>).</p>
+    <p>When the source rectangle is outside the source image, the source rectangle must be clipped
+    to the source image and the destination rectangle must be clipped in the same proportion.</p>
 
-  <p>When the source rectangle is outside the source image, it must be
-  clipped to the source image, and the destination rectangle must be
-  clipped in the same proportion.</p>
+    <p class="note">When the destination rectangle is outside the destination image (the
+    bitmap), the pixels that land outside the bitmap are
+    discarded, as if the destination was an infinite canvas whose rendering was clipped to the
+    dimensions of the bitmap.</p>
 
-  <p>When <code title="dom-context-2d-drawImage"><a href="#dom-context-2d-drawimage">drawImage()</a></code> is
-  invoked, the region of the image specified by the source rectangle
-  must be painted on the region of the canvas specified by the
-  destination rectangle, after applying the <a href="#transformations" title="dom-context-2d-transformation">current transformation
-  matrix</a> to the points of the destination rectangle.</p>
+   </li><li><p>If one of the <var>sw</var> or <var>sh</var> arguments is zero, abort
+   these steps. Nothing is painted.</p></li><li>
 
-  <p>The original image data of the source image must be used, not the
-  image as it is rendered (e.g. <code title="attr-dim-width">width</code> and <code title="attr-dim-height">height</code> attributes on the source
-  element have no effect). The image data must be processed in the
-  original direction, even if the dimensions given are negative. <!--
-  remove that last sentence if it causes confusion. Someone once
-  suggested that 5,5,-2,-2 was different than 3,3,2,2; this is trying
-  to clarify that this is no the case. --></p>
+    <p>Paint the region of the <var>image</var> argument specified by the source rectangle
+    on the region of the rendering context's bitmap specified by the
+    destination rectangle, after applying the <a href="#transformations" id="drawing-images:transformations">current
+    transformation matrix</a> to the destination rectangle.</p>
+
+    <p>The image data must be processed in the original direction, even if the dimensions given are
+    negative. </p>
 
   <p class="note">This specification does not define the algorithm to
   use when scaling the image, if necessary.</p>
@@ -3192,34 +3218,28 @@ v6DVT (also check for '- -' bits in the part above) -->
   back onto the canvas, so it is possible to copy parts of a canvas
   onto overlapping parts of itself.</p>
 
-  <p>If the original image data is a bitmap image, the value painted
-  at a point in the destination rectangle is computed by filtering the
-  original image data. The user agent may use any filtering algorithm
-  (for example bilinear interpolation or nearest-neighbor). When the
-  filtering algorithm requires a pixel value from outside the original
-  image data, it must instead use the value from the nearest edge
-  pixel. (That is, the filter uses 'clamp-to-edge' behavior.)</p>
-  <!-- see CORE-32111 and:
-       http://krijnhoetmer.nl/irc-logs/whatwg/20100818#l-737
-       http://www.w3.org/Bugs/Public/show_bug.cgi?id=10799#c11
-  -->
-  <!-- createPattern() has a similar paragraph with different rules -->
+    <p>If the original image data is a bitmap image, the value painted at a point in the destination
+    rectangle is computed by filtering the original image data. The user agent may use any filtering
+    algorithm (for example bilinear interpolation or nearest-neighbor). When the filtering algorithm
+    requires a pixel value from outside the original image data, it must instead use the value from
+    the nearest edge pixel. (That is, the filter uses 'clamp-to-edge' behaviour.) When the filtering
+    algorithm requires a pixel value from outside the source rectangle but inside the original image
+    data, then the value from the original image data must be used.</p>
 
-  <p>When the <code title="dom-context-2d-drawImage"><a href="#dom-context-2d-drawimage">drawImage()</a></code> method
-  is passed an animated image as its <var title="">image</var>
-  argument, the user agent must use the poster frame of the animation,
-  or, if there is no poster frame, the first frame of the
-  animation.</p>
-  <!-- createPattern() has an equivalent paragraph -->
 
-  <p>When the <var title="">image</var> argument is an
-  <code>HTMLVideoElement</code>, then the frame at the <span>current
-  playback position</span> must be used as the source image, and the
-  source image's dimensions must be the <span title="concept-video-intrinsic-width">intrinsic width</span> and
-  <span title="concept-video-intrinsic-height">intrinsic height</span>
-  of the <span>media resource</span> (i.e. after any aspect-ratio
-  correction has been applied).</p>
-  <!-- createPattern() has an equivalent paragraph -->
+
+    <p class="note">Thus, scaling an image in parts or in whole will have the same effect. This does
+    mean that when sprites coming from a single sprite sheet are to be scaled, adjacent images in
+    the sprite sheet can interfere. This can be avoided by ensuring each sprite in the sheet is
+    surrounded by a border of transparent black, or by copying sprites to be scaled into temporary
+    <code id="drawing-images:the-canvas-element-3"><a href="#the-canvas-element">canvas</a></code> elements and drawing the scaled sprites from there.</p>
+
+    <p>Images are painted without affecting the current path, and are subject to <a href="#shadows" id="drawing-images:shadows">shadow effects</a>, <a href="#dom-context-2d-globalalpha" id="drawing-images:dom-context-2d-globalalpha">global
+    alpha</a>, the <a href="#clipping-region" id="drawing-images:clipping-region">clipping region</a>, and <a href="#dom-context-2d-globalcompositeoperation" id="drawing-images:dom-context-2d-globalcompositeoperation">global composition operators</a>.</p>
+
+   </li><li><p>If <a href="#the-image-argument-is-not-origin-clean" id="drawing-images:the-image-argument-is-not-origin-clean">the <var>image argument</var> is not origin-clean</a>, set the
+  bitmap</a>'s <a href="http://www.w3.org/TR/html/scripting-1.html#concept-canvas-origin-clean" id="drawing-images:concept-canvas-origin-clean">origin-clean</a> flag
+   to false.</p></li></ol>
 
   <p>Images are painted without affecting the current path, and are
   subject to <a href="#shadows" title="shadows">shadow effects</a>, <a href="#dom-context-2d-globalalpha" title="dom-context-2d-globalAlpha">global alpha</a>, the <a href="#clipping-region" title="clipping region">clipping region</a>, and <a href="#dom-context-2d-globalcompositeoperation" title="dom-context-2d-globalCompositeOperation">global composition
@@ -3227,7 +3247,7 @@ v6DVT (also check for '- -' bits in the part above) -->
 
   </div>
 
-  <h2 id="hit-regions"><span class="secno">12 </span>Hit regions</h2>
+  <h2 id="hit-regions"><span class="secno">13 </span>Hit regions</h2>
 
   <p>Each <code>canvas</code> element whose <span>primary
   context</span> is a <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> object
@@ -3659,7 +3679,7 @@ partial dictionary <span>MouseEventInit</span> {
   </ol>
 
   <p class="note">This approach simplifies event handling by not
-  <a href="http://www.w3.org/TR/2013/WD-2dcontext2-20131029/#dom-mouseevent-region">re-targeting
+  <a href="#dom-mouseevent-region">re-targeting
   the event</a>.  The event is dispatched as normal once the event.region
   attribute is initialized to the active hit region's ID.  The event is
   received by the canvas element allowing the author to define the
@@ -3703,7 +3723,7 @@ partial dictionary <span>MouseEventInit</span> {
   </div>
 
 
-  <h2 id="pixel-manipulation"><span class="secno">13 </span><dfn>Pixel manipulation</dfn></h2>
+  <h2 id="pixel-manipulation"><span class="secno">14 </span><dfn>Pixel manipulation</dfn></h2>
 
   <dl class="domintro">
 
@@ -3798,7 +3818,7 @@ partial dictionary <span>MouseEventInit</span> {
   <p>The <dfn id="dom-context-2d-getimagedata" title="dom-context-2d-getImageData"><code>getImageData(<var title="">sx</var>, <var title="">sy</var>, <var title="">sw</var>,
   <var title="">sh</var>)</code></dfn> method must,
 <!--ADD-TOPIC:Security-->
-  if the <code>canvas</code> element's <i>origin-clean</i> flag is set
+  if the bitmap of the <code>canvas</code> element's <i>origin-clean</i> flag is set
   to false, throw a <code>SecurityError</code> exception; otherwise, it
 <!--REMOVE-TOPIC:Security-->
   must return an <code><a href="#imagedata">ImageData</a></code> object representing the
@@ -4048,7 +4068,7 @@ function AddCloud(data, x, y) { ... }</pre>
 
 
 
-  <h2 id="compositing"><span class="secno">14 </span>Compositing</h2>
+  <h2 id="compositing"><span class="secno">15 </span>Compositing</h2>
 
   <dl class="domintro">
 
@@ -4218,7 +4238,7 @@ function AddCloud(data, x, y) { ... }</pre>
 
 
 
-  <h2 id="shadows"><span class="secno">15 </span><dfn>Shadows</dfn></h2>
+  <h2 id="shadows"><span class="secno">16 </span><dfn>Shadows</dfn></h2>
 
   <p>All drawing operations are affected by the four global shadow
   attributes.</p>
@@ -4371,7 +4391,7 @@ function AddCloud(data, x, y) { ... }</pre>
 
   <div class="impl">
 
-  <h2 id="drawing-model"><span class="secno">16 </span><dfn>Drawing model</dfn></h2>
+  <h2 id="drawing-model"><span class="secno">17 </span><dfn>Drawing model</dfn></h2>
 
   <p>When a shape or image is painted, user agents must follow these
   steps, in the order given (or act as if they do):</p>
@@ -4406,7 +4426,7 @@ function AddCloud(data, x, y) { ... }</pre>
   </div>
 
 
-  <h2 id="best-practices"><span class="secno">17 </span>Best practices</h2>
+  <h2 id="best-practices"><span class="secno">18 </span>Best practices</h2>
 
   <p><i>This section is non-normative.</i></p>
   <p>When a canvas is interactive, authors should include focusable
@@ -4471,7 +4491,7 @@ function AddCloud(data, x, y) { ... }</pre>
   attribute.</p>
 
 
-  <h2 id="examples"><span class="secno">18 </span>Examples</h2>
+  <h2 id="examples"><span class="secno">19 </span>Examples</h2>
 
   <p><i>This section is non-normative.</i></p>
   <div class="example">

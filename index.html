@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en-US-x-Hixie"><head>
+<!DOCTYPE html>
+<html lang="en-US-x-Hixie">
+  <head>
     <meta charset="utf-8">
     <title>HTML Canvas 2D Context</title>
     <style type="text/css">
@@ -721,8 +723,8 @@ idea from Mihai:
 
     <p>Can be set, to change the line cap style.</p>
 
-    <p>The possible line cap styles are <code>butt</code>,
-    <code>round</code>, and <code>square</code>. Other values are
+    <p>The possible line cap styles are "<code>butt</code>",
+    "<code>round</code>", and "<code>square</code>". Other values are
     ignored.</p>
 
    </dd>
@@ -735,8 +737,8 @@ idea from Mihai:
 
     <p>Can be set, to change the line join style.</p>
 
-    <p>The possible line join styles are <code>bevel</code>,
-    <code>round</code>, and <code>miter</code>. Other values are
+    <p>The possible line join styles are "<code>bevel</code>",
+    "<code>round</code>", and "<code>miter</code>". Other values are
     ignored.</p>
 
    </dd>
@@ -809,40 +811,40 @@ idea from Mihai:
 
   <p>The <dfn id="dom-context-2d-linecap" title="dom-context-2d-lineCap"><code>lineCap</code></dfn> attribute
   defines the type of endings that UAs will place on the end of lines.
-  The three valid values are <code>butt</code>, <code>round</code>,
-  and <code>square</code>.</p>
+  The three valid values are "<code>butt</code>", "<code>round</code>",
+  and "<code>square</code>".</p>
 
   <p>On getting, it must return the current value. On setting, if the
-  new value is one of the literal strings <code>butt</code>,
-  <code>round</code>, and <code>square</code>, then the current value
+  new value is one of the literal strings "<code>butt</code>",
+  "<code>round</code>", and "<code>square</code>", then the current value
   must be changed to the new value; other values must ignored, leaving
   the value unchanged.</p>
 
   <p>When the object implementing the <code><a href="#canvasdrawingstyles">CanvasDrawingStyles</a></code>
   interface is created, the <code title="dom-context-2d-lineCap"><a href="#dom-context-2d-linecap">lineCap</a></code> attribute must
-  initially have the value <code>butt</code>.</p>
+  initially have the value "<code>butt</code>".</p>
 
   <hr>
 
   <p>The <dfn id="dom-context-2d-linejoin" title="dom-context-2d-lineJoin"><code>lineJoin</code></dfn>
   attribute defines the type of corners that UAs will place where two
-  lines meet. The three valid values are <code>bevel</code>,
-  <code>round</code>, and <code>miter</code>.</p>
+  lines meet. The three valid values are "<code>bevel</code>",
+  "<code>round</code>", and "<code>miter</code>".</p>
 
   <p>On getting, it must return the current value. On setting, if the
-  new value is one of the literal strings <code>bevel</code>,
-  <code>round</code>, and <code>miter</code>, then the current value
+  new value is one of the literal strings "<code>bevel</code>",
+  "<code>round</code>", and "<code>miter</code>", then the current value
   must be changed to the new value; other values must be ignored,
   leaving the value unchanged.</p>
 
   <p>When the object implementing the <code><a href="#canvasdrawingstyles">CanvasDrawingStyles</a></code>
   interface is created, the <code title="dom-context-2d-lineJoin"><a href="#dom-context-2d-linejoin">lineJoin</a></code> attribute must
-  initially have the value <code>miter</code>.</p>
+  initially have the value "<code>miter</code>".</p>
 
   <hr>
 
   <p>When the <code title="dom-context-2d-lineJoin"><a href="#dom-context-2d-linejoin">lineJoin</a></code>
-  attribute has the value <code>miter</code>, strokes use the miter
+  attribute has the value "<code>miter</code>", strokes use the miter
   limit ratio to decide how to render joins. The miter limit ratio can
   be explicitly set using the <dfn id="dom-context-2d-miterlimit" title="dom-context-2d-miterLimit"><code>miterLimit</code></dfn>
   attribute. On getting, it must return the current value. On setting,
@@ -1210,7 +1212,7 @@ transform. ack Shaun Morris. -->
     <p>Returns the current text alignment settings.</p>
 
     <p>Can be set, to change the alignment. The possible values are
-    <code title="">start</code>, <code title="">end</code>, <code title="">left</code>, <code title="">right</code>, and <code title="">center</code>. Other values are ignored. The default is
+    "<code title="">start</code>", "<code title="">end</code>", "<code title="">left</code>", "<code title="">right</code>", and "<code title="">center</code>". Other values are ignored. The default is
     "<code>start</code>".</p>
 
    </dd>
@@ -1223,7 +1225,7 @@ transform. ack Shaun Morris. -->
 
     <p>Can be set, to change the baseline alignment. The possible
     values and their meanings are given below. Other values are
-    ignored. The default is <code title="">alphabetic</code>.</p>
+    ignored. The default is "<code title="">alphabetic</code>".</p>
 
    </dd>
 
@@ -1295,20 +1297,20 @@ transform. ack Shaun Morris. -->
 
   <p>The <dfn id="dom-context-2d-textalign" title="dom-context-2d-textAlign"><code>textAlign</code></dfn> IDL
   attribute, on getting, must return the current value. On setting, if
-  the value is one of <code title="">start</code>, <code title="">end</code>, <code title="">left</code>, <code title="">right</code>, or <code title="">center</code>, then the
+  the value is one of "<code title="">start</code>", "<code title="">end</code>", "<code title="">left</code>", "<code title="">right</code>", or "<code title="">center</code>", then the
   value must be changed to the new value. Otherwise, the new value
   must be ignored. When the context is created, the <code title="dom-context-2d-textAlign"><a href="#dom-context-2d-textalign">textAlign</a></code> attribute must
-  initially have the value <code title="">start</code>.</p>
+  initially have the value "<code title="">start</code>".</p>
 
   <p>The <dfn id="dom-context-2d-textbaseline" title="dom-context-2d-textBaseline"><code>textBaseline</code></dfn>
   IDL attribute, on getting, must return the current value. On
-  setting, if the value is one of <code title="dom-context-2d-textBaseline-top"><a href="#dom-context-2d-textbaseline-top">top</a></code>, <code title="dom-context-2d-textBaseline-hanging"><a href="#dom-context-2d-textbaseline-hanging">hanging</a></code>, <code title="dom-context-2d-textBaseline-middle"><a href="#dom-context-2d-textbaseline-middle">middle</a></code>, <code title="dom-context-2d-textBaseline-alphabetic"><a href="#dom-context-2d-textbaseline-alphabetic">alphabetic</a></code>,
-  <code title="dom-context-2d-textBaseline-ideographic"><a href="#dom-context-2d-textbaseline-ideographic">ideographic</a></code>,
-  or <code title="dom-context-2d-textBaseline-bottom"><a href="#dom-context-2d-textbaseline-bottom">bottom</a></code>,
+  setting, if the value is one of "<code title="dom-context-2d-textBaseline-top"><a href="#dom-context-2d-textbaseline-top">top</a></code>", "<code title="dom-context-2d-textBaseline-hanging"><a href="#dom-context-2d-textbaseline-hanging">hanging</a></code>", "<code title="dom-context-2d-textBaseline-middle"><a href="#dom-context-2d-textbaseline-middle">middle</a></code>", "<code title="dom-context-2d-textBaseline-alphabetic"><a href="#dom-context-2d-textbaseline-alphabetic">alphabetic</a></code>",
+  "<code title="dom-context-2d-textBaseline-ideographic"><a href="#dom-context-2d-textbaseline-ideographic">ideographic</a></code>",
+  or "<code title="dom-context-2d-textBaseline-bottom"><a href="#dom-context-2d-textbaseline-bottom">bottom</a></code>",
   then the value must be changed to the new value. Otherwise, the new
   value must be ignored. When the object implementing the
   <code><a href="#canvasdrawingstyles">CanvasDrawingStyles</a></code> interface is created, the <code title="dom-context-2d-textBaseline"><a href="#dom-context-2d-textbaseline">textBaseline</a></code> attribute
-  must initially have the value <code title="">alphabetic</code>.</p>
+  must initially have the value "<code title="">alphabetic</code>".</p>
 
   </div>
 

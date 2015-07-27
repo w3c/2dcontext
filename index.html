@@ -100,7 +100,7 @@
        dl.domintro dt, dl.domintro dt * { color: black; text-decoration: none; }
        dl.domintro dd { margin: 0.5em 0 1em 2em; padding: 0; }
        dl.domintro dd p { margin: 0.5em 0; }
-       dl.domintro:before { display: table; margin: -1em -0.5em -0.5em auto; width: auto; content: 'This definition is non-normative. Implementation requirements are given below this definition.'; color: #606060; border:1px solid lightgray; background: white; padding: 0 0.25em;font-size:.9em;}
+       dl.domintro:before { display: block; content: 'Note:'; font-weight: bold;padding-bottom: 1em;}
        dl.switch { padding-left: 2em; }
        dl.switch > dt { text-indent: -1.5em; }
        dl.switch > dt:before { content: '\21AA'; padding: 0 0.5em 0 0; display: inline-block; width: 1em; text-align: right; line-height: 0.5em; }
@@ -389,7 +389,7 @@
   <div class="impl">
 
   <p>When the <a href='http://www.w3.org/TR/html5/scripting-1.html#dom-canvas-getcontext'><code title="dom-canvas-getContext">getContext()</code></a>
-  method of a <a href='http://www.w3.org/TR/html5/scripting-1.html#the-canvas-element'><code>canvas</code></a> element is to <span title="getContext-return">return a new object for the <var title="">contextId</var></span> <code title="canvas-context-2d"><a href="#canvas-context-2d">2d</a></code>, the user agent must return a
+  method of a <a href='http://www.w3.org/TR/html5/scripting-1.html#the-canvas-element'><code>canvas</code></a> element is to <span title="getContext-return">return a new object for the <var>contextId</var></span> <code title="canvas-context-2d"><a href="#canvas-context-2d">2d</a></code>, the user agent must return a
   new <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> object. Any additional
   arguments are ignored.</p>
 
@@ -397,7 +397,7 @@
 
   <p>The 2D context represents a flat Cartesian surface whose origin
   (0,0) is at the top left corner, with the coordinate space having
-  <var title="">x</var> values increasing when going right, and <var title="">y</var> values increasing when going down.</p>
+  <var>x</var> values increasing when going right, and <var>y</var> values increasing when going down.</p>
 
   <pre class="idl">
 typedef (<span>HTMLImageElement</span> or
@@ -491,8 +491,8 @@ interface <dfn id="canvasrenderingcontext2d">CanvasRenderingContext2D</dfn> {
   <a href="#imagedata">ImageData</a> <a href="#dom-context-2d-createimagedata" title="dom-context-2d-createImageData">createImageData</a>(unrestricted double sw, unrestricted double sh);
   <a href="#imagedata">ImageData</a> <a href="#dom-context-2d-createimagedata" title="dom-context-2d-createImageData">createImageData</a>(<a href="#imagedata">ImageData</a> imagedata);
   <a href="#imagedata">ImageData</a> <a href="#dom-context-2d-getimagedata" title="dom-context-2d-getImageData">getImageData</a>(double sx, double sy, double sw, double sh);
-  void <a href="#dom-context-2d-putimagedata" title="dom-context-2d-putImageData">putImageData</a>(<a href="#imagedata">ImageData</a> imagedata, double dx, double dy, double dirtyX, double dirtyY, double dirtyWidth, double dirtyHeight);
   void <a href="#dom-context-2d-putimagedata" title="dom-context-2d-putImageData">putImageData</a>(<a href="#imagedata">ImageData</a> imagedata, double dx, double dy);
+  void <a href="#dom-context-2d-putimagedata" title="dom-context-2d-putImageData">putImageData</a>(<a href="#imagedata">ImageData</a> imagedata, double dx, double dy, double dirtyX, double dirtyY, double dirtyWidth, double dirtyHeight);
 };
 <a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a> implements <a href="#canvasdrawingstyles">CanvasDrawingStyles</a>;
 <a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a> implements <a href="#canvaspathmethods">CanvasPathMethods</a>;
@@ -527,7 +527,7 @@ interface <dfn id="canvaspathmethods">CanvasPathMethods</dfn> {
   void <a href="#dom-context-2d-beziercurveto" title="dom-context-2d-bezierCurveTo">bezierCurveTo</a>(unrestricted double cp1x, unrestricted double cp1y, unrestricted double cp2x, unrestricted double cp2y, unrestricted double x, unrestricted double y);
   void <a href="#dom-context-2d-arcto" title="dom-context-2d-arcTo">arcTo</a>(unrestricted double x1, unrestricted double y1, unrestricted double x2, unrestricted double y2, unrestricted double radius); <!-- see ARC-ORDER note below -->
   void <a href="#dom-context-2d-rect" title="dom-context-2d-rect">rect</a>(unrestricted double x, unrestricted double y, unrestricted double w, unrestricted double h);
-  void <a href="#dom-context-2d-arc" title="dom-context-2d-arc">arc</a>(unrestricted double x, unrestricted double y, unrestricted double radius, unrestricted double startAngle, unrestricted double endAngle, optional boolean anticlockwise = false); <!-- see ARC-ORDER note below -->
+  void <a href="#dom-context-2d-arc" title="dom-context-2d-arc">arc</a>(unrestricted double x, unrestricted double y, unrestricted double radius, unrestricted double startAngle, unrestricted double endAngle, optional boolean counterclockwise = false); <!-- see ARC-ORDER note below -->
 
   };
 
@@ -566,7 +566,7 @@ interface <dfn id="imagedata">ImageData</dfn> {
 
   <dl class="domintro">
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-canvas"><a href="#dom-context-2d-canvas">canvas</a></code></dt>
+   <dt><var>context</var> . <code title="dom-context-2d-canvas"><a href="#dom-context-2d-canvas">canvas</a></code></dt>
 
    <dd>
 
@@ -594,7 +594,7 @@ interface <dfn id="imagedata">ImageData</dfn> {
    > nothing, since anything it draws is zero pixels wide), and it's a bit
    > annoying to track down and fix those issues, so I'd probably like it if
    > they were harmless in canvas methods. Opera appears to silently not draw
-   > anything if the transformation matrix is not finite, but Firefox throws
+   > anything if the transformation matrix is not finite, but Firefox <a href="http://www.w3.org/TR/WebIDL/#dfn-throw">throws</a>
    > exceptions when passing in non-finite arguments.
   -->
 
@@ -651,7 +651,7 @@ interface <dfn id="imagedata">ImageData</dfn> {
 
   <dl class="domintro">
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-save"><a href="#dom-context-2d-save">save</a></code>()</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-save"><a href="#dom-context-2d-save">save</a></code>()</dt>
 
    <dd>
 
@@ -659,7 +659,7 @@ interface <dfn id="imagedata">ImageData</dfn> {
 
    </dd>
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-restore"><a href="#dom-context-2d-restore">restore</a></code>()</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-restore"><a href="#dom-context-2d-restore">restore</a></code>()</dt>
 
    <dd>
 
@@ -705,7 +705,7 @@ idea from Mihai:
 
   <dl class="domintro">
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-lineWidth"><a href="#dom-context-2d-linewidth">lineWidth</a></code> [ = <var title="">value</var> ]</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-lineWidth"><a href="#dom-context-2d-linewidth">lineWidth</a></code> [ = <var>value</var> ]</dt>
 
    <dd>
 
@@ -716,7 +716,7 @@ idea from Mihai:
 
    </dd>
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-lineCap"><a href="#dom-context-2d-linecap">lineCap</a></code> [ = <var title="">value</var> ]</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-lineCap"><a href="#dom-context-2d-linecap">lineCap</a></code> [ = <var>value</var> ]</dt>
 
    <dd>
 
@@ -730,7 +730,7 @@ idea from Mihai:
 
    </dd>
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-lineJoin"><a href="#dom-context-2d-linejoin">lineJoin</a></code> [ = <var title="">value</var> ]</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-lineJoin"><a href="#dom-context-2d-linejoin">lineJoin</a></code> [ = <var>value</var> ]</dt>
 
    <dd>
 
@@ -744,7 +744,7 @@ idea from Mihai:
 
    </dd>
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-miterLimit"><a href="#dom-context-2d-miterlimit">miterLimit</a></code> [ = <var title="">value</var> ]</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-miterLimit"><a href="#dom-context-2d-miterlimit">miterLimit</a></code> [ = <var>value</var> ]</dt>
 
    <dd>
 
@@ -756,7 +756,7 @@ idea from Mihai:
    </dd>
 
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-setLineDash"><a href="#dom-context-2d-setlinedash">setLineDash</a></code>(<var title="">segments</var>)</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-setLineDash"><a href="#dom-context-2d-setlinedash">setLineDash</a></code>(<var>segments</var>)</dt>
 
    <dd>
 
@@ -767,7 +767,7 @@ idea from Mihai:
    </dd>
 
 
-   <dt><var title="">segments</var> = <var title="">context</var> . <code title="dom-context-2d-getLineDash"><a href="#dom-context-2d-getlinedash">getLineDash</a></code>()</dt>
+   <dt><var>segments</var> = <var>context</var> . <code title="dom-context-2d-getLineDash"><a href="#dom-context-2d-getlinedash">getLineDash</a></code>()</dt>
 
    <dd>
 
@@ -778,7 +778,7 @@ idea from Mihai:
    </dd>
 
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-lineDashOffset"><a href="#dom-context-2d-linedashoffset">lineDashOffset</a></code></dt>
+   <dt><var>context</var> . <code title="dom-context-2d-lineDashOffset"><a href="#dom-context-2d-linedashoffset">lineDashOffset</a></code> [ = <var>value</var> ]</dt>
 
    <dd>
 
@@ -818,7 +818,7 @@ idea from Mihai:
   <p>On getting, it must return the current value. On setting, if the
   new value is one of the literal strings "<code>butt</code>",
   "<code>round</code>", and "<code>square</code>", then the current value
-  must be changed to the new value; other values must ignored, leaving
+  must be changed to the new value; other values must be ignored, leaving
   the value unchanged.</p>
 
   <p>When the object implementing the <code><a href="#canvasdrawingstyles">CanvasDrawingStyles</a></code>
@@ -871,7 +871,7 @@ idea from Mihai:
 
   <ol>
 
-   <li><p>Let <var title="">a</var> be a copy of the array provided as
+   <li><p>Let <var>a</var> be a copy of the array provided as
    the argument.</p></li>
 
    <li><p>If any value in the array is not finite (e.g. an Infinity or
@@ -880,11 +880,11 @@ idea from Mihai:
    show a message on a developer console, though, as that would be
    helpful for debugging).</p></li>
 
-   <li><p>If the number of elements in <var title="">a</var> is odd,
-   then let <var title="">a</var> be the concatentation of two copies
-   of <var title="">a</var>.</p></li>
+   <li><p>If the number of elements in <var>a</var> is odd,
+   then let <var>a</var> be the concatenation of two copies
+   of <var>a</var>.</p></li>
 
-   <li><p>Let the object's <a href="#dash-list">dash list</a> be <var title="">a</var>.</p></li>
+   <li><p>Let the object's <a href="#dash-list">dash list</a> be <var>a</var>.</p></li>
 
   </ol>
 
@@ -974,7 +974,7 @@ idea from Mihai:
      <li><p>Let <var data-anolis-xref="">current state</var> be <i>off</i> (the other states being <i>on</i>
      and <i>zero-on</i>).</p></li>
 
-     <li><p><i>Dash on</i>: Let <var data-anolis-xref="">segment length</var> be
+     <li><p><i id='step-dash-on'>Dash on</i>: Let <var data-anolis-xref="">segment length</var> be
      the value of the <var data-anolis-xref="">styles</var> <a href="#dash-list">dash
      list</a>'s <var data-anolis-xref="">index</var>th entry.</p></li>
 
@@ -1006,7 +1006,7 @@ idea from Mihai:
 
      <li>
 
-      <p>Jump to the first appropriate step:</p>
+      <p>Run one of the following substeps, as appropriate:</p>
 
       <dl class="switch">
 
@@ -1023,12 +1023,11 @@ idea from Mihai:
 
        <dd>
 
-        <p>Cut the line on which <var data-anolis-xref="">end</var> finds itself short at <var data-anolis-xref="">end</var> and place a point there, cutting the subpath that it was in in two;
+        <p>Cut the line on which <var data-anolis-xref="">end</var> finds itself short at <var data-anolis-xref="">end</var> and place a point there, cutting its containing subpath in two;
         remove all line segments, joins, points, and subpaths that are between <var data-anolis-xref="">start</var> and <var data-anolis-xref="">end</var>; and finally place a single point at <var data-anolis-xref="">start</var> with no lines connecting to it.</p>
 
         <p>The point has a <i>directionality</i> for the purposes of drawing line caps (see below).
         The directionality is the direction that the original line had at that point (i.e. when <var data-anolis-xref="">L</var> was defined above).</p>
-
        </dd>
 
 
@@ -1044,7 +1043,6 @@ idea from Mihai:
         results in just the line being cut in two and two points being inserted there, with nothing
         being removed, unless a join also happens to be at that point, in which case the join must
         be removed.</p>
-
        </dd>
 
       </dl>
@@ -1059,7 +1057,7 @@ idea from Mihai:
      the <var data-anolis-xref="">styles</var> <a href="#dash-list">dash list</a>, then let <var data-anolis-xref="">index</var> be
      0.</p></li>
 
-     <li><p>Return to the step labeled <i>dash on</i>.</p></li>
+     <li><p>Jump to the step labeled <i><a href='#step-dash-on'>dash on</a></i>.</p></li>
 
     </ol>
 
@@ -1082,7 +1080,7 @@ idea from Mihai:
     <p><strong>Caps</strong>: Each point has a flat edge perpendicular to the direction of the line
     coming out of it. This is them augmented according to the value of the <var data-anolis-xref="">styles</var> <code title="dom-context-2d-lineCap"><a href="#dom-context-2d-linecap">lineCap</a></code>. The "<code>butt</code>"
     value means that no additional line cap is added. The "<code>round</code>" value means that a
-    semi-circle with the diameter equal to the <var data-anolis-xref="">styles</var> <code title="dom-context-2d-lineWidth"><a href="#dom-context-2d-linewidth">lineWidth</a></code> width must additionally be placed on to the
+    semi-circle with the diameter equal to the <var data-anolis-xref="">styles</var> <code title="dom-context-2d-lineWidth"><a href="#dom-context-2d-linewidth">lineWidth</a></code> width must additionally be placed onto the
     line coming out of each point. The "<code>square</code>" value means that a rectangle with the
     length of the <var data-anolis-xref="">styles</var> <code title="dom-context-2d-lineWidth"><a href="#dom-context-2d-linewidth">lineWidth</a></code>
     width and the width of half the <var data-anolis-xref="">styles</var> <code title="dom-context-2d-lineWidth"><a href="#dom-context-2d-linewidth">lineWidth</a></code> width, placed flat against the edge
@@ -1191,7 +1189,7 @@ transform. ack Shaun Morris. -->
 
   <dl class="domintro">
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-font"><a href="#dom-context-2d-font">font</a></code> [ = <var title="">value</var> ]</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-font"><a href="#dom-context-2d-font">font</a></code> [ = <var>value</var> ]</dt>
 
    <dd>
 
@@ -1206,7 +1204,7 @@ transform. ack Shaun Morris. -->
 
    </dd>
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-textAlign"><a href="#dom-context-2d-textalign">textAlign</a></code> [ = <var title="">value</var> ]</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-textAlign"><a href="#dom-context-2d-textalign">textAlign</a></code> [ = <var>value</var> ]</dt>
 
    <dd>
 
@@ -1218,7 +1216,7 @@ transform. ack Shaun Morris. -->
 
    </dd>
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-textBaseline"><a href="#dom-context-2d-textbaseline">textBaseline</a></code> [ = <var title="">value</var> ]</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-textBaseline"><a href="#dom-context-2d-textbaseline">textBaseline</a></code> [ = <var>value</var> ]</dt>
 
    <dd>
 
@@ -1348,79 +1346,79 @@ transform. ack Shaun Morris. -->
   </dl>
 
   <p>The <dfn id="text-preparation-algorithm">text preparation algorithm</dfn> is as follows. It takes
-  as input a string <var title="">text</var>, a
-  <code><a href="#canvasdrawingstyles">CanvasDrawingStyles</a></code> object <var title="">target</var>,
-  and an optional length <var title="">maxWidth</var>. It returns an
+  as input a string <var>text</var>, a
+  <code><a href="#canvasdrawingstyles">CanvasDrawingStyles</a></code> object <var>target</var>,
+  and an optional length <var>maxWidth</var>. It returns an
   array of glyph shapes, each positioned on a common coordinate space,
-  and a <var title="">physical alignment</var> whose value is one of
+  and a <var>physical alignment</var> whose value is one of
   <i>left</i>, <i>right</i>, and <i title="">center</i>. (Most callers of this
-  algorithm ignore the <var title="">physical alignment</var>.)</p>
+  algorithm ignore the <var>physical alignment</var>.)</p>
 
   <ol>
 
-   <li><p>If <var title="">maxWidth</var> was provided but is less
+   <li><p>If <var>maxWidth</var> was provided but is less
    than or equal to zero, return an empty array.</p></li>
 
    <li><p>Replace all the <span title="space character">space
-   characters</span> in <var title="">text</var> with U+0020 SPACE
+   characters</span> in <var>text</var> with U+0020 SPACE
    characters.</p></li>
 
-   <li><p>Let <var title="">font</var> be the current font of <var title="">target</var>, as given by that object's <code title="dom-context-2d-font"><a href="#dom-context-2d-font">font</a></code> attribute.</p></li>
+   <li><p>Let <var>font</var> be the current font of <var>target</var>, as given by that object's <code title="dom-context-2d-font"><a href="#dom-context-2d-font">font</a></code> attribute.</p></li>
 
    <li>
 
     <p>Apply the appropriate step from the following list to determine
-    the value of <var title="">direction</var>:</p>
+    the value of <var>direction</var>:</p>
 
     <dl class="switch">
 
-     <dt>If the <var title="">target</var> object's <span>font style
+     <dt>If the <var>target</var> object's <span>font style
      source node</span> is an element</dt>
 
-     <dd>Let <var title="">direction</var> be <span>the
-     directionality</span> of the <var title="">target</var> object's
+     <dd>Let <var>direction</var> be <span>the
+     directionality</span> of the <var>target</var> object's
      <span>font style source node</span>.</dd>
 
-     <dt>If the <var title="">target</var> object's <span>font style
+     <dt>If the <var>target</var> object's <span>font style
      source node</span> is a <code>Document</code> and that
      <code>Document</code> has a root element child</dt>
 
-     <dd>Let <var title="">direction</var> be <span>the
-     directionality</span> of the <var title="">target</var> object's
+     <dd>Let <var>direction</var> be <span>the
+     directionality</span> of the <var>target</var> object's
      <span>font style source node</span>'s root element child.</dd>
 
-     <dt>If the <var title="">target</var> object's <span>font style
+     <dt>If the <var>target</var> object's <span>font style
      source node</span> is a <code>Document</code> and that
      <code>Document</code> has no root element child</dt>
 
-     <dd>Let <var title="">direction</var> be '<span title="concept-ltr">ltr</span>'.</dd>
+     <dd>Let <var>direction</var> be '<span title="concept-ltr">ltr</span>'.</dd>
 
     </dl>
 
    </li>
 
    <li><p>Form a hypothetical infinitely-wide CSS line box containing
-   a single inline box containing the text <var title="">text</var>,
+   a single inline box containing the text <var>text</var>,
    with all the properties at their initial values except the 'font'
-   property of the inline box set to <var title="">font</var>, the
-   'direction' property of the inline box set to <var title="">direction</var>, and the 'white-space' property set to
+   property of the inline box set to <var>font</var>, the
+   'direction' property of the inline box set to <var>direction</var>, and the 'white-space' property set to
    'pre'. <a href="#refsCSS">[CSS]</a></p></li>
 
    <!-- if you insert a step here, make sure to adjust the next step's
    final words -->
 
-   <li><p>If <var title="">maxWidth</var> was provided and the
+   <li><p>If <var>maxWidth</var> was provided and the
    hypothetical width of the inline box in the hypothetical line box
-   is greater than <var title="">maxWidth</var> CSS pixels, then
-   change <var title="">font</var> to have a more condensed font (if
+   is greater than <var>maxWidth</var> CSS pixels, then
+   change <var>font</var> to have a more condensed font (if
    one is available or if a reasonably readable one can be synthesized
    by applying a horizontal scale factor to the font) or a smaller
    font, and return to the previous step.</p></li>
 
    <li>
 
-    <p>The <var title="">anchor point</var> is a point on the inline
-    box, and the <var title="">physical alignment</var> is one of the
+    <p>The <var>anchor point</var> is a point on the inline
+    box, and the <var>physical alignment</var> is one of the
     values <i>left</i>, <i>right</i>, and <i title="">center</i>. These
     variables are determined by the <code title="dom-context-2d-textAlign"><a href="#dom-context-2d-textalign">textAlign</a></code> and <code title="dom-context-2d-textBaseline"><a href="#dom-context-2d-textbaseline">textBaseline</a></code> values as
     follows:</p>
@@ -1433,38 +1431,38 @@ transform. ack Shaun Morris. -->
      <code>left</code></dt>
 
      <dt>If <code title="dom-context-2d-textAlign"><a href="#dom-context-2d-textalign">textAlign</a></code> is
-     <code>start</code> and <var title="">direction</var> is
+     <code>start</code> and <var>direction</var> is
      'ltr'</dt>
 
      <dt>If <code title="dom-context-2d-textAlign"><a href="#dom-context-2d-textalign">textAlign</a></code> is
-     <code>end</code> and <var title="">direction</var> is
+     <code>end</code> and <var>direction</var> is
      'rtl'</dt>
 
-     <dd>Let the <var title="">anchor point</var>'s horizontal
-     position be the left edge of the inline box, and let <var title="">physical alignment</var> be <i>left</i>.</dd>
+     <dd>Let the <var>anchor point</var>'s horizontal
+     position be the left edge of the inline box, and let <var>physical alignment</var> be <i>left</i>.</dd>
 
 
      <dt>If <code title="dom-context-2d-textAlign"><a href="#dom-context-2d-textalign">textAlign</a></code> is
      <code>right</code></dt>
 
      <dt>If <code title="dom-context-2d-textAlign"><a href="#dom-context-2d-textalign">textAlign</a></code> is
-     <code>end</code> and <var title="">direction</var> is
+     <code>end</code> and <var>direction</var> is
      'ltr'</dt>
 
      <dt>If <code title="dom-context-2d-textAlign"><a href="#dom-context-2d-textalign">textAlign</a></code> is
-     <code>start</code> and <var title="">direction</var> is
+     <code>start</code> and <var>direction</var> is
      'rtl'</dt>
 
-     <dd>Let the <var title="">anchor point</var>'s horizontal
-     position be the right edge of the inline box, and let <var title="">physical alignment</var> be <i>right</i>.</dd>
+     <dd>Let the <var>anchor point</var>'s horizontal
+     position be the right edge of the inline box, and let <var>physical alignment</var> be <i>right</i>.</dd>
 
 
      <dt>If <code title="dom-context-2d-textAlign"><a href="#dom-context-2d-textalign">textAlign</a></code> is
      <code>center</code></dt>
 
-     <dd>Let the <var title="">anchor point</var>'s horizontal
-     position be half way between the left and right edges of the
-     inline box, and let <var title="">physical alignment</var> be
+     <dd>Let the <var>anchor point</var>'s horizontal
+     position be halfway between the left and right edges of the
+     inline box, and let <var>physical alignment</var> be
      <i title="">center</i>.</dd>
 
     </dl>
@@ -1475,42 +1473,42 @@ transform. ack Shaun Morris. -->
 
      <dt>If <code title="dom-context-2d-textBaseline"><a href="#dom-context-2d-textbaseline">textBaseline</a></code> is <code title="dom-context-2d-textBaseline-top"><a href="#dom-context-2d-textbaseline-top">top</a></code></dt>
 
-     <dd>Let the <var title="">anchor point</var>'s vertical position
+     <dd>Let the <var>anchor point</var>'s vertical position
      be the top of the em box of the first available font of the
      inline box.</dd>
 
 
      <dt>If <code title="dom-context-2d-textBaseline"><a href="#dom-context-2d-textbaseline">textBaseline</a></code> is <code title="dom-context-2d-textBaseline-hanging"><a href="#dom-context-2d-textbaseline-hanging">hanging</a></code></dt>
 
-     <dd>Let the <var title="">anchor point</var>'s vertical position
+     <dd>Let the <var>anchor point</var>'s vertical position
      be the hanging baseline of the first available font of the inline
      box.</dd>
 
 
      <dt>If <code title="dom-context-2d-textBaseline"><a href="#dom-context-2d-textbaseline">textBaseline</a></code> is <code title="dom-context-2d-textBaseline-middle"><a href="#dom-context-2d-textbaseline-middle">middle</a></code></dt>
 
-     <dd>Let the <var title="">anchor point</var>'s vertical position
-     be half way between the bottom and the top of the em box of the
+     <dd>Let the <var>anchor point</var>'s vertical position
+     be halfway between the bottom and the top of the em box of the
      first available font of the inline box.</dd>
 
 
      <dt>If <code title="dom-context-2d-textBaseline"><a href="#dom-context-2d-textbaseline">textBaseline</a></code> is <code title="dom-context-2d-textBaseline-alphabetic"><a href="#dom-context-2d-textbaseline-alphabetic">alphabetic</a></code></dt>
 
-     <dd>Let the <var title="">anchor point</var>'s vertical position
+     <dd>Let the <var>anchor point</var>'s vertical position
      be the alphabetic baseline of the first available font of the inline
      box.</dd>
 
 
      <dt>If <code title="dom-context-2d-textBaseline"><a href="#dom-context-2d-textbaseline">textBaseline</a></code> is <code title="dom-context-2d-textBaseline-ideographic"><a href="#dom-context-2d-textbaseline-ideographic">ideographic</a></code></dt>
 
-     <dd>Let the <var title="">anchor point</var>'s vertical position
+     <dd>Let the <var>anchor point</var>'s vertical position
      be the ideographic baseline of the first available font of the inline
      box.</dd>
 
 
      <dt>If <code title="dom-context-2d-textBaseline"><a href="#dom-context-2d-textbaseline">textBaseline</a></code> is <code title="dom-context-2d-textBaseline-bottom"><a href="#dom-context-2d-textbaseline-bottom">bottom</a></code></dt>
 
-     <dd>Let the <var title="">anchor point</var>'s vertical position
+     <dd>Let the <var>anchor point</var>'s vertical position
      be the bottom of the em box of the first available font of the
      inline box.</dd>
 
@@ -1520,17 +1518,17 @@ transform. ack Shaun Morris. -->
 
    <li>
 
-    <p>Let <var title="">result</var> be an array constructed by
+    <p>Let <var>result</var> be an array constructed by
     iterating over each glyph in the inline box from left to right (if
     any), adding to the array, for each glyph, the shape of the glyph
     as it is in the inline box, positioned on a coordinate space using
-    CSS pixels with its origin is at the <var title="">anchor
+    CSS pixels with its origin is at the <var>anchor
     point</var>.</p>
 
    </li>
 
-   <li><p>Return <var title="">result</var>, and, for callers that
-   need it, <var title="">physical alignment</var> as the alignment
+   <li><p>Return <var>result</var>, and, for callers that
+   need it, <var>physical alignment</var> as the alignment
    value.</p></li>
 
   </ol>
@@ -1553,7 +1551,7 @@ transform. ack Shaun Morris. -->
 
   <dl class="domintro">
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-moveTo"><a href="#dom-context-2d-moveto">moveTo</a></code>(<var title="">x</var>, <var title="">y</var>)</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-moveTo"><a href="#dom-context-2d-moveto">moveTo</a></code>(<var>x</var>, <var>y</var>)</dt>
 
    <dd>
 
@@ -1561,7 +1559,7 @@ transform. ack Shaun Morris. -->
 
    </dd>
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-closePath"><a href="#dom-context-2d-closepath">closePath</a></code>()</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-closePath"><a href="#dom-context-2d-closepath">closePath</a></code>()</dt>
 
    <dd>
 
@@ -1569,7 +1567,7 @@ transform. ack Shaun Morris. -->
 
    </dd>
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-lineTo"><a href="#dom-context-2d-lineto">lineTo</a></code>(<var title="">x</var>, <var title="">y</var>)</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-lineTo"><a href="#dom-context-2d-lineto">lineTo</a></code>(<var>x</var>, <var>y</var>)</dt>
 
    <dd>
 
@@ -1577,7 +1575,7 @@ transform. ack Shaun Morris. -->
 
    </dd>
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-quadraticCurveTo"><a href="#dom-context-2d-quadraticcurveto">quadraticCurveTo</a></code>(<var title="">cpx</var>, <var title="">cpy</var>, <var title="">x</var>, <var title="">y</var>)</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-quadraticCurveTo"><a href="#dom-context-2d-quadraticcurveto">quadraticCurveTo</a></code>(<var>cpx</var>, <var>cpy</var>, <var>x</var>, <var>y</var>)</dt>
 
    <dd>
 
@@ -1585,7 +1583,7 @@ transform. ack Shaun Morris. -->
 
    </dd>
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-bezierCurveTo"><a href="#dom-context-2d-beziercurveto">bezierCurveTo</a></code>(<var title="">cp1x</var>, <var title="">cp1y</var>, <var title="">cp2x</var>, <var title="">cp2y</var>, <var title="">x</var>, <var title="">y</var>)</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-bezierCurveTo"><a href="#dom-context-2d-beziercurveto">bezierCurveTo</a></code>(<var>cp1x</var>, <var>cp1y</var>, <var>cp2x</var>, <var>cp2y</var>, <var>x</var>, <var>y</var>)</dt>
 
    <dd>
 
@@ -1593,7 +1591,7 @@ transform. ack Shaun Morris. -->
 
    </dd>
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-arcTo"><a href="#dom-context-2d-arcto">arcTo</a></code>(<var title="">x1</var>, <var title="">y1</var>, <var title="">x2</var>, <var title="">y2</var>, <var title="">radius</var>)</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-arcTo"><a href="#dom-context-2d-arcto">arcTo</a></code>(<var>x1</var>, <var>y1</var>, <var>x2</var>, <var>y2</var>, <var>radius</var>)</dt>
 
    <dd>
 
@@ -1611,7 +1609,7 @@ transform. ack Shaun Morris. -->
 
    </dd>
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-arc"><a href="#dom-context-2d-arc">arc</a></code>(<var title="">x</var>, <var title="">y</var>, <var title="">radius</var>, <var title="">startAngle</var>, <var title="">endAngle</var> [, <var title="">anticlockwise</var> ] )</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-arc"><a href="#dom-context-2d-arc">arc</a></code>(<var>x</var>, <var>y</var>, <var>radius</var>, <var>startAngle</var>, <var>endAngle</var> [, <var>counterclockwise</var> ] )</dt>
 
    <dd>
 
@@ -1756,7 +1754,7 @@ try {
 
    </dd>
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-rect"><a href="#dom-context-2d-rect">rect</a></code>(<var title="">x</var>, <var title="">y</var>, <var title="">w</var>, <var title="">h</var>)</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-rect"><a href="#dom-context-2d-rect">rect</a></code>(<var>x</var>, <var>y</var>, <var>w</var>, <var>h</var>)</dt>
 
    <dd>
 
@@ -1777,16 +1775,16 @@ try {
   matrix</a> before they are added to the path.</p>
 
 
-  <p>The <dfn id="dom-context-2d-moveto" title="dom-context-2d-moveTo"><code>moveTo(<var title="">x</var>, <var title="">y</var>)</code></dfn> method must
+  <p>The <dfn id="dom-context-2d-moveto" title="dom-context-2d-moveTo"><code>moveTo(<var>x</var>, <var>y</var>)</code></dfn> method must
   create a new subpath with the specified point as its first (and
   only) point.</p>
 
   <p>When the user agent is to <dfn id="ensure-there-is-a-subpath">ensure there is a subpath</dfn>
-  for a coordinate (<var title="">x</var>, <var title="">y</var>) on a
+  for a coordinate (<var>x</var>, <var>y</var>) on a
   <a href="#concept-path" title="concept-path">path</a>, the user agent must check to
   see if the <a href="#concept-path" title="concept-path">path</a> has any subpaths,
   and if it does not, then the user agent must create a new subpath
-  with the point (<var title="">x</var>, <var title="">y</var>) as its
+  with the point (<var>x</var>, <var>y</var>) as its
   first (and only) point, as if the <code title="dom-context-2d-moveTo"><a href="#dom-context-2d-moveto">moveTo()</a></code> method had been
   called.</p>
 
@@ -1808,73 +1806,73 @@ try {
   modify the last subpath in the object's path.</p>
 
 
-  <p>The <dfn id="dom-context-2d-lineto" title="dom-context-2d-lineTo"><code>lineTo(<var title="">x</var>, <var title="">y</var>)</code></dfn> method must
-  <a href="#ensure-there-is-a-subpath">ensure there is a subpath</a> for <span title="">(<var title="">x</var>, <var title="">y</var>)</span> if the object's path
+  <p>The <dfn id="dom-context-2d-lineto" title="dom-context-2d-lineTo"><code>lineTo(<var>x</var>, <var>y</var>)</code></dfn> method must
+  <a href="#ensure-there-is-a-subpath">ensure there is a subpath</a> for <span>(<var>x</var>, <var>y</var>)</span> if the object's path
   has no subpaths. Otherwise, it must connect the last point in the
-  subpath to the given point (<var title="">x</var>, <var title="">y</var>) using a straight line, and must then add the given
-  point (<var title="">x</var>, <var title="">y</var>) to the
+  subpath to the given point (<var>x</var>, <var>y</var>) using a straight line, and must then add the given
+  point (<var>x</var>, <var>y</var>) to the
   subpath.</p>
 
 
-  <p>The <dfn id="dom-context-2d-quadraticcurveto" title="dom-context-2d-quadraticCurveTo"><code>quadraticCurveTo(<var title="">cpx</var>, <var title="">cpy</var>, <var title="">x</var>,
-  <var title="">y</var>)</code></dfn> method must <a href="#ensure-there-is-a-subpath">ensure there
-  is a subpath</a> for <span title="">(<var title="">cpx</var>,
-  <var title="">cpy</var>)</span>, and then must connect the last
-  point in the subpath to the given point (<var title="">x</var>, <var title="">y</var>) using a quadratic Bézier curve with control
-  point (<var title="">cpx</var>, <var title="">cpy</var>), and must
-  then add the given point (<var title="">x</var>, <var title="">y</var>) to the subpath. <a href="#refsBEZIER">[BEZIER]</a></p>
+  <p>The <dfn id="dom-context-2d-quadraticcurveto" title="dom-context-2d-quadraticCurveTo"><code>quadraticCurveTo(<var>cpx</var>, <var>cpy</var>, <var>x</var>,
+  <var>y</var>)</code></dfn> method must <a href="#ensure-there-is-a-subpath">ensure there
+  is a subpath</a> for <span>(<var>cpx</var>,
+  <var>cpy</var>)</span>, and then must connect the last
+  point in the subpath to the given point (<var>x</var>, <var>y</var>) using a quadratic Bézier curve with control
+  point (<var>cpx</var>, <var>cpy</var>), and must
+  then add the given point (<var>x</var>, <var>y</var>) to the subpath. <a href="#refsBEZIER">[BEZIER]</a></p>
 
 
-  <p>The <dfn id="dom-context-2d-beziercurveto" title="dom-context-2d-bezierCurveTo"><code>bezierCurveTo(<var title="">cp1x</var>, <var title="">cp1y</var>, <var title="">cp2x</var>, <var title="">cp2y</var>, <var title="">x</var>, <var title="">y</var>)</code></dfn> method must
-  <a href="#ensure-there-is-a-subpath">ensure there is a subpath</a> for <span title="">(<var title="">cp1x</var>, <var title="">cp1y</var>)</span>, and then must
-  connect the last point in the subpath to the given point (<var title="">x</var>, <var title="">y</var>) using a cubic Bézier
-  curve with control points (<var title="">cp1x</var>, <var title="">cp1y</var>) and (<var title="">cp2x</var>, <var title="">cp2y</var>). Then, it must add the point (<var title="">x</var>, <var title="">y</var>) to the subpath. <a href="#refsBEZIER">[BEZIER]</a></p>
+  <p>The <dfn id="dom-context-2d-beziercurveto" title="dom-context-2d-bezierCurveTo"><code>bezierCurveTo(<var>cp1x</var>, <var>cp1y</var>, <var>cp2x</var>, <var>cp2y</var>, <var>x</var>, <var>y</var>)</code></dfn> method must
+  <a href="#ensure-there-is-a-subpath">ensure there is a subpath</a> for <span>(<var>cp1x</var>, <var>cp1y</var>)</span>, and then must
+  connect the last point in the subpath to the given point (<var>x</var>, <var>y</var>) using a cubic Bézier
+  curve with control points (<var>cp1x</var>, <var>cp1y</var>) and (<var>cp2x</var>, <var>cp2y</var>). Then, it must add the point (<var>x</var>, <var>y</var>) to the subpath. <a href="#refsBEZIER">[BEZIER]</a></p>
 
   <hr>
 
-  <p>The <dfn id="dom-context-2d-arcto" title="dom-context-2d-arcTo"><code>arcTo(<var title="">x1</var>, <var title="">y1</var>, <var title="">x2</var>,
-  <var title="">y2</var>, <var title="">radius</var>)</code></dfn>
-  method must first <a href="#ensure-there-is-a-subpath">ensure there is a subpath</a> for <span title="">(<var title="">x1</var>, <var title="">y1</var>)</span>.
+  <p>The <dfn id="dom-context-2d-arcto" title="dom-context-2d-arcTo"><code>arcTo(<var>x1</var>, <var>y1</var>, <var>x2</var>,
+  <var>y2</var>, <var>radius</var>)</code></dfn>
+  method must first <a href="#ensure-there-is-a-subpath">ensure there is a subpath</a> for <span>(<var>x1</var>, <var>y1</var>)</span>.
   Then, the behavior depends on the arguments and the last point in
   the subpath, as described below.</p>
 
-  <p>Negative values for <var title="">radius</var> must cause the
+  <p>Negative values for <var>radius</var> must cause the
   implementation to throw an <code>IndexSizeError</code> exception.
 
-  </p><p>Let the point (<var title="">x0</var>, <var title="">y0</var>) be
+  </p><p>Let the point (<var>x0</var>, <var>y0</var>) be
   the last point in the subpath.</p>
 
-  <p>If the point (<var title="">x0</var>, <var title="">y0</var>) is
-  equal to the point (<var title="">x1</var>, <var title="">y1</var>),
-  or if the point (<var title="">x1</var>, <var title="">y1</var>) is
-  equal to the point (<var title="">x2</var>, <var title="">y2</var>),
-  or if the radius <var title="">radius</var> is zero, then the method
-  must add the point (<var title="">x1</var>, <var title="">y1</var>)
-  to the subpath, and connect that point to the previous point (<var title="">x0</var>, <var title="">y0</var>) by a straight line.</p>
+  <p>If the point (<var>x0</var>, <var>y0</var>) is
+  equal to the point (<var>x1</var>, <var>y1</var>),
+  or if the point (<var>x1</var>, <var>y1</var>) is
+  equal to the point (<var>x2</var>, <var>y2</var>),
+  or if the radius <var>radius</var> is zero, then the method
+  must add the point (<var>x1</var>, <var>y1</var>)
+  to the subpath, and connect that point to the previous point (<var>x0</var>, <var>y0</var>) by a straight line.</p>
 
-  <p>Otherwise, if the points (<var title="">x0</var>, <var title="">y0</var>), (<var title="">x1</var>, <var title="">y1</var>), and (<var title="">x2</var>, <var title="">y2</var>) all lie on a single straight line, then the
-  method must add the point (<var title="">x1</var>, <var title="">y1</var>) to the subpath, and connect that point to the
-  previous point (<var title="">x0</var>, <var title="">y0</var>) by a
+  <p>Otherwise, if the points (<var>x0</var>, <var>y0</var>), (<var>x1</var>, <var>y1</var>), and (<var>x2</var>, <var>y2</var>) all lie on a single straight line, then the
+  method must add the point (<var>x1</var>, <var>y1</var>) to the subpath, and connect that point to the
+  previous point (<var>x0</var>, <var>y0</var>) by a
   straight line.</p>
 
-  <p>Otherwise, let <var title="">The Arc</var> be the shortest arc
-  given by circumference of the circle that has radius <var title="">radius</var>, and that has one point tangent to the half-infinite
-  line that crosses the point (<var title="">x0</var>, <var title="">y0</var>) and ends at the point (<var title="">x1</var>,
-  <var title="">y1</var>), and that has a different point tangent to
-  the half-infinite line that ends at the point (<var title="">x1</var>, <var title="">y1</var>), and crosses the point
-  (<var title="">x2</var>, <var title="">y2</var>). The points at
+  <p>Otherwise, let <var>The Arc</var> be the shortest arc
+  given by circumference of the circle that has radius <var>radius</var>, and that has one point tangent to the half-infinite
+  line that crosses the point (<var>x0</var>, <var>y0</var>) and ends at the point (<var>x1</var>,
+  <var>y1</var>), and that has a different point tangent to
+  the half-infinite line that ends at the point (<var>x1</var>, <var>y1</var>), and crosses the point
+  (<var>x2</var>, <var>y2</var>). The points at
   which this circle touches these two lines are called the start and
   end tangent points respectively. The method must connect the point
-  (<var title="">x0</var>, <var title="">y0</var>) to the start
+  (<var>x0</var>, <var>y0</var>) to the start
   tangent point by a straight line, adding the start tangent point to
   the subpath, and then must connect the start tangent point to the
-  end tangent point by <var title="">The Arc</var>, adding the end
+  end tangent point by <var>The Arc</var>, adding the end
   tangent point to the subpath.</p>
 
   <hr>
 
-  <p>The <dfn id="dom-context-2d-arc" title="dom-context-2d-arc"><code>arc(<var title="">x</var>, <var title="">y</var>, <var title="">radius</var>,
-  <var title="">startAngle</var>, <var title="">endAngle</var>, <var title="">anticlockwise</var>)</code></dfn> method draws an arc.</p>
+  <p>The <dfn id="dom-context-2d-arc" title="dom-context-2d-arc"><code>arc(<var>x</var>, <var>y</var>, <var>radius</var>,
+  <var>startAngle</var>, <var>endAngle</var>, <var>counterclockwise</var>)</code></dfn> method draws an arc.</p>
 
   <p> If the context has any subpaths, then the method must add a straight
   line from the last point in the subpath to the start point of the arc.
@@ -1882,38 +1880,38 @@ try {
   the end point of the arc, and add the start and end points of the arc to
   the subpath. The arc and its start and end points are defined as follows:</p>
 
-  <p>Consider a circle that has its origin at (<var title="">x</var>, <var title="">y</var>),
-  and that has radius <var title="">radius</var>.
-  The points at <var title="">startAngle</var> and <var title="">endAngle</var> this circle's circumference, measured
+  <p>Consider a circle that has its origin at (<var>x</var>, <var>y</var>),
+  and that has radius <var>radius</var>.
+  The points at <var>startAngle</var> and <var>endAngle</var> this circle's circumference, measured
   in radians clockwise from the positive x-axis, are the start and end points respectively.</p>
 
-  <p>If the <var title="">anticlockwise</var> argument false and <span title=""><var title="">endAngle</var>-<var title="">startAngle</var></span> is equal to or greater than <span title="">2π</span>, or if the <var title="">anticlockwise</var>
-  argument is <em>true</em> and <span title=""><var title="">startAngle</var>-<var title="">endAngle</var></span> is
-  equal to or greater than <span title="">2π</span>, then the arc
+  <p>If the <var>counterclockwise</var> argument false and <span><var>endAngle</var>-<var>startAngle</var></span> is equal to or greater than <span>2π</span>, or if the <var>counterclockwise</var>
+  argument is <em>true</em> and <span><var>startAngle</var>-<var>endAngle</var></span> is
+  equal to or greater than <span>2π</span>, then the arc
   is the whole circumference of this circle.</p>
 
   <p>Otherwise, the arc is the path along the circumference of this
   circle from the start point to the end point, going anti-clockwise
-  if the <var title="">anticlockwise</var> argument is true, and
+  if the <var>counterclockwise</var> argument is true, and
   clockwise otherwise. Since the points are on the circle, as opposed
   to being simply angles from zero, the arc can never cover an angle
-  greater than <span title="">2π</span> radians. If the two points are the
+  greater than <span>2π</span> radians. If the two points are the
   same, or if the radius is zero, then the arc is defined as being of
   zero length in both directions.</p>
 
-  <p>Negative values for <var title="">radius</var> must cause the implementation to throw an
+  <p>Negative values for <var>radius</var> must cause the implementation to throw an
   <code>IndexSizeError</code> exception.</p>
 
   <hr>
 
 
 
-  <p>The <dfn id="dom-context-2d-rect" title="dom-context-2d-rect"><code>rect(<var title="">x</var>, <var title="">y</var>, <var title="">w</var>, <var title="">h</var>)</code></dfn> method must create a new subpath
-  containing just the four points (<var title="">x</var>, <var title="">y</var>), (<var title="">x</var>+<var title="">w</var>,
-  <var title="">y</var>), (<var title="">x</var>+<var title="">w</var>, <var title="">y</var>+<var title="">h</var>),
-  (<var title="">x</var>, <var title="">y</var>+<var title="">h</var>), with those four points connected by straight
+  <p>The <dfn id="dom-context-2d-rect" title="dom-context-2d-rect"><code>rect(<var>x</var>, <var>y</var>, <var>w</var>, <var>h</var>)</code></dfn> method must create a new subpath
+  containing just the four points (<var>x</var>, <var>y</var>), (<var>x</var>+<var>w</var>,
+  <var>y</var>), (<var>x</var>+<var>w</var>, <var>y</var>+<var>h</var>),
+  (<var>x</var>, <var>y</var>+<var>h</var>), with those four points connected by straight
   lines, and must then mark the subpath as closed. It must then create
-  a new subpath with the point (<var title="">x</var>, <var title="">y</var>) as the only point in the subpath.</p>
+  a new subpath with the point (<var>x</var>, <var>y</var>) as the only point in the subpath.</p>
 
 
   <!-- v6 feature request:
@@ -1959,7 +1957,7 @@ try {
 
   <dl class="domintro">
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-scale"><a href="#dom-context-2d-scale">scale</a></code>(<var title="">x</var>, <var title="">y</var>)</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-scale"><a href="#dom-context-2d-scale">scale</a></code>(<var>x</var>, <var>y</var>)</dt>
 
    <dd>
 
@@ -1967,7 +1965,7 @@ try {
 
    </dd>
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-rotate"><a href="#dom-context-2d-rotate">rotate</a></code>(<var title="">angle</var>)</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-rotate"><a href="#dom-context-2d-rotate">rotate</a></code>(<var>angle</var>)</dt>
 
    <dd>
 
@@ -1975,7 +1973,7 @@ try {
 
    </dd>
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-translate"><a href="#dom-context-2d-translate">translate</a></code>(<var title="">x</var>, <var title="">y</var>)</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-translate"><a href="#dom-context-2d-translate">translate</a></code>(<var>x</var>, <var>y</var>)</dt>
 
    <dd>
 
@@ -1983,7 +1981,7 @@ try {
 
    </dd>
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-transform"><a href="#dom-context-2d-transform">transform</a></code>(<var title="">a</var>, <var title="">b</var>, <var title="">c</var>, <var title="">d</var>, <var title="">e</var>, <var title="">f</var>)</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-transform"><a href="#dom-context-2d-transform">transform</a></code>(<var>a</var>, <var>b</var>, <var>c</var>, <var>d</var>, <var>e</var>, <var>f</var>)</dt>
 
    <dd>
 
@@ -1991,7 +1989,7 @@ try {
 
    </dd>
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-setTransform"><a href="#dom-context-2d-settransform">setTransform</a></code>(<var title="">a</var>, <var title="">b</var>, <var title="">c</var>, <var title="">d</var>, <var title="">e</var>, <var title="">f</var>)</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-setTransform"><a href="#dom-context-2d-settransform">setTransform</a></code>(<var>a</var>, <var>b</var>, <var>c</var>, <var>d</var>, <var>e</var>, <var>f</var>)</dt>
 
    <dd>
 
@@ -2003,24 +2001,24 @@ try {
 
   <div class="impl">
 
-  <p>The <dfn id="dom-context-2d-scale" title="dom-context-2d-scale"><code>scale(<var title="">x</var>, <var title="">y</var>)</code></dfn> method must
+  <p>The <dfn id="dom-context-2d-scale" title="dom-context-2d-scale"><code>scale(<var>x</var>, <var>y</var>)</code></dfn> method must
   add the scaling transformation described by the arguments to the
-  transformation matrix. The <var title="">x</var> argument represents
-  the scale factor in the horizontal direction and the <var title="">y</var> argument represents the scale factor in the
+  transformation matrix. The <var>x</var> argument represents
+  the scale factor in the horizontal direction and the <var>y</var> argument represents the scale factor in the
   vertical direction. The factors are multiples.</p>
 
-  <p>The <dfn id="dom-context-2d-rotate" title="dom-context-2d-rotate"><code>rotate(<var title="">angle</var>)</code></dfn> method must add the rotation
+  <p>The <dfn id="dom-context-2d-rotate" title="dom-context-2d-rotate"><code>rotate(<var>angle</var>)</code></dfn> method must add the rotation
   transformation described by the argument to the transformation
-  matrix. The <var title="">angle</var> argument represents a
+  matrix. The <var>angle</var> argument represents a
   clockwise rotation angle expressed in radians.</p>
 
-  <p>The <dfn id="dom-context-2d-translate" title="dom-context-2d-translate"><code>translate(<var title="">x</var>, <var title="">y</var>)</code></dfn> method must
+  <p>The <dfn id="dom-context-2d-translate" title="dom-context-2d-translate"><code>translate(<var>x</var>, <var>y</var>)</code></dfn> method must
   add the translation transformation described by the arguments to the
-  transformation matrix. The <var title="">x</var> argument represents
-  the translation distance in the horizontal direction and the <var title="">y</var> argument represents the translation distance in the
+  transformation matrix. The <var>x</var> argument represents
+  the translation distance in the horizontal direction and the <var>y</var> argument represents the translation distance in the
   vertical direction. The arguments are in coordinate space units.</p>
 
-  <p>The <dfn id="dom-context-2d-transform" title="dom-context-2d-transform"><code>transform(<var title="">a</var>, <var title="">b</var>, <var title="">c</var>, <var title="">d</var>, <var title="">e</var>, <var title="">f</var>)</code></dfn> method must replace the current
+  <p>The <dfn id="dom-context-2d-transform" title="dom-context-2d-transform"><code>transform(<var>a</var>, <var>b</var>, <var>c</var>, <var>d</var>, <var>e</var>, <var>f</var>)</code></dfn> method must replace the current
   transformation matrix with the result of multiplying the current
   transformation matrix with the matrix described by:</p>
 
@@ -2028,14 +2026,14 @@ try {
 
   <table class="matrix">
    <tbody><tr>
-    <td><var title="">a</var></td>
-    <td><var title="">c</var></td>
-    <td><var title="">e</var></td>
+    <td><var>a</var></td>
+    <td><var>c</var></td>
+    <td><var>e</var></td>
    </tr>
    <tr>
-    <td><var title="">b</var></td>
-    <td><var title="">d</var></td>
-    <td><var title="">f</var></td>
+    <td><var>b</var></td>
+    <td><var>d</var></td>
+    <td><var>f</var></td>
    </tr>
    <tr>
     <td>0</td>
@@ -2044,18 +2042,18 @@ try {
    </tr>
   </tbody></table>
 
-  <p class="note">The arguments <var title="">a</var>, <var title="">b</var>, <var title="">c</var>, <var title="">d</var>, <var title="">e</var>, and <var title="">f</var> are sometimes called
-  <var title="">m11</var>, <var title="">m12</var>, <var title="">m21</var>, <var title="">m22</var>, <var title="">dx</var>,
-  and <var title="">dy</var> or <var title="">m11</var>, <var title="">m21</var>, <var title="">m12</var>, <var title="">m22</var>, <var title="">dx</var>, and <var title="">dy</var>. Care should be taken in particular with the order
-  of the second and third arguments (<var title="">b</var> and <var title="">c</var>) as their order varies from API to API and APIs
-  sometimes use the notation <var title="">m12</var>/<var title="">m21</var> and sometimes <var title="">m21</var>/<var title="">m12</var> for those positions.</p>
+  <p class="note">The arguments <var>a</var>, <var>b</var>, <var>c</var>, <var>d</var>, <var>e</var>, and <var>f</var> are sometimes called
+  <var>m11</var>, <var>m12</var>, <var>m21</var>, <var>m22</var>, <var>dx</var>,
+  and <var>dy</var> or <var>m11</var>, <var>m21</var>, <var>m12</var>, <var>m22</var>, <var>dx</var>, and <var>dy</var>. Care should be taken in particular with the order
+  of the second and third arguments (<var>b</var> and <var>c</var>) as their order varies from API to API and APIs
+  sometimes use the notation <var>m12</var>/<var>m21</var> and sometimes <var>m21</var>/<var>m12</var> for those positions.</p>
 
   <div class="impl">
 
-  <p>The <dfn id="dom-context-2d-settransform" title="dom-context-2d-setTransform"><code>setTransform(<var title="">a</var>, <var title="">b</var>, <var title="">c</var>, <var title="">d</var>, <var title="">e</var>,
-  <var title="">f</var>)</code></dfn> method must reset the current
-  transform to the identity matrix, and then invoke the <code><a href="#dom-context-2d-transform" title="dom-context-2d-transform">transform</a>(<var title="">a</var>, <var title="">b</var>, <var title="">c</var>, <var title="">d</var>, <var title="">e</var>,
-  <var title="">f</var>)</code> method with the same arguments.</p>
+  <p>The <dfn id="dom-context-2d-settransform" title="dom-context-2d-setTransform"><code>setTransform(<var>a</var>, <var>b</var>, <var>c</var>, <var>d</var>, <var>e</var>,
+  <var>f</var>)</code></dfn> method must reset the current
+  transform to the identity matrix, and then invoke the <code><a href="#dom-context-2d-transform" title="dom-context-2d-transform">transform</a>(<var>a</var>, <var>b</var>, <var>c</var>, <var>d</var>, <var>e</var>,
+  <var>f</var>)</code> method with the same arguments.</p>
 
   </div>
 
@@ -2116,7 +2114,7 @@ try {
 
   <dl class="domintro">
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-fillStyle"><a href="#dom-context-2d-fillstyle">fillStyle</a></code> [ = <var title="">value</var> ]</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-fillStyle"><a href="#dom-context-2d-fillstyle">fillStyle</a></code> [ = <var>value</var> ]</dt>
 
    <dd>
 
@@ -2130,7 +2128,7 @@ try {
 
    </dd>
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-strokeStyle"><a href="#dom-context-2d-strokestyle">strokeStyle</a></code> [ = <var title="">value</var> ]</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-strokeStyle"><a href="#dom-context-2d-strokestyle">strokeStyle</a></code> [ = <var>value</var> ]</dt>
 
    <dd>
 
@@ -2186,7 +2184,7 @@ try {
   setting, strings must be <span title="parsed as a CSS <color>
   value">parsed as CSS &lt;color&gt; values</span> and the color
   assigned, and <code><a href="#canvasgradient">CanvasGradient</a></code> and
-  <code><a href="#canvaspattern">CanvasPattern</a></code> objects must be assigned themselves. <a href="#refsCSSCOLOR">[CSSCOLOR]</a> If the value is a string but
+  <code><a href="#canvaspattern">CanvasPattern</a></code> objects must be assigned themselves <a href="#refsCSSCOLOR">[CSSCOLOR]</a>. If the value is a string but
   cannot be <span>parsed as a CSS &lt;color&gt; value</span>, or is
   neither a string, a <code><a href="#canvasgradient">CanvasGradient</a></code>, nor a
   <code><a href="#canvaspattern">CanvasPattern</a></code>, then it must be ignored, and the
@@ -2259,7 +2257,7 @@ try {
 
   <dl class="domintro">
 
-   <dt><var title="">gradient</var> . <code title="dom-canvasgradient-addColorStop"><a href="#dom-canvasgradient-addcolorstop">addColorStop</a></code>(<var title="">offset</var>, <var title="">color</var>)</dt>
+   <dt><var>gradient</var> . <code title="dom-canvasgradient-addColorStop"><a href="#dom-canvasgradient-addcolorstop">addColorStop</a></code>(<var>offset</var>, <var>color</var>)</dt>
 
    <dd>
 
@@ -2273,7 +2271,7 @@ try {
 
    </dd>
 
-   <dt><var title="">gradient</var> = <var title="">context</var> . <code title="dom-context-2d-createLinearGradient"><a href="#dom-context-2d-createlineargradient">createLinearGradient</a></code>(<var title="">x0</var>, <var title="">y0</var>, <var title="">x1</var>, <var title="">y1</var>)</dt>
+   <dt><var>gradient</var> = <var>context</var> . <code title="dom-context-2d-createLinearGradient"><a href="#dom-context-2d-createlineargradient">createLinearGradient</a></code>(<var>x0</var>, <var>y0</var>, <var>x1</var>, <var>y1</var>)</dt>
 
    <dd>
 
@@ -2283,7 +2281,7 @@ try {
 
    </dd>
 
-   <dt><var title="">gradient</var> = <var title="">context</var> . <code title="dom-context-2d-createRadialGradient"><a href="#dom-context-2d-createradialgradient">createRadialGradient</a></code>(<var title="">x0</var>, <var title="">y0</var>, <var title="">r0</var>, <var title="">x1</var>, <var title="">y1</var>, <var title="">r1</var>)</dt>
+   <dt><var>gradient</var> = <var>context</var> . <code title="dom-context-2d-createRadialGradient"><a href="#dom-context-2d-createradialgradient">createRadialGradient</a></code>(<var>x0</var>, <var>y0</var>, <var>r0</var>, <var>x1</var>, <var>y1</var>, <var>r1</var>)</dt>
 
    <dd>
 
@@ -2291,7 +2289,7 @@ try {
     radial gradient that paints along the cone given by the circles
     represented by the arguments.</p>
 
-    <p>If either of the radii are negative, throws an
+    <p>If either of the radii are negative, <a href="http://www.w3.org/TR/WebIDL/#dfn-throw">throws</a> an
     <code>IndexSizeError</code> exception.</p>
 
    </dd>
@@ -2300,24 +2298,24 @@ try {
 
   <div class="impl">
 
-  <p>The <dfn id="dom-canvasgradient-addcolorstop" title="dom-canvasgradient-addColorStop"><code>addColorStop(<var title="">offset</var>, <var title="">color</var>)</code></dfn>
+  <p>The <dfn id="dom-canvasgradient-addcolorstop" title="dom-canvasgradient-addColorStop"><code>addColorStop(<var>offset</var>, <var>color</var>)</code></dfn>
   method on the <code><a href="#canvasgradient">CanvasGradient</a></code> interface adds a new stop
-  to a gradient. If the <var title="">offset</var> is less than 0 or
+  to a gradient. If the <var>offset</var> is less than 0 or
   greater than 1 then an <code>IndexSizeError</code> exception must be
-  thrown. If the <var title="">color</var> cannot be <span>parsed as a
+  thrown. If the <var>color</var> cannot be <span>parsed as a
   CSS &lt;color&gt; value</span>, then a <code>SyntaxError</code>
   exception must be thrown. Otherwise, the gradient must have a new
-  stop placed, at offset <var title="">offset</var> relative to the
-  whole gradient, and with the color obtained by parsing <var title="">color</var> as a CSS &lt;color&gt; value. If multiple stops
+  stop placed, at offset <var>offset</var> relative to the
+  whole gradient, and with the color obtained by parsing <var>color</var> as a CSS &lt;color&gt; value. If multiple stops
   are added at the same offset on a gradient, they must be placed in
   the order added, with the first one closest to the start of the
   gradient, and each subsequent one infinitesimally further along
   towards the end point (in effect causing all but the first and last
   stop added at each point to be ignored).</p>
 
-  <p>The <dfn id="dom-context-2d-createlineargradient" title="dom-context-2d-createLinearGradient"><code>createLinearGradient(<var title="">x0</var>, <var title="">y0</var>, <var title="">x1</var>,
-  <var title="">y1</var>)</code></dfn> method takes four arguments
-  that represent the start point (<var title="">x0</var>, <var title="">y0</var>) and end point (<var title="">x1</var>, <var title="">y1</var>) of the gradient. The method must return a linear
+  <p>The <dfn id="dom-context-2d-createlineargradient" title="dom-context-2d-createLinearGradient"><code>createLinearGradient(<var>x0</var>, <var>y0</var>, <var>x1</var>,
+  <var>y1</var>)</code></dfn> method takes four arguments
+  that represent the start point (<var>x0</var>, <var>y0</var>) and end point (<var>x1</var>, <var>y1</var>) of the gradient. The method must return a linear
   <code><a href="#canvasgradient">CanvasGradient</a></code> initialized with the specified line.</p>
 
   <p>Linear gradients must be rendered such that all points on a line
@@ -2328,15 +2326,15 @@ try {
   gradient must be transformed as described by the <a href="#transformations" title="dom-context-2d-transformation">current transformation
   matrix</a> when rendering.</p>
 
-  <p>If <span title=""><var title="">x0</var> = <var title="">x1</var></span> and <span title=""><var title="">y0</var> = <var title="">y1</var></span>, then
+  <p>If <span><var>x0</var> = <var>x1</var></span> and <span><var>y0</var> = <var>y1</var></span>, then
   the linear gradient must paint nothing.</p>
 
-  <p>The <dfn id="dom-context-2d-createradialgradient" title="dom-context-2d-createRadialGradient"><code>createRadialGradient(<var title="">x0</var>, <var title="">y0</var>, <var title="">r0</var>,
-  <var title="">x1</var>, <var title="">y1</var>, <var title="">r1</var>)</code></dfn> method takes six arguments, the
-  first three representing the start circle with origin (<var title="">x0</var>, <var title="">y0</var>) and radius <var title="">r0</var>, and the last three representing the end circle
-  with origin (<var title="">x1</var>, <var title="">y1</var>) and
-  radius <var title="">r1</var>. The values are in coordinate space
-  units. If either of <var title="">r0</var> or <var title="">r1</var>
+  <p>The <dfn id="dom-context-2d-createradialgradient" title="dom-context-2d-createRadialGradient"><code>createRadialGradient(<var>x0</var>, <var>y0</var>, <var>r0</var>,
+  <var>x1</var>, <var>y1</var>, <var>r1</var>)</code></dfn> method takes six arguments, the
+  first three representing the start circle with origin (<var>x0</var>, <var>y0</var>) and radius <var>r0</var>, and the last three representing the end circle
+  with origin (<var>x1</var>, <var>y1</var>) and
+  radius <var>r1</var>. The values are in coordinate space
+  units. If either of <var>r0</var> or <var>r1</var>
   are negative, an <code>IndexSizeError</code> exception must be
   thrown. Otherwise, the method must return a radial
   <code><a href="#canvasgradient">CanvasGradient</a></code> initialized with the two specified
@@ -2346,27 +2344,27 @@ try {
 
   <ol>
 
-   <li><p>If <span title=""><var title="">x<sub>0</sub></var> = <var title="">x<sub>1</sub></var></span> and <span title=""><var title="">y<sub>0</sub></var> = <var title="">y<sub>1</sub></var></span> and <span title=""><var title="">r<sub>0</sub></var> = <var title="">r<sub>1</sub></var></span>, then the radial gradient must
+   <li><p>If <span><var>x<sub>0</sub></var> = <var>x<sub>1</sub></var></span> and <span><var>y<sub>0</sub></var> = <var>y<sub>1</sub></var></span> and <span><var>r<sub>0</sub></var> = <var>r<sub>1</sub></var></span>, then the radial gradient must
    paint nothing. Abort these steps.</p></li>
 
    <li>
 
-    <p>Let <span title="">x(<var title="">ω</var>) = (<var title="">x<sub>1</sub></var>-<var title="">x<sub>0</sub></var>)<var title="">ω</var> + <var title="">x<sub>0</sub></var></span></p>
+    <p>Let <span>x(<var>ω</var>) = (<var>x<sub>1</sub></var>-<var>x<sub>0</sub></var>)<var>ω</var> + <var>x<sub>0</sub></var></span></p>
 
-    <p>Let <span title="">y(<var title="">ω</var>) = (<var title="">y<sub>1</sub></var>-<var title="">y<sub>0</sub></var>)<var title="">ω</var> + <var title="">y<sub>0</sub></var></span></p>
+    <p>Let <span>y(<var>ω</var>) = (<var>y<sub>1</sub></var>-<var>y<sub>0</sub></var>)<var>ω</var> + <var>y<sub>0</sub></var></span></p>
 
-    <p>Let <span title="">r(<var title="">ω</var>) = (<var title="">r<sub>1</sub></var>-<var title="">r<sub>0</sub></var>)<var title="">ω</var> + <var title="">r<sub>0</sub></var></span></p>
+    <p>Let <span>r(<var>ω</var>) = (<var>r<sub>1</sub></var>-<var>r<sub>0</sub></var>)<var>ω</var> + <var>r<sub>0</sub></var></span></p>
 
-    <p>Let the color at <var title="">ω</var> be the color at
+    <p>Let the color at <var>ω</var> be the color at
     that position on the gradient (with the colors coming from the <a href="#interpolation">interpolation and extrapolation</a>
     described above).</p>
 
    </li>
 
-   <li><p>For all values of <var title="">ω</var> where <span title="">r(<var title="">ω</var>) &gt; 0</span>,
-   starting with the value of <var title="">ω</var> nearest to
-   positive infinity and ending with the value of <var title="">ω</var> nearest to negative infinity, draw the
-   circumference of the circle with radius <span title="">r(<var title="">ω</var>)</span> at position (<span title="">x(<var title="">ω</var>)</span>, <span title="">y(<var title="">ω</var>)</span>), with the color at <var title="">ω</var>, but only painting on the parts of the
+   <li><p>For all values of <var>ω</var> where <span>r(<var>ω</var>) &gt; 0</span>,
+   starting with the value of <var>ω</var> nearest to
+   positive infinity and ending with the value of <var>ω</var> nearest to negative infinity, draw the
+   circumference of the circle with radius <span>r(<var>ω</var>)</span> at position (<span>x(<var>ω</var>)</span>, <span>y(<var>ω</var>)</span>), with the color at <var>ω</var>, but only painting on the parts of the
    canvas that have not yet been painted on by earlier circles in this
    step for this rendering of the gradient.</p></li>
 
@@ -2395,18 +2393,18 @@ try {
 
   <dl class="domintro">
 
-   <dt><var title="">pattern</var> = <var title="">context</var> . <code title="dom-context-2d-createPattern"><a href="#dom-context-2d-createpattern">createPattern</a></code>(<var title="">image</var>, <var title="">repetition</var>)</dt>
+   <dt><var>pattern</var> = <var>context</var> . <code title="dom-context-2d-createPattern"><a href="#dom-context-2d-createpattern">createPattern</a></code>(<var>image</var>, <var>repetition</var>)</dt>
 
    <dd>
 
     <p>Returns a <code><a href="#canvaspattern">CanvasPattern</a></code> object that uses the given image
-    and repeats in the direction(s) given by the <var title="">repetition</var> argument.</p>
+    and repeats in the direction(s) given by the <var>repetition</var> argument.</p>
 
-    <p>The allowed values for <var title="">repetition</var> are "<code>repeat</code>" (both directions), "<code>repeat-x</code>" (horizontal only), "<code>repeat-y</code>" (vertical only), and "<code>no-repeat</code>" (neither). If the <var title="">repetition</var> argument is empty, the value <code>repeat</code> is used.</p>
+    <p>The allowed values for <var>repetition</var> are "<code>repeat</code>" (both directions), "<code>repeat-x</code>" (horizontal only), "<code>repeat-y</code>" (vertical only), and "<code>no-repeat</code>" (neither). If the <var>repetition</var> argument is empty, the value <code>repeat</code> is used.</p>
 
-    <p>If the image has no image data, throws an
+    <p>If the image has no image data, <a href="http://www.w3.org/TR/WebIDL/#dfn-throw">throws</a> an
     <code>InvalidStateError</code> exception. If the second argument
-    isn't one of the allowed values, throws a <code>SyntaxError</code>
+    isn't one of the allowed values, <a href="http://www.w3.org/TR/WebIDL/#dfn-throw">throws</a> a <code>SyntaxError</code>
     exception. If the image isn't yet fully decoded, then the method
     returns null.</p>
 
@@ -2416,20 +2414,20 @@ try {
 
   <div class="impl">
 
-  <p>To create objects of this type, the <dfn id="dom-context-2d-createpattern" title="dom-context-2d-createPattern"><code>createPattern(<var title="">image</var>, <var title="">repetition</var>)</code></dfn>
+  <p>To create objects of this type, the <dfn id="dom-context-2d-createpattern" title="dom-context-2d-createPattern"><code>createPattern(<var>image</var>, <var>repetition</var>)</code></dfn>
   method is used. When the method is invoked, the user agent must run the following steps:</p>
 
   <ol>
-  <li>Let <var title="">image</var> be the first argument and <var title="">repetition</var> be the second argument.</li>
-  <li><a href="#check-the-usability-of-the-image-argument">Check the usability of the image argument</a>. If this returns <var title="">aborted</var>, then an exception has been thrown and the method doesn't return anything; abort these steps. If it returns <var title="">bad</var>, then return null and abort these steps. Otherwise it returns <var title="">good</var>; continue with these steps.</li>
-  <li>If <var title="">repetition</var> is the empty string, let it be "<code>repeat</code>".</li>
-  <li>If <var title="">repetition</var> is not a case-sensitive match for one of "<code>repeat</code>", "<code>repeat-x</code>", "<code>repeat-y</code>", or "<code>no-repeat</code>", throw a <var title="">SyntaxError</var> exception and abort these steps.</li>
-  <li>Create a new <code><a href="#canvaspattern">CanvasPattern</a></code> object with the image <var title="">image</var> and the repetition behavior given by <var title="">repetition</var>.</li>
+  <li>Let <var>image</var> be the first argument and <var>repetition</var> be the second argument.</li>
+  <li><a href="#check-the-usability-of-the-image-argument">Check the usability of the image argument</a>. If this returns <var>aborted</var>, then an exception has been thrown and the method doesn't return anything; abort these steps. If it returns <var>bad</var>, then return null and abort these steps. Otherwise it returns <var>good</var>; continue with these steps.</li>
+  <li>If <var>repetition</var> is the empty string, let it be "<code>repeat</code>".</li>
+  <li>If <var>repetition</var> is not a case-sensitive match for one of "<code>repeat</code>", "<code>repeat-x</code>", "<code>repeat-y</code>", or "<code>no-repeat</code>", throw a <var>SyntaxError</var> exception and abort these steps.</li>
+  <li>Create a new <code><a href="#canvaspattern">CanvasPattern</a></code> object with the image <var>image</var> and the repetition behavior given by <var>repetition</var>.</li>
   <li>If <a href="#the-image-argument-is-not-origin-clean">the image argument is not origin-clean</a>, then mark the <code><a href="#canvaspattern">CanvasPattern</a></code> object as <dfn id="concept-canvas-pattern-not-origin-clean"><i>not origin-clean</i></dfn>.</li>
   <li>Return the <code><a href="#canvaspattern">CanvasPattern</a></code> object.</li>
   </ol>
   <p>
-  Modifying this image after calling the <code title="dom-context-2d-createPattern"><a href="#dom-context-2d-createpattern">createPattern()</a></code> method
+  Modifying this <var>image</var> after calling the <code title="dom-context-2d-createPattern"><a href="#dom-context-2d-createpattern">createPattern()</a></code> method
   must not affect the pattern. </p>
 
   <p>Patterns must be painted so that the top left of the first image
@@ -2457,7 +2455,7 @@ try {
   original image data, it must instead use the value from wrapping the
   pixel's coordinates to the original image's dimensions. (That is,
   the filter uses 'repeat' behavior, regardless of the value of
-  <var title="">repetition</var>.)
+  <var>repetition</var>.)
   <!-- drawImage() has a similar paragraph with different rules -->
 
   </p>
@@ -2480,7 +2478,7 @@ try {
   transparent black (otherwise the gradient or pattern would be
   collapsed to a point or line, leaving the other pixels undefined).
   Linear gradients and solid colors always define all points even with
-  singular tranformation matrices.</p>
+  singular transformation matrices.</p>
 
   </div>
 
@@ -2490,8 +2488,8 @@ try {
   <h2 id="drawing-rectangles-to-the-canvas"><span class="secno">9 </span>Drawing rectangles to the canvas</h2>
 
   <p>There are three methods that immediately draw rectangles to the
-  bitmap. They each take four arguments; the first two give the <var title="">x</var> and <var title="">y</var> coordinates of the top
-  left of the rectangle, and the second two give the width <var title="">w</var> and height <var title="">h</var> of the rectangle,
+  bitmap. They each take four arguments; the first two give the <var>x</var> and <var>y</var> coordinates of the top
+  left of the rectangle, and the second two give the width <var>w</var> and height <var>h</var> of the rectangle,
   respectively.</p>
 
   <div class="impl">
@@ -2499,10 +2497,10 @@ try {
   <p>The <a href="#transformations" title="dom-context-2d-transformation">current
   transformation matrix</a> must be applied to the following four
   coordinates, which form the path that must then be closed to get the
-  specified rectangle: <span title="">(<var title="">x</var>, <var title="">y</var>)</span>, <span title="">(<span title=""><var title="">x</var>+<var title="">w</var></span>, <var title="">y</var>)</span>,
-  <span title="">(<span title=""><var title="">x</var>+<var title="">w</var></span>,
-  <span title=""><var title="">y</var>+<var title="">h</var></span>)</span>,
-  <span title="">(<var title="">x</var>, <span title=""><var title="">y</var>+<var title="">h</var></span>)</span>.</p>
+  specified rectangle: <span>(<var>x</var>, <var>y</var>)</span>, <span>(<span><var>x</var>+<var>w</var></span>, <var>y</var>)</span>,
+  <span>(<span><var>x</var>+<var>w</var></span>,
+  <span><var>y</var>+<var>h</var></span>)</span>,
+  <span>(<var>x</var>, <span><var>y</var>+<var>h</var></span>)</span>.</p>
 
   <p>Shapes are painted without affecting the <a href="#current-default-path">current default
   path</a>, and are subject to the <a href="#clipping-region" title="clipping
@@ -2513,7 +2511,7 @@ try {
 
   <dl class="domintro">
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-clearRect"><a href="#dom-context-2d-clearrect">clearRect</a></code>(<var title="">x</var>, <var title="">y</var>, <var title="">w</var>, <var title="">h</var>)</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-clearRect"><a href="#dom-context-2d-clearrect">clearRect</a></code>(<var>x</var>, <var>y</var>, <var>w</var>, <var>h</var>)</dt>
 
    <dd>
 
@@ -2521,7 +2519,7 @@ try {
 
    </dd>
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-fillRect"><a href="#dom-context-2d-fillrect">fillRect</a></code>(<var title="">x</var>, <var title="">y</var>, <var title="">w</var>, <var title="">h</var>)</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-fillRect"><a href="#dom-context-2d-fillrect">fillRect</a></code>(<var>x</var>, <var>y</var>, <var>w</var>, <var>h</var>)</dt>
 
    <dd>
 
@@ -2529,7 +2527,7 @@ try {
 
    </dd>
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-strokeRect"><a href="#dom-context-2d-strokerect">strokeRect</a></code>(<var title="">x</var>, <var title="">y</var>, <var title="">w</var>, <var title="">h</var>)</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-strokeRect"><a href="#dom-context-2d-strokerect">strokeRect</a></code>(<var>x</var>, <var>y</var>, <var>w</var>, <var>h</var>)</dt>
 
    <dd>
 
@@ -2541,43 +2539,43 @@ try {
 
   <div class="impl">
 
-  <p>The <dfn id="dom-context-2d-clearrect" title="dom-context-2d-clearRect"><code>clearRect(<var title="">x</var>, <var title="">y</var>, <var title="">w</var>, <var title="">h</var>)</code></dfn> method must run the following steps:</p>
+  <p>The <dfn id="dom-context-2d-clearrect" title="dom-context-2d-clearRect"><code>clearRect(<var>x</var>, <var>y</var>, <var>w</var>, <var>h</var>)</code></dfn> method must run the following steps:</p>
 
   <ol>
 
-   <li><p>Let <var title="">pixels</var> be the set of pixels in
+   <li><p>Let <var>pixels</var> be the set of pixels in
    the specified rectangle that also intersect the current clipping
    region.</p></li>
 
-   <li><p>Clear the pixels in <var title="">pixels</var> to a fully
+   <li><p>Clear the pixels in <var>pixels</var> to fully
    transparent black, erasing any previous image.</p></li>
 
-   <li><p><span>Clear regions that cover the pixels</span> in <var title="">pixels</var> in the <code>canvas</code> element.</p></li>
+   <li><p><span>Clear regions that cover the pixels</span> in <var>pixels</var> in the <code>canvas</code> element.</p></li>
 
   </ol>
 
   <p class="note">If either height or width are zero, this method has
   no effect, since the set of pixels would be empty.</p>
 
-  <p>The <dfn id="dom-context-2d-fillrect" title="dom-context-2d-fillRect"><code>fillRect(<var title="">x</var>, <var title="">y</var>, <var title="">w</var>, <var title="">h</var>)</code></dfn> method must paint the specified
+  <p>The <dfn id="dom-context-2d-fillrect" title="dom-context-2d-fillRect"><code>fillRect(<var>x</var>, <var>y</var>, <var>w</var>, <var>h</var>)</code></dfn> method must paint the specified
   rectangular area using the <code title="dom-context-2d-fillStyle"><a href="#dom-context-2d-fillstyle">fillStyle</a></code>. If either height
   or width are zero, this method has no effect.</p>
 
-  <p>The <dfn id="dom-context-2d-strokerect" title="dom-context-2d-strokeRect"><code>strokeRect(<var title="">x</var>, <var title="">y</var>, <var title="">w</var>, <var title="">h</var>)</code></dfn> method must take the result of <a href="#trace-a-path" title="trace a path">tracing the path</a> described below, using
+  <p>The <dfn id="dom-context-2d-strokerect" title="dom-context-2d-strokeRect"><code>strokeRect(<var>x</var>, <var>y</var>, <var>w</var>, <var>h</var>)</code></dfn> method must take the result of <a href="#trace-a-path" title="trace a path">tracing the path</a> described below, using
   the <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> object's line styles, and
   fill it with the <code title="dom-context-2d-strokeStyle"><a href="#dom-context-2d-strokestyle">strokeStyle</a></code>.</p>
 
-  <p>If both <var title="">w</var> and <var title="">h</var> are zero,
-  the path has a single subpath with just one point (<var title="">x</var>, <var title="">y</var>), and no lines, and this
+  <p>If both <var>w</var> and <var>h</var> are zero,
+  the path has a single subpath with just one point (<var>x</var>, <var>y</var>), and no lines, and this
   method thus has no effect (the <a href="#trace-a-path">trace a path</a> algorithm
   returns an empty path in that case).</p>
 
-  <p>If just one of either <var title="">w</var> or <var title="">h</var> is zero, then the path has a single subpath
-  consisting of two points, with coordinates (<span title=""><var title="">x</var></span>, <span title=""><var title="">y</var></span>) and (<span title=""><var title="">x</var>+<var title="">w</var></span>, <span title=""><var title="">y</var></span>+<var title="">h</var>), in that order,
+  <p>If just one of either <var>w</var> or <var>h</var> is zero, then the path has a single subpath
+  consisting of two points, with coordinates (<span><var>x</var></span>, <span><var>y</var></span>) and (<span><var>x</var>+<var>w</var></span>, <span><var>y</var></span>+<var>h</var>), in that order,
   connected by a single straight line.</p>
 
   <p>Otherwise, the path has a single subpath consisting of four points, with
-  coordinates (<span title=""><var title="">x</var></span>, <span title=""><var title="">y</var></span>), (<span title=""><var title="">x</var>+<var title="">w</var></span>, <span title=""><var title="">y</var></span>), (<span title=""><var title="">x</var>+<var title="">w</var></span>, <span title=""><var title="">y</var></span>+<var title="">h</var>), and (<span title=""><var title="">x</var></span>, <span title=""><var title="">y</var>+<var title="">h</var></span>), connected to each
+  coordinates (<span><var>x</var></span>, <span><var>y</var></span>), (<span><var>x</var>+<var>w</var></span>, <span><var>y</var></span>), (<span><var>x</var>+<var>w</var></span>, <span><var>y</var></span>+<var>h</var>), and (<span><var>x</var></span>, <span><var>y</var>+<var>h</var></span>), connected to each
   other in that order by straight lines.</p>
 
   </div>
@@ -2588,8 +2586,8 @@ try {
 
   <dl class="domintro">
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-fillText"><a href="#dom-context-2d-filltext">fillText</a></code>(<var title="">text</var>, <var title="">x</var>, <var title="">y</var> [, <var title="">maxWidth</var> ] )</dt>
-   <dt><var title="">context</var> . <code title="dom-context-2d-strokeText"><a href="#dom-context-2d-stroketext">strokeText</a></code>(<var title="">text</var>, <var title="">x</var>, <var title="">y</var> [, <var title="">maxWidth</var> ] )</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-fillText"><a href="#dom-context-2d-filltext">fillText</a></code>(<var>text</var>, <var>x</var>, <var>y</var> [, <var>maxWidth</var> ] )</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-strokeText"><a href="#dom-context-2d-stroketext">strokeText</a></code>(<var>text</var>, <var>x</var>, <var>y</var> [, <var>maxWidth</var> ] )</dt>
 
    <dd>
 
@@ -2599,7 +2597,7 @@ try {
 
    </dd>
 
-   <dt><var title="">metrics</var> = <var title="">context</var> . <code title="dom-context-2d-measureText"><a href="#dom-context-2d-measuretext">measureText</a></code>(<var title="">text</var>)</dt>
+   <dt><var>metrics</var> = <var>context</var> . <code title="dom-context-2d-measureText"><a href="#dom-context-2d-measuretext">measureText</a></code>(<var>text</var>)</dt>
 
    <dd>
 
@@ -2607,7 +2605,7 @@ try {
 
    </dd>
 
-   <dt><var title="">metrics</var> . <code title="dom-textmetrics-width"><a href="#dom-textmetrics-width-0">width</a></code></dt>
+   <dt><var>metrics</var> . <code title="dom-textmetrics-width"><a href="#dom-textmetrics-width-0">width</a></code></dt>
 
    <dd>
 
@@ -2626,8 +2624,8 @@ try {
 
   <p>The <dfn id="dom-context-2d-filltext" title="dom-context-2d-fillText"><code>fillText()</code></dfn> and
   <dfn id="dom-context-2d-stroketext" title="dom-context-2d-strokeText"><code>strokeText()</code></dfn>
-  methods take three or four arguments, <var title="">text</var>, <var title="">x</var>, <var title="">y</var>, and optionally <var title="">maxWidth</var>, and render the given <var title="">text</var> at the given (<var title="">x</var>, <var title="">y</var>) coordinates ensuring that the text isn't wider
-  than <var title="">maxWidth</var> if specified, using the current
+  methods take three or four arguments, <var>text</var>, <var>x</var>, <var>y</var>, and optionally <var>maxWidth</var>, and render the given <var>text</var> at the given (<var>x</var>, <var>y</var>) coordinates ensuring that the text isn't wider
+  than <var>maxWidth</var> if specified, using the current
   <code title="dom-context-2d-font"><a href="#dom-context-2d-font">font</a></code>, <code title="dom-context-2d-textAlign"><a href="#dom-context-2d-textalign">textAlign</a></code>, and <code title="dom-context-2d-textBaseline"><a href="#dom-context-2d-textbaseline">textBaseline</a></code>
   values. Specifically, when the methods are called, the user agent
   must run the following steps:</p>
@@ -2635,19 +2633,19 @@ try {
   <ol>
 
    <li><p>Run the <a href="#text-preparation-algorithm">text preparation algorithm</a>, passing it
-   <var title="">text</var>, the <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code>
-   object, and, if the <var title="">maxWidth</var> argument was
-   provided, that argument. Let <var title="">glyphs</var> be the
+   <var>text</var>, the <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code>
+   object, and, if the <var>maxWidth</var> argument was
+   provided, that argument. Let <var>glyphs</var> be the
    result.</p>
 
-   </li><li><p>Move all the shapes in <var title="">glyphs</var> to the
-   right by <var title="">x</var> CSS pixels and down by <var title="">y</var> CSS pixels.</p></li>
+   </li><li><p>Move all the shapes in <var>glyphs</var> to the
+   right by <var>x</var> CSS pixels and down by <var>y</var> CSS pixels.</p></li>
 
    <li>
 
-    <p>Paint the shapes given in <var title="">glyphs</var>, as
+    <p>Paint the shapes given in <var>glyphs</var>, as
     transformed by the <a href="#transformations" title="dom-context-2d-transformation">current transformation
-    matrix</a>, with each CSS pixel in the coordinate space of <var title="">glyphs</var> mapped to one coordinate space unit.</p>
+    matrix</a>, with each CSS pixel in the coordinate space of <var>glyphs</var> mapped to one coordinate space unit.</p>
 
     <p>For <code title="dom-context-2d-fillText"><a href="#dom-context-2d-filltext">fillText()</a></code>,
     <code title="dom-context-2d-fillStyle"><a href="#dom-context-2d-fillstyle">fillStyle</a></code> must be
@@ -2688,12 +2686,12 @@ HAVE REJIGGED HOW TEXT WORKS IN v5
   title="dom-context-2d-fillVerticalText"><code>fillVerticalText()</code></dfn>
   and <dfn
   title="dom-context-2d-strokeVerticalText"><code>strokeVerticalText()</code></dfn>
-  methods take three or four arguments, <var title="">text</var>, <var
-  title="">x</var>, <var title="">y</var>, and optionally <var
+  methods take three or four arguments, <var>text</var>, <var
+  title="">x</var>, <var>y</var>, and optionally <var
   title="">maxHeight</var>, and render the given <var
   title="">text</var> as vertical text at the given (<var
-  title="">x</var>, <var title="">y</var>) coordinates ensuring that
-  the text isn't taller than <var title="">maxHeight</var> if
+  title="">x</var>, <var>y</var>) coordinates ensuring that
+  the text isn't taller than <var>maxHeight</var> if
   specified, using the current <code
   title="dom-context-2d-font">font</code> and <code
   title="dom-context-2d-textAlign">textAlign</code>
@@ -2702,16 +2700,16 @@ HAVE REJIGGED HOW TEXT WORKS IN v5
 
   <ol>
 
-   <li><p>If <var title="">maxHeight</var> is present but less than or
+   <li><p>If <var>maxHeight</var> is present but less than or
    equal to zero, return without doing anything; abort these
    steps.</p></li>
 
-   <li><p>Let <var title="">font</var> be the current font of the
+   <li><p>Let <var>font</var> be the current font of the
    context, as given by the <code
    title="dom-context-2d-font">font</code> attribute.</p></li>
 
    <li><p>Replace all the <span title="space character">space
-   characters</span> in <var title="">text</var> with U+0020 SPACE
+   characters</span> in <var>text</var> with U+0020 SPACE
    characters.</p></li>
 
    <li><p>Form a <em class="&#x0058;&#x0058;&#x0058;">whatever CSS ends up calling
@@ -2725,7 +2723,7 @@ HAVE REJIGGED HOW TEXT WORKS IN v5
    <!- - if you insert a step here, make sure to adjust the next step's
    final words - ->
 
-   <li><p>If the <var title="">maxHeight</var> argument was specified
+   <li><p>If the <var>maxHeight</var> argument was specified
    and the hypothetical height of the <em class="&#x0058;&#x0058;&#x0058;">box</em>
    in the hypothetical line box is greater than <var
    title="">maxHeight</var> CSS pixels, then change <var
@@ -2736,7 +2734,7 @@ HAVE REJIGGED HOW TEXT WORKS IN v5
 
    <li>
 
-    <p>Let the <var title="">anchor point</var> be a point on the <em
+    <p>Let the <var>anchor point</var> be a point on the <em
     class="&#x0058;&#x0058;&#x0058;">inline box</var>, determined by the <code
     title="dom-context-2d-textAlign">textAlign</code>, as follows:</p>
 
@@ -2756,7 +2754,7 @@ HAVE REJIGGED HOW TEXT WORKS IN v5
      title="">right</code> and <span>the directionality</span> of the
      <code>canvas</code> element is 'rtl'</dt>
 
-     <dd>Let the <var title="">anchor point</var>'s vertical
+     <dd>Let the <var>anchor point</var>'s vertical
      position be the top edge of the <em class="&#x0058;&#x0058;&#x0058;">inline
      box</em>.</dd>
 
@@ -2772,7 +2770,7 @@ HAVE REJIGGED HOW TEXT WORKS IN v5
      title="">left</code> and <span>the directionality</span> of the
      <code>canvas</code> element is 'rtl'</dt>
 
-     <dd>Let the <var title="">anchor point</var>'s vertical
+     <dd>Let the <var>anchor point</var>'s vertical
      position be the bottom edge of the <em class="&#x0058;&#x0058;&#x0058;">inline
      box</em>.</dd>
 
@@ -2781,8 +2779,8 @@ HAVE REJIGGED HOW TEXT WORKS IN v5
      title="dom-context-2d-textAlign">textAlign</code> is <code
      title="">center</code></dt>
 
-     <dd>Let the <var title="">anchor point</var>'s vertical position
-     be half way between the top and bottom edges of the <em
+     <dd>Let the <var>anchor point</var>'s vertical position
+     be halfway between the top and bottom edges of the <em
      class="&#x0058;&#x0058;&#x0058;">inline box</em>.</dd>
 
 
@@ -2801,8 +2799,8 @@ HAVE REJIGGED HOW TEXT WORKS IN v5
     title="dom-context-2d-transformation">current transformation
     matrix</span>, and anchored and sized so that before applying the
     <span title="dom-context-2d-transformation">current transformation
-    matrix</span>, the <var title="">anchor point</var> is at (<var
-    title="">x</var>, <var title="">y</var>) and each CSS pixel is
+    matrix</span>, the <var>anchor point</var> is at (<var
+    title="">x</var>, <var>y</var>) and each CSS pixel is
     mapped to one coordinate space unit.</p>
 
     <p>For <code
@@ -2837,7 +2835,7 @@ HAVE REJIGGED HOW TEXT WORKS IN v5
 v6DVT (also check for '- -' bits in the part above) -->
 
   <p>The <dfn id="dom-context-2d-measuretext" title="dom-context-2d-measureText"><code>measureText()</code></dfn>
-  method takes one argument, <var title="">text</var>. When the method
+  method takes one argument, <var>text</var>. When the method
   is invoked, the user agent must run the text preparation algorithm, pass
   a new TextMetrics object with its attributes set as described in the following list.
   If doing these measurements requires using a font that has an
@@ -2908,7 +2906,7 @@ v6DVT (also check for '- -' bits in the part above) -->
 
   <dl class="domintro">
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-beginPath"><a href="#dom-context-2d-beginpath">beginPath</a></code>()</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-beginPath"><a href="#dom-context-2d-beginpath">beginPath</a></code>()</dt>
 
    <dd>
 
@@ -2916,7 +2914,7 @@ v6DVT (also check for '- -' bits in the part above) -->
 
    </dd>
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-fill"><a href="#dom-context-2d-fill">fill</a></code>()</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-fill"><a href="#dom-context-2d-fill">fill</a></code>()</dt>
 
    <dd>
 
@@ -2925,7 +2923,7 @@ v6DVT (also check for '- -' bits in the part above) -->
    </dd>
 
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-stroke"><a href="#dom-context-2d-stroke">stroke</a></code>()</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-stroke"><a href="#dom-context-2d-stroke">stroke</a></code>()</dt>
 
    <dd>
 
@@ -2934,7 +2932,7 @@ v6DVT (also check for '- -' bits in the part above) -->
    </dd>
 
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-drawFocusIfNeeded"><a href="#dom-context-2d-drawfocusifneeded">drawFocusIfNeeded</a></code>(<var title="">element</var>)</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-drawFocusIfNeeded"><a href="#dom-context-2d-drawfocusifneeded">drawFocusIfNeeded</a></code>(<var>element</var>)</dt>
 
    <dd>
 
@@ -2943,7 +2941,7 @@ v6DVT (also check for '- -' bits in the part above) -->
    </dd>
 
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-clip"><a href="#dom-context-2d-clip">clip</a></code>()</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-clip"><a href="#dom-context-2d-clip">clip</a></code>()</dt>
 
    <dd>
 
@@ -2952,7 +2950,7 @@ v6DVT (also check for '- -' bits in the part above) -->
    </dd>
 
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-isPointInPath"><a href="#dom-context-2d-ispointinpath">isPointInPath</a></code>(<var title="">x</var>, <var title="">y</var>)</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-isPointInPath"><a href="#dom-context-2d-ispointinpath">isPointInPath</a></code>(<var>x</var>, <var>y</var>)</dt>
 
    <dd>
 
@@ -3005,7 +3003,7 @@ v6DVT (also check for '- -' bits in the part above) -->
 
   <hr>
 
-  <p id="dom-context-2d-focusoutline">The <dfn id="dom-context-2d-drawfocusifneeded" title="dom-context-2d-drawFocusIfNeeded"><code>drawFocusIfNeeded(<var title="">element</var>)</code></dfn> method, when invoked, must run
+  <p id="dom-context-2d-focusoutline">The <dfn id="dom-context-2d-drawfocusifneeded" title="dom-context-2d-drawFocusIfNeeded"><code>drawFocusIfNeeded(<var>element</var>)</code></dfn> method, when invoked, must run
   the following steps:</p>
 
   <ol>
@@ -3014,14 +3012,14 @@ v6DVT (also check for '- -' bits in the part above) -->
    If the current path has zero subpaths, then abort these steps.
    </p>
    </li>
-   <li><p>If <var title="">element</var> is not focused or is not a
+   <li><p>If <var>element</var> is not focused or is not a
    descendant of the element with whose context the method is
    associated, then abort these steps.</p></li>
 
    <li>
 
     <p>If the user has requested the use of particular focus outlines
-    (e.g. high-contrast focus outlines), or if the <var title="">element</var> would have a focus outline drawn around it,
+    (e.g. high-contrast focus outlines), or if the <var>element</var> would have a focus outline drawn around it,
     then draw a focus outline of the appropriate style along the intended
     path, following platform conventions.</p>
 
@@ -3072,7 +3070,7 @@ v6DVT (also check for '- -' bits in the part above) -->
   accessibility API driving a screen magnifier needs the bounds for
   the newly focused object. The methods above are intended to enable
   this by allowing the user agent to report the bounding box of the
-  path used to render the focus outline as the bounds of the <var title="">element</var> element passed as an argument, if that
+  path used to render the focus outline as the bounds of the <var>element</var> element passed as an argument, if that
   element is focused, and the bounding box of the area to which the
   user agent is scrolling as the bounding box of the current
   selection.</p>
@@ -3105,7 +3103,7 @@ v6DVT (also check for '- -' bits in the part above) -->
   <hr>
 
   <p>The <dfn id="dom-context-2d-ispointinpath" title="dom-context-2d-isPointInPath"><code>isPointInPath()</code></dfn>
-  method must return true if the point given by the <var title="">x</var> and <var title="">y</var> coordinates passed to the
+  method must return true if the point given by the <var>x</var> and <var>y</var> coordinates passed to the
   method, when treated as coordinates in the canvas coordinate space
   unaffected by the current transformation, is inside the intended
   path as determined by the non-zero winding number rule; and must
@@ -3125,23 +3123,23 @@ v6DVT (also check for '- -' bits in the part above) -->
   <p>This method can be invoked with three different sets of arguments:</p>
 
   <ul class="brief">
-   <li><code>drawImage(<var title="">image</var>, <var title="">dx</var>, <var title="">dy</var>)</code>
-   </li><li><code>drawImage(<var title="">image</var>, <var title="">dx</var>, <var title="">dy</var>, <var title="">dw</var>, <var title="">dh</var>)</code>
-   </li><li><code>drawImage(<var title="">image</var>, <var title="">sx</var>, <var title="">sy</var>, <var title="">sw</var>, <var title="">sh</var>, <var title="">dx</var>, <var title="">dy</var>, <var title="">dw</var>, <var title="">dh</var>)</code>
+   <li><code>drawImage(<var>image</var>, <var>dx</var>, <var>dy</var>)</code>
+   </li><li><code>drawImage(<var>image</var>, <var>dx</var>, <var>dy</var>, <var>dw</var>, <var>dh</var>)</code>
+   </li><li><code>drawImage(<var>image</var>, <var>sx</var>, <var>sy</var>, <var>sw</var>, <var>sh</var>, <var>dx</var>, <var>dy</var>, <var>dw</var>, <var>dh</var>)</code>
   </li></ul>
 
   <!-- v3: drawImage() of an ImageData object might make sense (when resizing as well as filtering) - ack Charles Pritchard -->
 
   <p>Each of those three can take either an
   <code>HTMLImageElement</code>, an <code>HTMLCanvasElement</code>, or
-  an <code>HTMLVideoElement</code> for the <var title="">image</var>
+  an <code>HTMLVideoElement</code> for the <var>image</var>
   argument.</p>
 
   <dl class="domintro">
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-drawImage"><a href="#dom-context-2d-drawimage">drawImage</a></code>(<var title="">image</var>, <var title="">dx</var>, <var title="">dy</var>)</dt>
-   <dt><var title="">context</var> . <code title="dom-context-2d-drawImage"><a href="#dom-context-2d-drawimage">drawImage</a></code>(<var title="">image</var>, <var title="">dx</var>, <var title="">dy</var>, <var title="">dw</var>, <var title="">dh</var>)</dt>
-   <dt><var title="">context</var> . <code title="dom-context-2d-drawImage"><a href="#dom-context-2d-drawimage">drawImage</a></code>(<var title="">image</var>, <var title="">sx</var>, <var title="">sy</var>, <var title="">sw</var>, <var title="">sh</var>, <var title="">dx</var>, <var title="">dy</var>, <var title="">dw</var>, <var title="">dh</var>)</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-drawImage"><a href="#dom-context-2d-drawimage">drawImage</a></code>(<var>image</var>, <var>dx</var>, <var>dy</var>)</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-drawImage"><a href="#dom-context-2d-drawimage">drawImage</a></code>(<var>image</var>, <var>dx</var>, <var>dy</var>, <var>dw</var>, <var>dh</var>)</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-drawImage"><a href="#dom-context-2d-drawimage">drawImage</a></code>(<var>image</var>, <var>sx</var>, <var>sy</var>, <var>sw</var>, <var>sh</var>, <var>dx</var>, <var>dy</var>, <var>dw</var>, <var>dh</var>)</dt>
 
    <dd>
 
@@ -3151,10 +3149,10 @@ v6DVT (also check for '- -' bits in the part above) -->
     <p><img alt="The sx and sy parameters give the x and y coordinates of the source rectangle; the sw and sh arguments give the width and height of the source rectangle; the dx and dy give the x and y coordinates of the destination rectangle; and the dw and dh arguments give the width and height of the destination rectangle." height="356" src="images/drawImage.png" width="356"></p>
 
     <p>If the first argument isn't an <code>img</code>,
-    <code>canvas</code>, or <code>video</code> element, throws a
+    <code>canvas</code>, or <code>video</code> element, <a href="http://www.w3.org/TR/WebIDL/#dfn-throw">throws</a> a
     <code>TypeMismatchError</code> exception. If the image has no
-    image data, throws an <code>InvalidStateError</code> exception. If
-    the one of the source rectangle dimensions is zero, throws an
+    image data, <a href="http://www.w3.org/TR/WebIDL/#dfn-throw">throws</a> an <code>InvalidStateError</code> exception. If
+    the one of the source rectangle dimensions is zero, <a href="http://www.w3.org/TR/WebIDL/#dfn-throw">throws</a> an
     <code>IndexSizeError</code> exception. If the image isn't yet
     fully decoded, then nothing is drawn.</p>
 
@@ -3177,12 +3175,12 @@ v6DVT (also check for '- -' bits in the part above) -->
     <p>If not specified, the <var>dw</var> and <var>dh</var> arguments must default to the values of
     <var>sw</var> and <var>sh</var>, interpreted such that one CSS pixel in the image is treated as
     one unit in the bitmap's coordinate space. If the <var>sx</var>,
-    <var>sy</var>, <var>sw</var>, and <var>sh</var> arguments are omitted, they must default to 0,
+    <var>sy</var>, <var>sw</var>, and <var>sh</var> arguments are not specified, they must default to 0,
     0, the image's intrinsic width in image pixels, and the image's intrinsic height in image
     pixels, respectively. If the image has no intrinsic dimensions, the <i>concrete object size</i>
     must be used instead, as determined using the CSS "<a href="http://dev.w3.org/csswg/css-images/#default-sizing">Concrete Object Size Resolution</a>"
     algorithm, with the <i>specified size</i> having neither a definite width nor height, nor any
-    additional contraints, the object's intrinsic properties being those of the <var>image</var>
+    additional constraints, the object's intrinsic properties being those of the <var>image</var>
     argument, and the <a id="drawing-images:default-object-size" href="infrastructure.html#default-object-size">default object size</a> being the size of the bitmap. <a href="references.html#refsCSSIMAGES">[CSSIMAGES]</a></p>
 
     <p>The source rectangle is the rectangle whose corners are the four points (<var>sx</var>, <var>sy</var>), (<span><var>sx</var>+<var>sw</var></span>, <var>sy</var>), (<span><var>sx</var>+<var>sw</var></span>, <span><var>sy</var>+<var>sh</var></span>),
@@ -3288,7 +3286,7 @@ v6DVT (also check for '- -' bits in the part above) -->
 
   <dl class="domintro">
 
-  <dt><var title="">context</var> . <code title="dom-context-2d-addHitRegion"><a href="#dom-context-2d-addhitregion">addHitRegion</a></code>(<var title="">options</var>)</dt>
+  <dt><var>context</var> . <code title="dom-context-2d-addHitRegion"><a href="#dom-context-2d-addhitregion">addHitRegion</a></code>(<var>options</var>)</dt>
 
   <dd>
 
@@ -3331,8 +3329,8 @@ v6DVT (also check for '- -' bits in the part above) -->
 
 	</dd>
 
-	<dt><var title="">context</var> . <code title="dom-context-2d-removeHitRegion"><a href="#dom-context-2d-removehitregion">
-	removeHitRegion</a></code>(<var title="">id</var>)</dt>
+	<dt><var>context</var> . <code title="dom-context-2d-removeHitRegion"><a href="#dom-context-2d-removehitregion">
+	removeHitRegion</a></code>(<var>id</var>)</dt>
 
   <dd>
 
@@ -3346,7 +3344,7 @@ v6DVT (also check for '- -' bits in the part above) -->
 
    </dd>
 
-   	<dt><var title="">context</var> . <code title="dom-context-2d-clearHitRegions"><a href="#dom-context-2d-clearhitregions">
+   	<dt><var>context</var> . <code title="dom-context-2d-clearHitRegions"><a href="#dom-context-2d-clearhitregions">
 	clearHitRegions</a></code>()</dt>
 
   <dd>
@@ -3364,20 +3362,20 @@ v6DVT (also check for '- -' bits in the part above) -->
 
    <div class="impl">
 
-   <p><dfn id="the-region-identified-by-the-id">The region identified by the ID</dfn> <var title="">ID</var> in a bitmap <var title="">bitmap</var> is the value returned by the following
+   <p><dfn id="the-region-identified-by-the-id">The region identified by the ID</dfn> <var>ID</var> in a bitmap <var>bitmap</var> is the value returned by the following
    algorithm (which can return a <a href="#hit-region">hit region</a> or
    nothing):</p>
 
    <ol>
 
-   <li><p>If <var title="">ID</var> is null, return nothing and abort
+   <li><p>If <var>ID</var> is null, return nothing and abort
    these steps.</p></li>
 
-   <li><p>Let <var title="">list</var> be the <a href="#hit-region-list">hit region
-   list</a> associated with <var title="">bitmap</var>.</p></li>
+   <li><p>Let <var>list</var> be the <a href="#hit-region-list">hit region
+   list</a> associated with <var>bitmap</var>.</p></li>
 
-   <li><p>If there is a <a href="#hit-region">hit region</a> in <var title="">list</var> whose <a href="#hit-region's-id" title="hit region's ID">ID</a>
-   is a <span>case-sensitive</span> match for <var title="">ID</var>,
+   <li><p>If there is a <a href="#hit-region">hit region</a> in <var>list</var> whose <a href="#hit-region's-id" title="hit region's ID">ID</a>
+   is a <span>case-sensitive</span> match for <var>ID</var>,
    then return that <a href="#hit-region">hit region</a> and abort these
    steps.</p></li>
 
@@ -3385,20 +3383,20 @@ v6DVT (also check for '- -' bits in the part above) -->
 
   </ol>
 
-  <p><dfn id="the-region-representing-the-control">The region representing the control</dfn> <var title="">control</var> for a bitmap <var title="">bitmap</var> is the value returned by the following
+  <p><dfn id="the-region-representing-the-control">The region representing the control</dfn> <var>control</var> for a bitmap <var>bitmap</var> is the value returned by the following
   algorithm (which can return a <a href="#hit-region">hit region</a> or
   nothing):</p>
 
   <ol>
 
-   <li><p>If <var title="">control</var> is null, return
+   <li><p>If <var>control</var> is null, return
    nothing and abort these steps.</p></li>
 
-   <li><p>Let <var title="">list</var> be the <a href="#hit-region-list">hit region
-   list</a> associated with <var title="">bitmap</var>.</p></li>
+   <li><p>Let <var>list</var> be the <a href="#hit-region-list">hit region
+   list</a> associated with <var>bitmap</var>.</p></li>
 
-   <li><p>If there is a <a href="#hit-region">hit region</a> in <var title="">list</var> whose <a href="#hit-region's-control" title="hit region's
-   control">control</a> is <var title="">control</var>, then
+   <li><p>If there is a <a href="#hit-region">hit region</a> in <var>list</var> whose <a href="#hit-region's-control" title="hit region's
+   control">control</a> is <var>control</var>, then
    return that <a href="#hit-region">hit region</a> and abort these
    steps.</p></li>
 
@@ -3406,36 +3404,36 @@ v6DVT (also check for '- -' bits in the part above) -->
 
   </ol>
 
-  <p><dfn id="the-control-represented-by-a-region">The control represented by a region</dfn> <var title="">region</var> for a <code>canvas</code> element <var title="">ancestor</var> is the value returned by the following
+  <p><dfn id="the-control-represented-by-a-region">The control represented by a region</dfn> <var>region</var> for a <code>canvas</code> element <var>ancestor</var> is the value returned by the following
   algorithm (which can return an element or nothing):</p>
 
   <ol>
 
-   <li><p>If <var title="">region</var> has no <a href="#hit-region's-control" title="hit
+   <li><p>If <var>region</var> has no <a href="#hit-region's-control" title="hit
    region's control">control</a>, return nothing and abort these
    steps.</p></li>
 
-   <li><p>Let <var title="">control</var> be <var title="">region</var>'s <a href="#hit-region's-control" title="hit region's
+   <li><p>Let <var>control</var> be <var>region</var>'s <a href="#hit-region's-control" title="hit region's
    control">control</a>.</p></li>
 
-   <li><p>If <var title="">control</var> is not a descendant of <var title="">ancestor</var>, then return nothing and abort these
+   <li><p>If <var>control</var> is not a descendant of <var>ancestor</var>, then return nothing and abort these
    steps.</p></li>
 
-   <li><p>Otherwise, return <var title="">control</var>.</p></li>
+   <li><p>Otherwise, return <var>control</var>.</p></li>
 
   </ol>
 
-  <p><dfn id="the-region-for-a-pixel">The region for a pixel</dfn> <var title="">pixel</var> on a bitmap
-  <var title="">bitmap</var> is the value returned by the following
+  <p><dfn id="the-region-for-a-pixel">The region for a pixel</dfn> <var>pixel</var> on a bitmap
+  <var>bitmap</var> is the value returned by the following
   algorithm (which can return a
   <a href="#hit-region">hit region</a> or nothing):</p>
 
   <ol>
 
-   <li><p>Let <var title="">list</var> be the <a href="#hit-region-list">hit region
-   list</a> associated with <var title="">bitmap</var>.</p></li>
+   <li><p>Let <var>list</var> be the <a href="#hit-region-list">hit region
+   list</a> associated with <var>bitmap</var>.</p></li>
 
-   <li><p>If there is a <a href="#hit-region">hit region</a> in <var title="">list</var> whose <a href="#hit-region's-path">path</a> contains <var title="">pixel</var>,
+   <li><p>If there is a <a href="#hit-region">hit region</a> in <var>list</var> whose <a href="#hit-region's-path">path</a> contains <var>pixel</var>,
    then return that <a href="#hit-region">hit region</a> and abort these
    steps.</p></li>
 
@@ -3444,17 +3442,17 @@ v6DVT (also check for '- -' bits in the part above) -->
   </ol>
 <!--
   <p>To <dfn>clear regions that cover the pixels</dfn> <var
-  title="">pixels</var> on a bitmap <var title="">bitmap</var>, the user agent must run the following
+  title="">pixels</var> on a bitmap <var>bitmap</var>, the user agent must run the following
   steps:</p>
 
   <ol>
 
-   <li><p>Let <var title="">list</var> be the <span>hit region
-   list</span> associated with <var title="">bitmap</var>.</p></li>
+   <li><p>Let <var>list</var> be the <span>hit region
+   list</span> associated with <var>bitmap</var>.</p></li>
 
-   <li><p>Remove all pixels in <var title="">pixels</var> from the
+   <li><p>Remove all pixels in <var>pixels</var> from the
    <span title="hit region's set of pixels">set of pixels</span> of
-   each <span>hit region</span> in <var title="">list</var>.</p></li>
+   each <span>hit region</span> in <var>list</var>.</p></li>
 
 
 
@@ -3470,34 +3468,34 @@ v6DVT (also check for '- -' bits in the part above) -->
 
   <ol>
 
-   <li><p>Let <var title="">arguments</var> be the dictionary object
+   <li><p>Let <var>arguments</var> be the dictionary object
    provided as the method's argument.</p></li>
 
    <li><p>Let <code title="dom-HitRegionOptions-path">path</code> be the <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code>
    object's <a href="#current-default-path">current default path</a>.</p></li>
 
-   <li><p>Let <var title="">specified pixels</var> be the pixels
-   contained in <var title="">source path</var>.
+   <li><p>Let <var>specified pixels</var> be the pixels
+   contained in <var>source path</var>.
 
    </p></li><li><p>Remove from specified pixels any pixels not contained within the clipping
    region.</p></li>
 
-   <li><p>If the <var title="">arguments</var> object's <code title="dom-HitRegionOptions-id">id</code> member is an
+   <li><p>If the <var>arguments</var> object's <code title="dom-HitRegionOptions-id">id</code> member is an
    empty string, let it be null instead.</p></li>
 
-   <li><p>If the <var title="">arguments</var> object's <code title="dom-HitRegionOptions-id">id</code> member is null and the <var title="">arguments</var>
+   <li><p>If the <var>arguments</var> object's <code title="dom-HitRegionOptions-id">id</code> member is null and the <var>arguments</var>
    object's <code title="dom-HitRegionOptions-control">control</code> member is null,
    throw a <code>NotSupportedError</code> exception and abort these steps.</p></li>
 
-   <li><p>If the <var title="">arguments</var> object's <code title="dom-HitRegionOptions-id">id</code> member is not null, then
-   let <var title="">previous region for this ID</var> be <a href="#the-region-identified-by-the-id">the
+   <li><p>If the <var>arguments</var> object's <code title="dom-HitRegionOptions-id">id</code> member is not null, then
+   let <var>previous region for this ID</var> be <a href="#the-region-identified-by-the-id">the
    region identified by the ID</a> given by the <code title="dom-HitRegionOptions-id">id</code> member's value in this
    <code>canvas</code> element. If the <code title="dom-HitRegionOptions-id">id</code> member is null or no such
-   region currently exists, let <var title="">previous region for this
+   region currently exists, let <var>previous region for this
    ID</var> be null.</p></li>
 
    <li>
-    <p>If the <var title="">specified path</var> has no pixels, throw a
+    <p>If the <var>specified path</var> has no pixels, throw a
     <code>NotSupportedError</code> exception and abort these
     steps.</p>
 
@@ -3506,66 +3504,66 @@ v6DVT (also check for '- -' bits in the part above) -->
 
    <li>
 
-    <p>Let <var title="">region</var> be a newly created <a href="#hit-region">hit
+    <p>Let <var>region</var> be a newly created <a href="#hit-region">hit
     region</a>, with its information configured as follows:</p>
 
     <dl>
 
      <dt><a href="#hit-region's-path">Hit region's path</a>
 
-     </dt><dd><p>The <var title="">specified path</var>.
+     </dt><dd><p>The <var>specified path</var>.
 
 
      </p></dd><dt><a href="#hit-region's-bounding-circumference">Hit region's bounding circumference</a>
 
      </dt><dd><p>A user-agent-defined shape that wraps the pixels contained
-     in <var title="">source path</var>. (In the simplest case, this
+     in <var>source path</var>. (In the simplest case, this
      can just be the bounding rectangle; this specification allows it
      to be any shape in order to allow other interfaces.)
 
      </p></dd><dt><a href="#hit-region's-id">Hit region's ID</a>
 
-     </dt><dd><p>If the <var title="">arguments</var> object's <code title="dom-HitRegionOptions-id">id</code> member is not null: the
+     </dt><dd><p>If the <var>arguments</var> object's <code title="dom-HitRegionOptions-id">id</code> member is not null: the
      value of the <code title="dom-HitRegionOptions-id">id</code>
-     member. Otherwise, <var title="">region</var> has no <a href="#hit-region's-id" title="hit region's id">id</a>.
+     member. Otherwise, <var>region</var> has no <a href="#hit-region's-id" title="hit region's id">id</a>.
 
      </p></dd><dt><a href="#hit-region's-control">Hit region's control</a>
 
-     </dt><dd><p>If the <var title="">arguments</var> object's <code title="dom-HitRegionOptions-control">control</code> member is not
+     </dt><dd><p>If the <var>arguments</var> object's <code title="dom-HitRegionOptions-control">control</code> member is not
      null: the value of the <code title="dom-HitRegionOptions-control">control</code> member.
-     Otherwise, <var title="">region</var> has no <a href="#hit-region's-control" title="hit
+     Otherwise, <var>region</var> has no <a href="#hit-region's-control" title="hit
      region's control">control</a>.
 
     </p></dd></dl>
 
    </li>
 
-   <li><p>If the <var title="">arguments</var> object's <code title="dom-HitRegionOptions-control">control</code> member is not
-   null, then let <var title="">previous region for the control</var>
+   <li><p>If the <var>arguments</var> object's <code title="dom-HitRegionOptions-control">control</code> member is not
+   null, then let <var>previous region for the control</var>
    be <a href="#the-region-representing-the-control">the region representing the control</a> given by the
    <code title="dom-HitRegionOptions-control">control</code> member's
    value for this <code>canvas</code> element, if any. If the <code title="dom-HitRegionOptions-control">control</code> member is null
-   or no such region currently exists, let <var title="">previous
+   or no such region currently exists, let <var>previous
    region for the control</var> be null.</p></li>
 
 
-   <li><p>If there is a <var title="">previous region with this
+   <li><p>If there is a <var>previous region with this
    control</var>, remove it from the <code>canvas</code> element's
    <a href="#hit-region-list">hit region list</a>.</p></li>
 
    <li><p>If the arguments object's <code title="dom-HitRegionOptions-control">
-   control</code> member is not null, inform the user of the location of the region
+   control</code> member is not null, <a href='#inform'>inform the user</a> of the location of the region
    representing the <code title="dom-HitRegionOptions-control">control</code>
    given by the control member's value for this <code>canvas</code> element, if any.
    The full location of the corresponding fallback element, pertaining
    to the <code title="dom-HitRegionOptions-control">control</code>,
    as represented by the region is passed to the  accessibility API, if supported.</p></li>
 
-   <li><p>If there is a <var title="">previous region with this
+   <li><p>If there is a <var>previous region with this
    ID</var>, remove it from the <code>canvas</code> element's <a href="#hit-region-list">hit region
    list</a>.</p></li>
 
-   <li><p>Add <var title="">region</var> to the <code>canvas</code>
+   <li><p>Add <var>region</var> to the <code>canvas</code>
    element's <a href="#hit-region-list">hit region list</a>.</p></li>
 
   </ol>
@@ -3575,14 +3573,14 @@ v6DVT (also check for '- -' bits in the part above) -->
 
   <ol>
 
-   <li><p>Let <var title="">region</var> be <a href="#the-region-identified-by-the-id">the region
+   <li><p>Let <var>region</var> be <a href="#the-region-identified-by-the-id">the region
    identified by the ID</a> given by the method's argument in this
    <code>canvas</code> element, if any. If no such region currently
    exists, abort these steps.</p>
 
    <p class="note"> If the method's argument is an empty string, then no region will match.</p>
 
-   </li><li><p>Remove <var title="">region</var> from the <code>canvas</code> element's
+   </li><li><p>Remove <var>region</var> from the <code>canvas</code> element's
    <a href="#hit-region-list">hit region list</a>.</p></li>
 
 
@@ -3594,7 +3592,7 @@ v6DVT (also check for '- -' bits in the part above) -->
 
   <ol>
 
-   <li><p>Remove all <var title="">hit regions</var>
+   <li><p>Remove all <var>hit regions</var>
    from the <code>canvas</code> element and clear the element's <a href="#hit-region-list">hit region list</a>. If no regions currently
    exist, abort these steps.</p></li>
 
@@ -3625,7 +3623,7 @@ partial dictionary <span>MouseEventInit</span> {
 
   <dl class="domintro">
 
-   <dt><var title="">event</var> . <code title="dom-MouseEvent-region"><a href="#dom-mouseevent-region">region</a></code></dt>
+   <dt><var>event</var> . <code title="dom-MouseEvent-region"><a href="#dom-mouseevent-region">region</a></code></dt>
 
    <dd>
 
@@ -3657,21 +3655,21 @@ partial dictionary <span>MouseEventInit</span> {
   <ol>
 
    <li><p>If the pointing device is not indicating a pixel on the
-   canvas, act as normal and abort these steps.</p></li>
+   canvas, <i>act as normal</i> and abort these steps.</p></li>
 
    <li><p>If the canvas element has no hit region list, act as
    normal and abort these steps.</p></li>
 
    <li><p>Let pixel be the pixel indicated by the pointing device.</p></li>
 
-   <li><p>Let region be the hit region that is the region for the pixel <var title="">pixel</var> on this canvas element's bitmap, if any.</p></li>
+   <li><p>Let region be the hit region that is the region for the pixel <var>pixel</var> on this canvas element's bitmap, if any.</p></li>
 
-   <li><p>Let <var title="">id</var> be the <var title="">region</var>'s <a href="#hit-region's-id" title="hit region's ID">ID</a>, if
+   <li><p>Let <var>id</var> be the <var>region</var>'s <a href="#hit-region's-id" title="hit region's ID">ID</a>, if
    any.</p></li>
 
-   <li><p>If there is an <var title="">id</var>, then initialize the
+   <li><p>If there is an <var>id</var>, then initialize the
    event object's <code title="dom-MouseEvent-region"><a href="#dom-mouseevent-region">region</a></code>
-   attribute to <var title="">id</var>.</p></li>
+   attribute to <var>id</var>.</p></li>
 
    <li><p>Dispatch the event, but with the updated event object as
    given in the above steps.</p></li>
@@ -3709,9 +3707,9 @@ partial dictionary <span>MouseEventInit</span> {
   ARIA role</span>, and whose textual representation, if any, is given
   by the <span>hit region's label</span>.--></p>
 
-  <p>For the purposes of accessibility tools, when an element <var title="">C</var> is a descendant of a <code>canvas</code> element
+  <p>For the purposes of accessibility tools, when an element <var>C</var> is a descendant of a <code>canvas</code> element
   and there is <a href="#the-region-representing-the-control" title="the region representing the control">a
-  region representing the control</a> <var title="">C</var> for that
+  region representing the control</a> <var>C</var> for that
   <code>canvas</code> element, then the element's position relative to
   the document should be presented as if it was that region in the
   <code>canvas</code> element's virtual DOM tree.</p>
@@ -3727,7 +3725,7 @@ partial dictionary <span>MouseEventInit</span> {
 
   <dl class="domintro">
 
-   <dt><var title="">imagedata</var> = <var title="">context</var> . <code title="dom-context-2d-createImageData"><a href="#dom-context-2d-createimagedata">createImageData</a></code>(<var title="">sw</var>, <var title="">sh</var>)</dt>
+   <dt><var>imagedata</var> = <var>context</var> . <code title="dom-context-2d-createImageData"><a href="#dom-context-2d-createimagedata">createImageData</a></code>(<var>sw</var>, <var>sh</var>)</dt>
 
    <dd>
 
@@ -3738,7 +3736,7 @@ partial dictionary <span>MouseEventInit</span> {
 
    </dd>
 
-   <dt><var title="">imagedata</var> = <var title="">context</var> . <code title="dom-context-2d-createImageData"><a href="#dom-context-2d-createimagedata">createImageData</a></code>(<var title="">imagedata</var>)</dt>
+   <dt><var>imagedata</var> = <var>context</var> . <code title="dom-context-2d-createImageData"><a href="#dom-context-2d-createimagedata">createImageData</a></code>(<var>imagedata</var>)</dt>
 
    <dd>
 
@@ -3748,7 +3746,7 @@ partial dictionary <span>MouseEventInit</span> {
 
    </dd>
 
-   <dt><var title="">imagedata</var> = <var title="">context</var> . <code title="dom-context-2d-getImageData"><a href="#dom-context-2d-getimagedata">getImageData</a></code>(<var title="">sx</var>, <var title="">sy</var>, <var title="">sw</var>, <var title="">sh</var>)</dt>
+   <dt><var>imagedata</var> = <var>context</var> . <code title="dom-context-2d-getImageData"><a href="#dom-context-2d-getimagedata">getImageData</a></code>(<var>sx</var>, <var>sy</var>, <var>sw</var>, <var>sh</var>)</dt>
 
    <dd>
 
@@ -3763,8 +3761,8 @@ partial dictionary <span>MouseEventInit</span> {
 
    </dd>
 
-   <dt><var title="">imagedata</var> . <code title="dom-imagedata-width"><a href="#dom-imagedata-width">width</a></code></dt>
-   <dt><var title="">imagedata</var> . <code title="dom-imagedata-height"><a href="#dom-imagedata-height">height</a></code></dt>
+   <dt><var>imagedata</var> . <code title="dom-imagedata-width"><a href="#dom-imagedata-width">width</a></code></dt>
+   <dt><var>imagedata</var> . <code title="dom-imagedata-height"><a href="#dom-imagedata-height">height</a></code></dt>
 
    <dd>
 
@@ -3772,7 +3770,7 @@ partial dictionary <span>MouseEventInit</span> {
 
    </dd>
 
-   <dt><var title="">imagedata</var> . <code title="dom-imagedata-data"><a href="#dom-imagedata-data">data</a></code></dt>
+   <dt><var>imagedata</var> . <code title="dom-imagedata-data"><a href="#dom-imagedata-data">data</a></code></dt>
 
    <dd>
 
@@ -3780,7 +3778,7 @@ partial dictionary <span>MouseEventInit</span> {
 
    </dd>
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-putImageData"><a href="#dom-context-2d-putimagedata">putImageData</a></code>(<var title="">imagedata</var>, <var title="">dx</var>, <var title="">dy</var> [, <var title="">dirtyX</var>, <var title="">dirtyY</var>, <var title="">dirtyWidth</var>, <var title="">dirtyHeight</var> ])</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-putImageData"><a href="#dom-context-2d-putimagedata">putImageData</a></code>(<var>imagedata</var>, <var>dx</var>, <var>dy</var> [, <var>dirtyX</var>, <var>dirtyY</var>, <var>dirtyWidth</var>, <var>dirtyHeight</var> ])</dt>
 
    <dd>
 
@@ -3806,41 +3804,41 @@ partial dictionary <span>MouseEventInit</span> {
 
   <p>The <dfn id="dom-context-2d-createimagedata" title="dom-context-2d-createImageData"><code>createImageData()</code></dfn>
   method is used to instantiate new blank <code><a href="#imagedata">ImageData</a></code>
-  objects. When the method is invoked with two arguments <var title="">sw</var> and <var title="">sh</var>, it must return an
+  objects. When the method is invoked with two arguments <var>sw</var> and <var>sh</var>, it must return an
   <code><a href="#imagedata">ImageData</a></code> object representing a rectangle with a width
-  in CSS pixels equal to the absolute magnitude of <var title="">sw</var> and a height in CSS pixels equal to the absolute
-  magnitude of <var title="">sh</var>. When invoked with a single <var title="">imagedata</var> argument, it must return an
+  in CSS pixels equal to the absolute magnitude of <var>sw</var> and a height in CSS pixels equal to the absolute
+  magnitude of <var>sh</var>. When invoked with a single <var>imagedata</var> argument, it must return an
   <code><a href="#imagedata">ImageData</a></code> object representing a rectangle with the same
   dimensions as the <code><a href="#imagedata">ImageData</a></code> object passed as the
   argument. The <code><a href="#imagedata">ImageData</a></code> object returned must be filled
   with transparent black.</p>
 
-  <p>The <dfn id="dom-context-2d-getimagedata" title="dom-context-2d-getImageData"><code>getImageData(<var title="">sx</var>, <var title="">sy</var>, <var title="">sw</var>,
-  <var title="">sh</var>)</code></dfn> method must,
+  <p>The <dfn id="dom-context-2d-getimagedata" title="dom-context-2d-getImageData"><code>getImageData(<var>sx</var>, <var>sy</var>, <var>sw</var>,
+  <var>sh</var>)</code></dfn> method must,
 <!--ADD-TOPIC:Security-->
   if the bitmap of the <code>canvas</code> element's <i>origin-clean</i> flag is set
   to false, throw a <code>SecurityError</code> exception; otherwise, it
 <!--REMOVE-TOPIC:Security-->
   must return an <code><a href="#imagedata">ImageData</a></code> object representing the
   underlying pixel data for the area of the canvas denoted by the
-  rectangle whose corners are the four points (<var title="">sx</var>,
-  <var title="">sy</var>), (<span title=""><var title="">sx</var>+<var title="">sw</var></span>, <var title="">sy</var>), (<span title=""><var title="">sx</var>+<var title="">sw</var></span>, <span title=""><var title="">sy</var>+<var title="">sh</var></span>),
-  (<var title="">sx</var>, <span title=""><var title="">sy</var>+<var title="">sh</var></span>), in canvas coordinate space units. Pixels
+  rectangle whose corners are the four points (<var>sx</var>,
+  <var>sy</var>), (<span><var>sx</var>+<var>sw</var></span>, <var>sy</var>), (<span><var>sx</var>+<var>sw</var></span>, <span><var>sy</var>+<var>sh</var></span>),
+  (<var>sx</var>, <span><var>sy</var>+<var>sh</var></span>), in canvas coordinate space units. Pixels
   outside the canvas must be returned as transparent black. Pixels
   must be returned as non-premultiplied alpha values.</p>
 
   <p>If any of the arguments to <code title="dom-context-2d-createImageData"><a href="#dom-context-2d-createimagedata">createImageData()</a></code> or
   <code title="dom-context-2d-getImageData"><a href="#dom-context-2d-getimagedata">getImageData()</a></code>
   are infinite or NaN, the method must instead throw a
-  <code>NotSupportedError</code> exception. If either the <var title="">sw</var> or <var title="">sh</var> arguments are zero,
+  <code>NotSupportedError</code> exception. If either the <var>sw</var> or <var>sh</var> arguments are zero,
   the method must instead throw an <code>IndexSizeError</code>
   exception.</p>
 
   <p><code><a href="#imagedata">ImageData</a></code> objects must be initialized so that their
   <dfn id="dom-imagedata-width" title="dom-imagedata-width"><code>width</code></dfn> attribute
-  is set to <var title="">w</var>, the number of physical device
+  is set to <var>w</var>, the number of physical device
   pixels per row in the image data, their <dfn id="dom-imagedata-height" title="dom-imagedata-height"><code>height</code></dfn> attribute is
-  set to <var title="">h</var>, the number of rows in the image data,
+  set to <var>h</var>, the number of rows in the image data,
   and their <dfn id="dom-imagedata-data" title="dom-imagedata-data"><code>data</code></dfn>
   attribute is initialized to a <code>Uint8ClampedArray</code> object.
   The <code>Uint8ClampedArray</code> object must use a <a href="#canvas-pixel-arraybuffer">Canvas
@@ -3860,14 +3858,14 @@ partial dictionary <span>MouseEventInit</span> {
   be assigned consecutive indices starting with 0 for the top left
   pixel's red component. <a href="#refsTYPEDARRAY">[TYPEDARRAY]</a></p>
 
-  <p>The <dfn id="dom-context-2d-putimagedata" title="dom-context-2d-putImageData"><code>putImageData(<var title="">imagedata</var>, <var title="">dx</var>, <var title="">dy</var>, <var title="">dirtyX</var>, <var title="">dirtyY</var>, <var title="">dirtyWidth</var>, <var title="">dirtyHeight</var>)</code></dfn> method writes data from
+  <p>The <dfn id="dom-context-2d-putimagedata" title="dom-context-2d-putImageData"><code>putImageData(<var>imagedata</var>, <var>dx</var>, <var>dy</var>, <var>dirtyX</var>, <var>dirtyY</var>, <var>dirtyWidth</var>, <var>dirtyHeight</var>)</code></dfn> method writes data from
   <code><a href="#imagedata">ImageData</a></code> structures back to the canvas.</p>
 
   <p>If any of the arguments to the method are infinite or NaN, the
   method must throw a <code>NotSupportedError</code> exception.</p>
 
   <p>When the last four arguments are omitted, they must be assumed to
-  have the values 0, 0, the <code title="dom-imagedata-width"><a href="#dom-imagedata-width">width</a></code> member of the <var title="">imagedata</var> structure, and the <code title="dom-imagedata-height"><a href="#dom-imagedata-height">height</a></code> member of the <var title="">imagedata</var> structure, respectively.</p>
+  have the values 0, 0, the <code title="dom-imagedata-width"><a href="#dom-imagedata-width">width</a></code> member of the <var>imagedata</var> structure, and the <code title="dom-imagedata-height"><a href="#dom-imagedata-height">height</a></code> member of the <var>imagedata</var> structure, respectively.</p>
 
   <p>When invoked with arguments that do not, per the last few
   paragraphs, cause an exception to be thrown, the <code title="dom-context-2d-putImageData"><a href="#dom-context-2d-putimagedata">putImageData()</a></code> method
@@ -3877,62 +3875,62 @@ partial dictionary <span>MouseEventInit</span> {
 
    <li>
 
-    <p>Let <var title="">dx<sub>device</sub></var> be the x-coordinate
+    <p>Let <var>dx<sub>device</sub></var> be the x-coordinate
     of the device pixel in the underlying pixel data of the canvas
-    corresponding to the <var title="">dx</var> coordinate in the
+    corresponding to the <var>dx</var> coordinate in the
     canvas coordinate space.</p>
 
-    <p>Let <var title="">dy<sub>device</sub></var> be the y-coordinate
+    <p>Let <var>dy<sub>device</sub></var> be the y-coordinate
     of the device pixel in the underlying pixel data of the canvas
-    corresponding to the <var title="">dy</var> coordinate in the
+    corresponding to the <var>dy</var> coordinate in the
     canvas coordinate space.</p>
 
    </li>
 
    <li>
 
-    <p>If <var title="">dirtyWidth</var> is negative, let <var title="">dirtyX</var> be <span title=""><var title="">dirtyX</var>+<var title="">dirtyWidth</var></span>, and let <var title="">dirtyWidth</var> be equal to the absolute magnitude of
-    <var title="">dirtyWidth</var>.</p>
+    <p>If <var>dirtyWidth</var> is negative, let <var>dirtyX</var> be <span><var>dirtyX</var>+<var>dirtyWidth</var></span>, and let <var>dirtyWidth</var> be equal to the absolute magnitude of
+    <var>dirtyWidth</var>.</p>
 
-    <p>If <var title="">dirtyHeight</var> is negative, let <var title="">dirtyY</var> be <span title=""><var title="">dirtyY</var>+<var title="">dirtyHeight</var></span>, and let <var title="">dirtyHeight</var> be equal to the absolute magnitude of
-    <var title="">dirtyHeight</var>.</p>
-
-   </li>
-
-   <li>
-
-    <p>If <var title="">dirtyX</var> is negative, let <var title="">dirtyWidth</var> be <span title=""><var title="">dirtyWidth</var>+<var title="">dirtyX</var></span>, and
-    let <var title="">dirtyX</var> be zero.</p>
-
-    <p>If <var title="">dirtyY</var> is negative, let <var title="">dirtyHeight</var> be <span title=""><var title="">dirtyHeight</var>+<var title="">dirtyY</var></span>, and
-    let <var title="">dirtyY</var> be zero.</p>
+    <p>If <var>dirtyHeight</var> is negative, let <var>dirtyY</var> be <span><var>dirtyY</var>+<var>dirtyHeight</var></span>, and let <var>dirtyHeight</var> be equal to the absolute magnitude of
+    <var>dirtyHeight</var>.</p>
 
    </li>
 
    <li>
 
-    <p>If <span title=""><var title="">dirtyX</var>+<var title="">dirtyWidth</var></span> is greater than the <code title="dom-imagedata-width"><a href="#dom-imagedata-width">width</a></code> attribute of the <var title="">imagedata</var> argument, let <var title="">dirtyWidth</var> be the value of that <code title="dom-imagedata-width"><a href="#dom-imagedata-width">width</a></code> attribute, minus the
-    value of <var title="">dirtyX</var>.</p>
+    <p>If <var>dirtyX</var> is negative, let <var>dirtyWidth</var> be <span><var>dirtyWidth</var>+<var>dirtyX</var></span>, and
+    let <var>dirtyX</var> be zero.</p>
 
-    <p>If <span title=""><var title="">dirtyY</var>+<var title="">dirtyHeight</var></span> is greater than the <code title="dom-imagedata-height"><a href="#dom-imagedata-height">height</a></code> attribute of the <var title="">imagedata</var> argument, let <var title="">dirtyHeight</var> be the value of that <code title="dom-imagedata-height"><a href="#dom-imagedata-height">height</a></code> attribute, minus the
-    value of <var title="">dirtyY</var>.</p>
+    <p>If <var>dirtyY</var> is negative, let <var>dirtyHeight</var> be <span><var>dirtyHeight</var>+<var>dirtyY</var></span>, and
+    let <var>dirtyY</var> be zero.</p>
 
    </li>
 
    <li>
 
-    <p>If, after those changes, either <var title="">dirtyWidth</var>
-    or <var title="">dirtyHeight</var> is negative or zero, stop these
+    <p>If <span><var>dirtyX</var>+<var>dirtyWidth</var></span> is greater than the <code title="dom-imagedata-width"><a href="#dom-imagedata-width">width</a></code> attribute of the <var>imagedata</var> argument, let <var>dirtyWidth</var> be the value of that <code title="dom-imagedata-width"><a href="#dom-imagedata-width">width</a></code> attribute, minus the
+    value of <var>dirtyX</var>.</p>
+
+    <p>If <span><var>dirtyY</var>+<var>dirtyHeight</var></span> is greater than the <code title="dom-imagedata-height"><a href="#dom-imagedata-height">height</a></code> attribute of the <var>imagedata</var> argument, let <var>dirtyHeight</var> be the value of that <code title="dom-imagedata-height"><a href="#dom-imagedata-height">height</a></code> attribute, minus the
+    value of <var>dirtyY</var>.</p>
+
+   </li>
+
+   <li>
+
+    <p>If, after those changes, either <var>dirtyWidth</var>
+    or <var>dirtyHeight</var> is negative or zero, stop these
     steps without affecting the canvas.</p>
 
    </li>
 
-   <li><p>Otherwise, for all integer values of <var title="">x</var>
-   and <var title="">y</var> where <span title=""><var title="">dirtyX</var> ≤ <var title="">x</var> &lt; <span title=""><var title="">dirtyX</var>+<var title="">dirtyWidth</var></span></span>
-   and <span title=""><var title="">dirtyY</var> ≤ <var title="">y</var> &lt; <span title=""><var title="">dirtyY</var>+<var title="">dirtyHeight</var></span></span>, copy the four channels of
-   the pixel with coordinate (<var title="">x</var>, <var title="">y</var>) in the <var title="">imagedata</var> data
-   structure to the pixel with coordinate (<span title=""><var title="">dx<sub>device</sub></var>+<var title="">x</var></span>,
-   <span title=""><var title="">dy<sub>device</sub></var>+<var title="">y</var></span>) in the underlying pixel data of the
+   <li><p>Otherwise, for all integer values of <var>x</var>
+   and <var>y</var> where <span><var>dirtyX</var> ≤ <var>x</var> &lt; <span><var>dirtyX</var>+<var>dirtyWidth</var></span></span>
+   and <span><var>dirtyY</var> ≤ <var>y</var> &lt; <span><var>dirtyY</var>+<var>dirtyHeight</var></span></span>, copy the four channels of
+   the pixel with coordinate (<var>x</var>, <var>y</var>) in the <var>imagedata</var> data
+   structure to the pixel with coordinate (<span><var>dx<sub>device</sub></var>+<var>x</var></span>,
+   <span><var>dy<sub>device</sub></var>+<var>y</var></span>) in the underlying pixel data of the
    canvas.</p></li>
 
   </ol>
@@ -3944,17 +3942,17 @@ partial dictionary <span>MouseEventInit</span> {
 
   <pre>context.putImageData(context.getImageData(x, y, w, h), p, q);</pre>
 
-  <p>...for any value of <var title="">x</var>, <var title="">y</var>,
-  <var title="">w</var>, and <var title="">h</var> and where <var title="">p</var> is the smaller of <var title="">x</var> and the sum
-  of <var title="">x</var> and <var title="">w</var>, and <var title="">q</var> is the smaller of <var title="">y</var> and the sum
-  of <var title="">y</var> and <var title="">h</var>; and except that
+  <p>...for any value of <var>x</var>, <var>y</var>,
+  <var>w</var>, and <var>h</var> and where <var>p</var> is the smaller of <var>x</var> and the sum
+  of <var>x</var> and <var>w</var>, and <var>q</var> is the smaller of <var>y</var> and the sum
+  of <var>y</var> and <var>h</var>; and except that
   the following two calls:</p>
 
   <pre>context.createImageData(w, h);
 context.getImageData(0, 0, w, h);</pre>
 
   <p>...must return <code><a href="#imagedata">ImageData</a></code> objects with the same
-  dimensions, for any value of <var title="">w</var> and <var title="">h</var>. In other words, while user agents may round the
+  dimensions, for any value of <var>w</var> and <var>h</var>. In other words, while user agents may round the
   arguments of these methods so that they map to device pixel
   boundaries, any rounding performed must be performed consistently
   for all of the <code title="dom-context-2d-getImageData"><a href="#dom-context-2d-getimagedata">createImageData()</a></code>, <code title="dom-context-2d-getImageData"><a href="#dom-context-2d-getimagedata">getImageData()</a></code> and <code title="dom-context-2d-putImageData"><a href="#dom-context-2d-putimagedata">putImageData()</a></code>
@@ -4041,8 +4039,8 @@ function AddCloud(data, x, y) { ... }</pre>
      var outputData = output.data;
 
      // edge detection
-     for (var y = 1; y &lt; h-1; y += 1) {
-       for (var x = 1; x &lt; w-1; x += 1) {
+     for (var y = 1; y &lt; h - 1; y += 1) {
+       for (var x = 1; x &lt; w - 1; x += 1) {
          for (var c = 0; c &lt; 3; c += 1) {
            var i = (y*w + x)*4 + c;
            outputData[i] = 127 + -inputData[i - w*4 - 4] -   inputData[i - w*4] - inputData[i - w*4 + 4] +
@@ -4072,7 +4070,7 @@ function AddCloud(data, x, y) { ... }</pre>
 
   <dl class="domintro">
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-globalAlpha"><a href="#dom-context-2d-globalalpha">globalAlpha</a></code> [ = <var title="">value</var> ]</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-globalAlpha"><a href="#dom-context-2d-globalalpha">globalAlpha</a></code> [ = <var>value</var> ]</dt>
 
    <dd>
 
@@ -4084,7 +4082,7 @@ function AddCloud(data, x, y) { ... }</pre>
    </dd>
 
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-globalCompositeOperation"><a href="#dom-context-2d-globalcompositeoperation">globalCompositeOperation</a></code> [ = <var title="">value</var> ]</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-globalCompositeOperation"><a href="#dom-context-2d-globalcompositeoperation">globalCompositeOperation</a></code> [ = <var>value</var> ]</dt>
 
    <dd>
 
@@ -4120,8 +4118,8 @@ function AddCloud(data, x, y) { ... }</pre>
   bitmap, once they have had <code title="dom-context-2d-globalAlpha"><a href="#dom-context-2d-globalalpha">globalAlpha</a></code> and the
   current transformation matrix applied. It must be set to a value
   from the following list. In the descriptions below, the source
-  image, <var title="">A</var>, is the shape or image being rendered,
-  and the destination image, <var title="">B</var>, is the current
+  image, <var>A</var>, is the shape or image being rendered,
+  and the destination image, <var>B</var>, is the current
   state of the bitmap.</p>
 
   </div>
@@ -4130,49 +4128,49 @@ function AddCloud(data, x, y) { ... }</pre>
 
    <dt><dfn id="gcop-source-atop" title="gcop-source-atop"><code>source-atop</code></dfn></dt>
 
-   <dd><var title="">A</var> atop <var title="">B</var>. <span class="note">Display the
+   <dd><var>A</var> atop <var>B</var>. <span class="note">Display the
    source image wherever both images are opaque. Display the
    destination image wherever the destination image is opaque but the
    source image is transparent. Display transparency elsewhere.</span></dd>
 
    <dt><dfn id="gcop-source-in" title="gcop-source-in"><code>source-in</code></dfn></dt>
 
-   <dd><var title="">A</var> in <var title="">B</var>. <span class="note">Display the
+   <dd><var>A</var> in <var>B</var>. <span class="note">Display the
    source image wherever both the source image and destination image
    are opaque. Display transparency elsewhere.</span></dd>
 
    <dt><dfn id="gcop-source-out" title="gcop-source-out"><code>source-out</code></dfn></dt>
 
-   <dd><var title="">A</var> out <var title="">B</var>. <span class="note">Display the
+   <dd><var>A</var> out <var>B</var>. <span class="note">Display the
    source image wherever the source image is opaque and the
    destination image is transparent. Display transparency
    elsewhere.</span></dd>
 
    <dt><dfn id="gcop-source-over" title="gcop-source-over"><code>source-over</code></dfn> (default)</dt>
 
-   <dd><var title="">A</var> over <var title="">B</var>. <span class="note">Display the
+   <dd><var>A</var> over <var>B</var>. <span class="note">Display the
    source image wherever the source image is opaque. Display the
    destination image elsewhere.</span></dd>
 
 
    <dt><dfn id="gcop-destination-atop" title="gcop-destination-atop"><code>destination-atop</code></dfn></dt>
 
-   <dd><var title="">B</var> atop <var title="">A</var>. <span class="note">Same as <code title="gcop-source-atop"><a href="#gcop-source-atop">source-atop</a></code> but using the
+   <dd><var>B</var> atop <var>A</var>. <span class="note">Same as <code title="gcop-source-atop"><a href="#gcop-source-atop">source-atop</a></code> but using the
    destination image instead of the source image and vice versa.</span></dd>
 
    <dt><dfn id="gcop-destination-in" title="gcop-destination-in"><code>destination-in</code></dfn></dt>
 
-   <dd><var title="">B</var> in <var title="">A</var>. <span class="note">Same as <code title="gcop-source-in"><a href="#gcop-source-in">source-in</a></code> but using the destination
+   <dd><var>B</var> in <var>A</var>. <span class="note">Same as <code title="gcop-source-in"><a href="#gcop-source-in">source-in</a></code> but using the destination
    image instead of the source image and vice versa.</span></dd>
 
    <dt><dfn id="gcop-destination-out" title="gcop-destination-out"><code>destination-out</code></dfn></dt>
 
-   <dd><var title="">B</var> out <var title="">A</var>. <span class="note">Same as <code title="gcop-source-out"><a href="#gcop-source-out">source-out</a></code> but using the destination
+   <dd><var>B</var> out <var>A</var>. <span class="note">Same as <code title="gcop-source-out"><a href="#gcop-source-out">source-out</a></code> but using the destination
    image instead of the source image and vice versa.</span></dd>
 
    <dt><dfn id="gcop-destination-over" title="gcop-destination-over"><code>destination-over</code></dfn></dt>
 
-   <dd><var title="">B</var> over <var title="">A</var>. <span class="note">Same as <code title="gcop-source-over"><a href="#gcop-source-over">source-over</a></code> but using the
+   <dd><var>B</var> over <var>A</var>. <span class="note">Same as <code title="gcop-source-over"><a href="#gcop-source-over">source-over</a></code> but using the
    destination image instead of the source image and vice versa.</span></dd>
 
 
@@ -4185,25 +4183,25 @@ function AddCloud(data, x, y) { ... }</pre>
 
    <dt><dfn id="gcop-lighter" title="gcop-lighter"><code>lighter</code></dfn></dt>
 
-   <dd><var title="">A</var> plus <var title="">B</var>. <span class="note">Display the
+   <dd><var>A</var> plus <var>B</var>. <span class="note">Display the
    sum of the source image and destination image, with color values
    approaching 255 (100%) as a limit.</span></dd>
 
 
    <dt><dfn id="gcop-copy" title="gcop-copy"><code>copy</code></dfn></dt>
 
-   <dd><var title="">A</var> (<var title="">B</var> is
+   <dd><var>A</var> (<var>B</var> is
    ignored). <span class="note">Display the source image instead of the destination
    image.</span></dd>
 
 
    <dt><dfn id="gcop-xor" title="gcop-xor"><code>xor</code></dfn></dt>
 
-   <dd><var title="">A</var> xor <var title="">B</var>. <span class="note">Exclusive OR
+   <dd><var>A</var> xor <var>B</var>. <span class="note">Exclusive OR
    of the source image and destination image.</span></dd>
 
 
-   <dt class="impl"><code><var title="">vendorName</var>-<var title="">operationName</var></code></dt>
+   <dt class="impl"><code><var>vendorName</var>-<var>operationName</var></code></dt>
 
    <dd class="impl">Vendor-specific extensions to the list of
    composition operators should use this syntax.</dd>
@@ -4214,7 +4212,7 @@ function AddCloud(data, x, y) { ... }</pre>
 
   <p>The operators in the above list must be treated as described by
   the Porter-Duff operator given at the start of their description
-  (e.g. <var title="">A</var> over <var title="">B</var>). They are to
+  (e.g. <var>A</var> over <var>B</var>). They are to
   be applied as part of the <a href="#drawing-model">drawing model</a>, at which point the
   <a href="#clipping-region">clipping region</a> is also applied. (Without a clipping
   region, these operators act on the whole bitmap with every
@@ -4245,7 +4243,7 @@ function AddCloud(data, x, y) { ... }</pre>
 
   <dl class="domintro">
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-shadowColor"><a href="#dom-context-2d-shadowcolor">shadowColor</a></code> [ = <var title="">value</var> ]</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-shadowColor"><a href="#dom-context-2d-shadowcolor">shadowColor</a></code> [ = <var>value</var> ]</dt>
 
    <dd>
 
@@ -4255,8 +4253,8 @@ function AddCloud(data, x, y) { ... }</pre>
 
    </dd>
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-shadowOffsetX"><a href="#dom-context-2d-shadowoffsetx">shadowOffsetX</a></code> [ = <var title="">value</var> ]</dt>
-   <dt><var title="">context</var> . <code title="dom-context-2d-shadowOffsetY"><a href="#dom-context-2d-shadowoffsety">shadowOffsetY</a></code> [ = <var title="">value</var> ]</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-shadowOffsetX"><a href="#dom-context-2d-shadowoffsetx">shadowOffsetX</a></code> [ = <var>value</var> ]</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-shadowOffsetY"><a href="#dom-context-2d-shadowoffsety">shadowOffsetY</a></code> [ = <var>value</var> ]</dt>
 
    <dd>
 
@@ -4266,7 +4264,7 @@ function AddCloud(data, x, y) { ... }</pre>
 
    </dd>
 
-   <dt><var title="">context</var> . <code title="dom-context-2d-shadowBlur"><a href="#dom-context-2d-shadowblur">shadowBlur</a></code> [ = <var title="">value</var> ]</dt>
+   <dt><var>context</var> . <code title="dom-context-2d-shadowBlur"><a href="#dom-context-2d-shadowblur">shadowBlur</a></code> [ = <var>value</var> ]</dt>
 
    <dd>
 
@@ -4325,9 +4323,7 @@ function AddCloud(data, x, y) { ... }</pre>
   <p><dfn id="when-shadows-are-drawn" title="when shadows are drawn">Shadows are only drawn
   if</dfn> the opacity component of the alpha component of the color
   of <code title="dom-context-2d-shadowColor"><a href="#dom-context-2d-shadowcolor">shadowColor</a></code> is
-  non-zero and either the <code title="dom-context-2d-shadowBlur"><a href="#dom-context-2d-shadowblur">shadowBlur</a></code> is non-zero, or
-  the <code title="dom-context-2d-shadowOffsetX"><a href="#dom-context-2d-shadowoffsetx">shadowOffsetX</a></code>
-  is non-zero, or the <code title="dom-context-2d-shadowOffsetY"><a href="#dom-context-2d-shadowoffsety">shadowOffsetY</a></code> is
+  non-zero and at leasty one of <code title="dom-context-2d-shadowBlur"><a href="#dom-context-2d-shadowblur">shadowBlur</a></code>, <code title="dom-context-2d-shadowOffsetX"><a href="#dom-context-2d-shadowoffsetx">shadowOffsetX</a></code>, or <code title="dom-context-2d-shadowOffsetY"><a href="#dom-context-2d-shadowoffsety">shadowOffsetY</a></code> is
   non-zero.</p>
 
   <p class="critical">It is likely that this will change: browser
@@ -4340,44 +4336,44 @@ function AddCloud(data, x, y) { ... }</pre>
 
   <ol>
 
-   <li> <p>Let <var title="">A</var> be an infinite transparent black
+   <li> <p>Let <var>A</var> be an infinite transparent black
    bitmap on which the source image for which a shadow is being
    created has been rendered.</p> </li>
 
-   <li> <p>Let <var title="">B</var> be an infinite transparent black
-   bitmap, with a coordinate space and an origin identical to <var title="">A</var>.</p> </li>
+   <li> <p>Let <var>B</var> be an infinite transparent black
+   bitmap, with a coordinate space and an origin identical to <var>A</var>.</p> </li>
 
-   <li> <p>Copy the alpha channel of <var title="">A</var> to <var title="">B</var>, offset by <code title="dom-context-2d-shadowOffsetX"><a href="#dom-context-2d-shadowoffsetx">shadowOffsetX</a></code> in the
-   positive <var title="">x</var> direction, and <code title="dom-context-2d-shadowOffsetY"><a href="#dom-context-2d-shadowoffsety">shadowOffsetY</a></code> in the
-   positive <var title="">y</var> direction.</p> </li>
+   <li> <p>Copy the alpha channel of <var>A</var> to <var>B</var>, offset by <code title="dom-context-2d-shadowOffsetX"><a href="#dom-context-2d-shadowoffsetx">shadowOffsetX</a></code> in the
+   positive <var>x</var> direction, and <code title="dom-context-2d-shadowOffsetY"><a href="#dom-context-2d-shadowoffsety">shadowOffsetY</a></code> in the
+   positive <var>y</var> direction.</p> </li>
 
    <li> <p>If <code title="dom-context-2d-shadowBlur"><a href="#dom-context-2d-shadowblur">shadowBlur</a></code> is greater than
    0:</p>
 
     <ol>
 
-     <li> <p>Let <var title="">σ</var> be half the value of
+     <li> <p>Let <var>σ</var> be half the value of
      <code title="dom-context-2d-shadowBlur"><a href="#dom-context-2d-shadowblur">shadowBlur</a></code>.</p></li>
 
-     <li> <p>Perform a 2D Gaussian Blur on <var title="">B</var>,
-     using <var title="">σ</var> as the standard deviation.</p>
+     <li> <p>Perform a 2D Gaussian Blur on <var>B</var>,
+     using <var>σ</var> as the standard deviation.</p>
      <!-- wish i could find a reference for this --> </li>
 
     </ol>
 
-    <p>User agents may limit values of <var title="">σ</var> to
+    <p>User agents may limit values of <var>σ</var> to
     an implementation-specific maximum value to avoid exceeding
     hardware limitations during the Gaussian blur operation.</p>
 
    </li>
 
    <li> <p>Set the red, green, and blue components of every pixel in
-   <var title="">B</var> to the red, green, and blue components
+   <var>B</var> to the red, green, and blue components
    (respectively) of the color of <code title="dom-context-2d-shadowColor"><a href="#dom-context-2d-shadowcolor">shadowColor</a></code>.</p> </li>
 
-   <li> <p>Multiply the alpha component of every pixel in <var title="">B</var> by the alpha component of the color of <code title="dom-context-2d-shadowColor"><a href="#dom-context-2d-shadowcolor">shadowColor</a></code>.</p> </li>
+   <li> <p>Multiply the alpha component of every pixel in <var>B</var> by the alpha component of the color of <code title="dom-context-2d-shadowColor"><a href="#dom-context-2d-shadowcolor">shadowColor</a></code>.</p> </li>
 
-   <li> <p>The shadow is in the bitmap <var title="">B</var>, and is
+   <li> <p>The shadow is in the bitmap <var>B</var>, and is
    rendered as part of the <a href="#drawing-model">drawing model</a> described below.</p> </li>
 
   </ol>
@@ -4399,25 +4395,25 @@ function AddCloud(data, x, y) { ... }</pre>
   <ol>
 
    <li><p>Render the shape or image onto an infinite transparent black
-   bitmap, creating image <var title="">A</var>, as described in the
+   bitmap, creating image <var>A</var>, as described in the
    previous sections. For shapes, the current fill, stroke, and line
    styles must be honored, and the stroke must itself also be
    subjected to the current transformation matrix.</p></li>
 
    <li><p><a href="#when-shadows-are-drawn">When shadows are drawn</a>, render the shadow from
-   image <var title="">A</var>, using the current shadow styles,
-   creating image <var title="">B</var>.</p></li>
+   image <var>A</var>, using the current shadow styles,
+   creating image <var>B</var>.</p></li>
 
    <li><p><a href="#when-shadows-are-drawn">When shadows are drawn</a>, multiply the alpha
-   component of every pixel in <var title="">B</var> by <code title="dom-context-2d-globalAlpha"><a href="#dom-context-2d-globalalpha">globalAlpha</a></code>.</p></li>
+   component of every pixel in <var>B</var> by <code title="dom-context-2d-globalAlpha"><a href="#dom-context-2d-globalalpha">globalAlpha</a></code>.</p></li>
 
-   <li><p><a href="#when-shadows-are-drawn">When shadows are drawn</a>, composite <var title="">B</var> within the <a href="#clipping-region">clipping region</a> over the
+   <li><p><a href="#when-shadows-are-drawn">When shadows are drawn</a>, composite <var>B</var> within the <a href="#clipping-region">clipping region</a> over the
    current canvas bitmap using the current composition
    operator.</p></li>
 
-   <li><p>Multiply the alpha component of every pixel in <var title="">A</var> by <code title="dom-context-2d-globalAlpha"><a href="#dom-context-2d-globalalpha">globalAlpha</a></code>.</p></li>
+   <li><p>Multiply the alpha component of every pixel in <var>A</var> by <code title="dom-context-2d-globalAlpha"><a href="#dom-context-2d-globalalpha">globalAlpha</a></code>.</p></li>
 
-   <li><p>Composite <var title="">A</var> within the <a href="#clipping-region">clipping
+   <li><p>Composite <var>A</var> within the <a href="#clipping-region">clipping
    region</a> over the current canvas bitmap using the current
    composition operator.</p></li>
 

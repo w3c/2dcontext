@@ -3471,14 +3471,14 @@ v6DVT (also check for '- -' bits in the part above) -->
    <li><p>Let <var>arguments</var> be the dictionary object
    provided as the method's argument.</p></li>
 
-   <li><p>Let <code title="dom-HitRegionOptions-path">path</code> be the <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code>
+   <li><p>Let <var title="dom-HitRegionOptions-path">source path</var> be the <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code>
    object's <a href="#current-default-path">current default path</a>.</p></li>
 
    <li><p>Let <var>specified pixels</var> be the pixels
    contained in <var>source path</var>.
 
-   </p></li><li><p>Remove from specified pixels any pixels not contained within the clipping
-   region.</p></li>
+   </p></li><li><p>Remove from <var>specified pixels</var> any pixels not contained within the <a href='#clipping-region'>clipping
+   region</a>.</p></li>
 
    <li><p>If the <var>arguments</var> object's <code title="dom-HitRegionOptions-id">id</code> member is an
    empty string, let it be null instead.</p></li>
@@ -3495,7 +3495,7 @@ v6DVT (also check for '- -' bits in the part above) -->
    ID</var> be null.</p></li>
 
    <li>
-    <p>If the <var>specified path</var> has no pixels, throw a
+    <p>If the <var>specified pixels</var> has no pixels, throw a
     <code>NotSupportedError</code> exception and abort these
     steps.</p>
 
@@ -3511,7 +3511,7 @@ v6DVT (also check for '- -' bits in the part above) -->
 
      <dt><a href="#hit-region's-path">Hit region's path</a>
 
-     </dt><dd><p>The <var>specified path</var>.
+     </dt><dd><p>The <var>specified pixels</var>.
 
 
      </p></dd><dt><a href="#hit-region's-bounding-circumference">Hit region's bounding circumference</a>

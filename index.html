@@ -594,7 +594,7 @@ interface <dfn id="imagedata">ImageData</dfn> {
    > nothing, since anything it draws is zero pixels wide), and it's a bit
    > annoying to track down and fix those issues, so I'd probably like it if
    > they were harmless in canvas methods. Opera appears to silently not draw
-   > anything if the transformation matrix is not finite, but Firefox <a href="http://www.w3.org/TR/WebIDL/#dfn-throw">throws</a>
+   > anything if the transformation matrix is not finite, but Firefox <a href="http://www.w3.org/TR/WebIDL-1/#dfn-throw">throws</a>
    > exceptions when passing in non-finite arguments.
   -->
 
@@ -2289,7 +2289,7 @@ try {
     radial gradient that paints along the cone given by the circles
     represented by the arguments.</p>
 
-    <p>If either of the radii are negative, <a href="http://www.w3.org/TR/WebIDL/#dfn-throw">throws</a> an
+    <p>If either of the radii are negative, <a href="http://www.w3.org/TR/WebIDL-1/#dfn-throw">throws</a> an
     <code>IndexSizeError</code> exception.</p>
 
    </dd>
@@ -2402,9 +2402,9 @@ try {
 
     <p>The allowed values for <var>repetition</var> are "<code>repeat</code>" (both directions), "<code>repeat-x</code>" (horizontal only), "<code>repeat-y</code>" (vertical only), and "<code>no-repeat</code>" (neither). If the <var>repetition</var> argument is empty, the value <code>repeat</code> is used.</p>
 
-    <p>If the image has no image data, <a href="http://www.w3.org/TR/WebIDL/#dfn-throw">throws</a> an
+    <p>If the image has no image data, <a href="http://www.w3.org/TR/WebIDL-1/#dfn-throw">throws</a> an
     <code>InvalidStateError</code> exception. If the second argument
-    isn't one of the allowed values, <a href="http://www.w3.org/TR/WebIDL/#dfn-throw">throws</a> a <code>SyntaxError</code>
+    isn't one of the allowed values, <a href="http://www.w3.org/TR/WebIDL-1/#dfn-throw">throws</a> a <code>SyntaxError</code>
     exception. If the image isn't yet fully decoded, then the method
     returns null.</p>
 
@@ -3149,10 +3149,10 @@ v6DVT (also check for '- -' bits in the part above) -->
     <p><img alt="The sx and sy parameters give the x and y coordinates of the source rectangle; the sw and sh arguments give the width and height of the source rectangle; the dx and dy give the x and y coordinates of the destination rectangle; and the dw and dh arguments give the width and height of the destination rectangle." height="356" src="images/drawImage.png" width="356"></p>
 
     <p>If the first argument isn't an <code>img</code>,
-    <code>canvas</code>, or <code>video</code> element, <a href="http://www.w3.org/TR/WebIDL/#dfn-throw">throws</a> a
+    <code>canvas</code>, or <code>video</code> element, <a href="http://www.w3.org/TR/WebIDL-1/#dfn-throw">throws</a> a
     <code>TypeMismatchError</code> exception. If the image has no
-    image data, <a href="http://www.w3.org/TR/WebIDL/#dfn-throw">throws</a> an <code>InvalidStateError</code> exception. If
-    the one of the source rectangle dimensions is zero, <a href="http://www.w3.org/TR/WebIDL/#dfn-throw">throws</a> an
+    image data, <a href="http://www.w3.org/TR/WebIDL-1/#dfn-throw">throws</a> an <code>InvalidStateError</code> exception. If
+    the one of the source rectangle dimensions is zero, <a href="http://www.w3.org/TR/WebIDL-1/#dfn-throw">throws</a> an
     <code>IndexSizeError</code> exception. If the image isn't yet
     fully decoded, then nothing is drawn.</p>
 
@@ -4641,7 +4641,7 @@ function AddCloud(data, x, y) { ... }</pre>
    <dd><cite><a href="https://www.khronos.org/registry/typedarray/specs/latest/">Typed Array Specification</a> (URL: <a href="https://www.khronos.org/registry/typedarray/specs/latest/">https://www.khronos.org/registry/typedarray/specs/latest/</a>)</cite>, D. Herman, K. Russell. Khronos.</dd>
 
    <dt id="refsWEBIDL">[WEBIDL]</dt>
-   <dd>Cameron McCormack. <a href="http://www.w3.org/TR/WebIDL/"><cite>Web IDL</cite></a>. 19 April 2012. W3C Candidate Recommendation. URL: <a href="http://www.w3.org/TR/WebIDL/">http://www.w3.org/TR/WebIDL/</a>
+   <dd>Cameron McCormack, Boris Zbarsky, Yves Lafon, Travis Leithead. <a href="http://www.w3.org/TR/WebIDL-1/"><cite>Web IDL</cite></a>. 4 August 2015. W3C Working Draft. URL: <a href="http://www.w3.org/TR/WebIDL-1/">http://www.w3.org/TR/WebIDL-1/</a>
 
    <!--
    <dd><cite><a href="http://www.w3.org/TR/XMLHttpRequest/">The XMLHttpRequest
